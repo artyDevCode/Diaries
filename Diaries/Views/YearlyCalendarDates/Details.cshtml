@@ -1,0 +1,50 @@
+﻿@model Diaries.Models.YearlyCalendarDates
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>YearlyCalendarDates</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrentStatDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CurrentStatDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrentEndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CurrentEndDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NextStatDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NextStatDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NextEndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NextEndDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Calendar_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

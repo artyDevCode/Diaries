@@ -1,0 +1,187 @@
+﻿
+/*
+ * DataTables framework
+ */
+div.dataTables_wrapper {
+	background-color: #719ba7;
+}
+
+div.dataTables_length {
+	float: left;
+}
+
+div.dataTables_filter {
+	float: right;
+}
+
+div.dataTables_info {
+	padding: 9px 6px 6px 6px;
+	float: left;
+}
+
+div.dataTables_paginate {
+	float: right;
+}
+
+div.dataTables_length,
+div.dataTables_filter,
+div.dataTables_paginate {
+	padding: 6px;
+}
+
+/*arty*/
+.ColourDiary {
+    display: inline-block;  width: 25px;  height: 20px;  vertical-align: text-top;  cursor: pointer;
+}
+
+.ListTypeConfig {
+    height:35px;
+    width:100%;
+}
+
+.Listings, .ListTypeMng, .ListTypeMngInfo{
+    height:25px;
+    width:100%;
+}
+
+
+.DiaryMng{
+/*background:no-repeat url(/Content/Icons/edit.gif) 0 0;*/
+height:25px;
+width:auto;
+overflow:hidden;
+background-color:transparent;
+float:left;
+border:none;
+/*display:inline;*/
+font-weight:bold;
+}
+
+
+.btn-linkme {
+  font-weight: normal;
+  /*color: #428bca;*/
+  background-color: transparent;
+  cursor: pointer;
+  border-radius: 0;
+  padding: 0;
+}
+
+/*.mybody {
+    background:no-repeat url(/Content/Icons/teamroom_outline_4-19.gif) 0 0;
+    padding-top: 100px;
+    padding-bottom: 20px;
+}*/
+.subcatRed{
+    color: red;
+}
+
+
+
+#tab1{
+    padding-left:40px;
+}
+#tab2{
+    padding-left:60px;
+}
+#tab3{
+    padding-right:90px;
+}
+
+#tab4{
+    padding-right:30px;
+}
+
+input[type=text], input[type=number], select, option{
+     width:100%; 
+     height:25px; 
+     padding:2px; 
+     border: 1px solid #a2b2b6;
+     vertical-align:middle;
+}
+
+input[type=radio] {
+    padding:20px; 
+}
+
+#StartTime, #EndTime, #StartTimeDisp, #EndTimeDisp, #EventTimeDisp {
+    margin: 0px;
+}
+
+
+.datepickerMain  select.ui-datepicker-month,  .datepickerMain select.ui-datepicker-year {
+      width:60%;
+}
+
+.auto-style1 {
+    width: 800px;
+    height: 120px;
+    vertical-align: top;
+}
+
+
+.auto-style5 {
+    width: 200px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: black;
+}
+
+      
+.auto-style12 {
+    width:  750px;
+}
+
+       
+.auto-style14 {
+    width: 1278px;
+}
+
+.auto-style15 {
+    width: 100%;
+    /*padding-top: 10px;
+    padding-bottom: 10px;*/
+}
+
+       
+.auto-style17 {
+    width: auto;
+}
+
+
+.auto-style19 {
+    width: 595px;/*495px;*/
+    height: 25px;
+}
+
+.auto-style20 {
+    width: 240px;
+    height: 25px;
+}
+
+.auto-style21 {
+    width: auto;
+    height: 25px;
+}
+
+.HomeFooterlogo{
+background:no-repeat url(../Content/images/csv_Logo.png) 0 0;
+height:50px;
+width:200px;
+overflow:hidden;
+float:right;
+border:none;
+display:inline;
+
+}
+
+.AjaxGif{
+background:no-repeat url(../Content/images/ajaxloader.gif) 0 0;
+height:50px;
+width:200px;
+overflow:hidden;
+float:right;
+border:none;
+display:inline;
+
+}

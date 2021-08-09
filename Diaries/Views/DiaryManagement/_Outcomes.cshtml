@@ -1,0 +1,177 @@
+﻿@model  IEnumerable<Diaries.Models.V_Diary_List_Outcomes>
+
+<head>
+    <title>List Outcomes Attributes PartialView</title>
+</head>
+
+<table border="0" cellspacing="0" cellpadding="10">
+    <tr>
+        <td>
+            <table border="0" style="font-family: Arial; float: right; font-size: 9pt; background-color: transparent; width: auto; height: 100%; ">
+                <tr>
+                    <td class="auto-style12">
+
+                        <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: transparent;" cellspacing="0" cellpadding="0">
+
+                            <tr>
+                                <td style="padding:10px;">
+
+                                    @if (Model != null)
+                                    {
+                                        int i = 0;
+                                        foreach (var item in Model)
+                                        {
+                                            if (i == 0)
+                                            {
+                                                if (@item.V_O_SelectFilter == "All")
+                                                {
+                                                    <input type="radio" style="margin-left:10px;" id="OFilter" name=@item.V_O_AllFilter value=@item.V_O_AllFilter checked="checked" />@item.V_O_AllFilter
+                                                }
+                                                else
+                                                {
+                                                    <input type="radio" style="margin-left:10px;" id="OFilter" name=@item.V_O_AllFilter value=@item.V_O_AllFilter />@item.V_O_AllFilter
+                                                }
+
+                                                if (@item.V_O_SelectFilter == "Civil")
+                                                {
+                                                    <input type="radio" style="margin-left:10px;" id="OFilter" name=@item.V_O_CivilFilter value=@item.V_O_CivilFilter checked="checked" />@item.V_O_CivilFilter
+                                                }
+                                                else
+                                                {
+                                                    <input type="radio" style="margin-left:10px;" id="OFilter" name=@item.V_O_CivilFilter value=@item.V_O_CivilFilter />@item.V_O_CivilFilter
+                                                }
+
+                                                if (@item.V_O_SelectFilter == "Criminal")
+                                                {<input type="radio" style="margin-left:10px;" id="OFilter" name=@item.V_O_CriminalFilter value=@item.V_O_CriminalFilter checked="checked" />@item.V_O_CriminalFilter}
+                                                else
+                                                {<input type="radio" style="margin-left:10px;" id="OFilter" name=@item.V_O_CriminalFilter value=@item.V_O_CriminalFilter />@item.V_O_CriminalFilter}
+
+                                                if (@item.V_O_SelectFilter == "Committals")
+                                                {
+                                                    <input type="radio" style="margin-left:10px;" id="OFilter" name=@item.V_O_CommittalsFilter value=@item.V_O_CommittalsFilter checked="checked" />@item.V_O_CommittalsFilter
+                                                }
+                                                else
+                                                {
+                                                    <input type="radio" style="margin-left:10px;" id="OFilter" name=@item.V_O_CommittalsFilter value=@item.V_O_CommittalsFilter />@item.V_O_CommittalsFilter
+                                                }
+
+                                                if (@item.V_O_SelectFilter == "Intervention Orders")
+                                                {
+                                                    <input type="radio" style="margin-left:10px;" id="OFilter" name=@item.V_O_InterventionOrdersFilter value="Intervention Orders" checked="checked" />@item.V_O_InterventionOrdersFilter
+                                                }
+                                                else
+                                                {
+                                                    <input type="radio" style="margin-left:10px;" id="OFilter" name=@item.V_O_InterventionOrdersFilter value="Intervention Orders" />@item.V_O_InterventionOrdersFilter
+                                                }
+
+                                                if (@item.V_O_SelectFilter == "VOCAT")
+                                                {
+                                                    <input type="radio" style="margin-left:10px;" id="OFilter" name=@item.V_O_VOCATFilter value=@item.V_O_VOCATFilter checked="checked" />@item.V_O_VOCATFilter
+                                                }
+                                                else
+                                                {
+                                                    <input type="radio" style="margin-left:10px;" id="OFilter" name=@item.V_O_VOCATFilter value=@item.V_O_VOCATFilter />@item.V_O_VOCATFilter
+                                                }
+
+                                                if (@item.V_O_SelectFilter == "Childrens Court")
+                                                {
+                                                    <input type="radio" style="margin-left:10px;" id="OFilter" name="Childrens Court" value="Childrens Court" checked="checked" />@item.V_O_ChildrensCourtFilter
+                                                }
+                                                else
+                                                {
+                                                    <input type="radio" style="margin-left:10px;" id="OFilter" name="Childrens Court" value="Childrens Court" />@item.V_O_ChildrensCourtFilter
+                                                }
+
+                                            }
+                                            i = i + 1;
+                                        }
+
+                                    }
+
+                                    @*<input type="radio" style="margin-left:10px;" id="VRFilter" name="All" value="All" checked="checked" />&nbsp;All
+                                        <input type="radio" style="margin-left:10px;" id="VRFilter" name="Civil" value="Civil" />&nbsp;Civil
+                                        <input type="radio" style="margin-left:10px;" id="VRFilter" name="Criminal" value="Criminal" />&nbsp;Criminal
+                                        <input type="radio" style="margin-left:10px;" id="VRFilter" name="Committals" value="Committals" />&nbsp;Committals
+                                        <input type="radio" style="margin-left:10px;" id="VRFilter" name="Intervention Orders" value="Intervention Orders" />&nbsp;Intervention Orders
+                                        <input type="radio" style="margin-left:10px;" id="VRFilter" name="VOCAT" value="VOCAT" />&nbsp;VOCAT
+                                        <input type="radio" style="margin-left:10px;" id="VRFilter" name="Childrens Court" value="Childrens Court" />&nbsp;Childrens Court*@
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+
+            <table border="1" style="font-family: Arial; float: right; font-size: 9pt; background-color: whitesmoke; width: auto; height: 100%; ">
+                <tr style="background-color: #46568c; color: white; "><th align="center"><b>Outcomes</b></th></tr>
+                <tr>
+                    <td class="auto-style12">
+                        @if (Model != null)
+                        {
+                            int i = 0;
+                            foreach (var item in Model)
+                            {
+                                if (i == 0)
+                                {
+                                    @Html.DropDownListFor(modelitem => item.V_O_SelectName, new SelectList(item.V_OSelect_Type, "Value", "Text", item.V_O_SelectName), new { id = "V_O_SelectName" });
+                                }
+                                i = i + 1;
+                            }
+                        }
+
+                        <p style="font-family: Arial; font-size: 10pt; width: 720px; background-color: #46568c; color:white;">&nbsp;Active</p>
+
+                        <div style="overflow:auto; height:115px; width:720px; font-family: arial; float: left; font-size: 9pt; background-color: whitesmoke;">
+
+                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: white; float: left" cellspacing="0" cellpadding="0">
+                                @foreach (var item in Model)
+                                {
+                                    if (item.V_O_Deleted == false)
+                                    {
+                                        <tr style="background-color: threedlightshadow;">
+                                            <td>
+                                                @item.V_O_Name
+                                                <input type="button" id="@item.V_O_id" class="OMakeInactive" style="border:none;  float:right;" value="Make Inactive" />
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </table>
+
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <table border="1" style="font-family: Arial; float: right; font-size: 9pt; background-color: whitesmoke; width: auto; height: 100%; ">
+                <tr style="background-color: #46568c; color: white; "><th align="center"><b>Inactive</b></th></tr>
+                <tr>
+                    <td class="auto-style12">
+                        <div style="overflow:auto; height:115px; width:720px; font-family: arial; float: left; font-size: 9pt; background-color: whitesmoke;">
+
+                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: white; float: left" cellspacing="0" cellpadding="0">
+                                @foreach (var item in Model)
+                                {
+                                    if (item.V_O_Deleted == true)
+                                    {
+                                        <tr style="background-color: threedlightshadow;">
+                                            <td>
+                                                @item.V_O_Name
+                                                <input type="button" id="@item.V_O_id" class="OMakeActive" style="border:none;  float:right;" value="Make Active" />
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+        </td>
+    </tr>
+</table>
+
+
+
+

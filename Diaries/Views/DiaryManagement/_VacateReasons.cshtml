@@ -1,0 +1,407 @@
+﻿@model  IEnumerable<Diaries.Models.V_Diary_List_VacateReasons>
+
+<head>
+    <title>List Vacate Reasons Attributes PartialView</title>
+</head>
+
+<table border="0" cellspacing="0" cellpadding="10">
+    <tr>
+        <td>
+            <table border="0" style="font-family: Arial; float: right; font-size: 9pt; background-color: transparent; width: auto; height: 100%; ">
+                <tr>
+                    <td class="auto-style12">
+
+                        <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: transparent;" cellspacing="0" cellpadding="0">
+                            @*<tr>
+                                    <td style="padding:10px;">
+
+                                        <input type="button" id="AddListAttr" value="Save" class="btn btn-success" />
+                                        <input type="button" id="CancelListAttr" value="Cancel" class="btn btn-danger" />
+
+                                    </td>
+                                </tr>*@
+                            <tr>
+                                <td style="padding:10px;">
+
+                                    @if (Model != null)
+                                    {
+                                        int i = 0;
+                                        foreach (var item in Model)
+                                        {
+                                            if (i == 0)
+                                            {
+                                                if (@item.V_VR_SelectFilter == "All")
+                                                {
+                                                    <input type="radio" style="margin-left:10px;" id="VRFilter" name=@item.V_VR_AllFilter value=@item.V_VR_AllFilter checked="checked" />@item.V_VR_AllFilter
+                                                }
+                                                else
+                                                {
+                                                    <input type="radio" style="margin-left:10px;" id="VRFilter" name=@item.V_VR_AllFilter value=@item.V_VR_AllFilter />@item.V_VR_AllFilter
+                                                }
+
+                                                if (@item.V_VR_SelectFilter == "Civil")
+                                                {
+                                                    <input type="radio" style="margin-left:10px;" id="VRFilter" name=@item.V_VR_CivilFilter value=@item.V_VR_CivilFilter checked="checked" />@item.V_VR_CivilFilter
+                                                }
+                                                else
+                                                {
+                                                    <input type="radio" style="margin-left:10px;" id="VRFilter" name=@item.V_VR_CivilFilter value=@item.V_VR_CivilFilter />@item.V_VR_CivilFilter
+                                                }
+
+                                                if (@item.V_VR_SelectFilter == "Criminal")
+                                                {<input type="radio" style="margin-left:10px;" id="VRFilter" name=@item.V_VR_CriminalFilter value=@item.V_VR_CriminalFilter checked="checked" />@item.V_VR_CriminalFilter}
+                                                else
+                                                {<input type="radio" style="margin-left:10px;" id="VRFilter" name=@item.V_VR_CriminalFilter value=@item.V_VR_CriminalFilter />@item.V_VR_CriminalFilter}
+
+                                                if (@item.V_VR_SelectFilter == "Committals")
+                                                {
+                                                    <input type="radio" style="margin-left:10px;" id="VRFilter" name=@item.V_VR_CommittalsFilter value=@item.V_VR_CommittalsFilter checked="checked" />@item.V_VR_CommittalsFilter
+                                                }
+                                                else
+                                                {
+                                                    <input type="radio" style="margin-left:10px;" id="VRFilter" name=@item.V_VR_CommittalsFilter value=@item.V_VR_CommittalsFilter />@item.V_VR_CommittalsFilter
+                                                }
+
+                                                if (@item.V_VR_SelectFilter == "Intervention Orders")
+                                                {
+                                                    <input type="radio" style="margin-left:10px;" id="VRFilter" name=@item.V_VR_InterventionOrdersFilter value="Intervention Orders" checked="checked" />@item.V_VR_InterventionOrdersFilter
+                                                }
+                                                else
+                                                {
+                                                    <input type="radio" style="margin-left:10px;" id="VRFilter" name=@item.V_VR_InterventionOrdersFilter value="Intervention Orders" />@item.V_VR_InterventionOrdersFilter
+                                                }
+
+                                                if (@item.V_VR_SelectFilter == "VOCAT")
+                                                {
+                                                    <input type="radio" style="margin-left:10px;" id="VRFilter" name=@item.V_VR_VOCATFilter value=@item.V_VR_VOCATFilter checked="checked" />@item.V_VR_VOCATFilter
+                                                }
+                                                else
+                                                {
+                                                    <input type="radio" style="margin-left:10px;" id="VRFilter" name=@item.V_VR_VOCATFilter value=@item.V_VR_VOCATFilter />@item.V_VR_VOCATFilter
+                                                }
+
+                                                if (@item.V_VR_SelectFilter == "Childrens Court")
+                                                {
+                                                    <input type="radio" style="margin-left:10px;" id="VRFilter" name="Childrens Court" value="Childrens Court" checked="checked" />@item.V_VR_ChildrensCourtFilter
+                                                }
+                                                else
+                                                {
+                                                    <input type="radio" style="margin-left:10px;" id="VRFilter" name="Childrens Court" value="Childrens Court" />@item.V_VR_ChildrensCourtFilter
+                                                }
+
+                                            }
+                                            i = i + 1;
+                                        }
+
+                                    }
+
+                                    @*<input type="radio" style="margin-left:10px;" id="VRFilter" name="All" value="All" checked="checked" />&nbsp;All
+                                        <input type="radio" style="margin-left:10px;" id="VRFilter" name="Civil" value="Civil" />&nbsp;Civil
+                                        <input type="radio" style="margin-left:10px;" id="VRFilter" name="Criminal" value="Criminal" />&nbsp;Criminal
+                                        <input type="radio" style="margin-left:10px;" id="VRFilter" name="Committals" value="Committals" />&nbsp;Committals
+                                        <input type="radio" style="margin-left:10px;" id="VRFilter" name="Intervention Orders" value="Intervention Orders" />&nbsp;Intervention Orders
+                                        <input type="radio" style="margin-left:10px;" id="VRFilter" name="VOCAT" value="VOCAT" />&nbsp;VOCAT
+                                        <input type="radio" style="margin-left:10px;" id="VRFilter" name="Childrens Court" value="Childrens Court" />&nbsp;Childrens Court*@
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+
+            <table border="1" style="font-family: Arial; float: right; font-size: 9pt; background-color: whitesmoke; width: auto; height: 100%; ">
+                <tr style="background-color: #46568c; color: white; "><th align="center"><b>Vacate Reasons</b></th></tr>
+                <tr>
+                    <td class="auto-style12">
+                        @if (Model != null)
+                        {
+                            int i = 0;
+                            foreach (var item in Model)
+                            {
+                                if (i == 0)
+                                {
+                                    @Html.DropDownListFor(modelitem => item.V_VR_SelectName, new SelectList(item.V_VRSelect_Type, "Value", "Text", item.V_VR_SelectName), new { id = "V_VR_SelectName" });
+                                }
+                                i = i + 1;
+                            }
+                        }
+
+                        <p style="font-family: Arial; font-size: 10pt; width: 720px; background-color: #46568c; color:white;">&nbsp;Active</p>
+
+                        <div style="overflow:auto; height:115px; width:720px; font-family: arial; float: left; font-size: 9pt; background-color: whitesmoke;">
+
+                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: white; float: left" cellspacing="0" cellpadding="0">
+                                @foreach (var item in Model)
+                                {
+                                    if (item.V_VR_Deleted == false)
+                                    {
+                                        <tr style="background-color: threedlightshadow;">
+                                            <td>
+                                                @item.V_VR_Name
+                                                <input type="button" id="@item.V_VR_id" class="VRMakeInactive" style="border:none;  float:right;" value="Make Inactive" />
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </table>
+
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <table border="1" style="font-family: Arial; float: right; font-size: 9pt; background-color: whitesmoke; width: auto; height: 100%; ">
+                <tr style="background-color: #46568c; color: white; "><th align="center"><b>Inactive</b></th></tr>
+                <tr>
+                    <td class="auto-style12">
+                        <div style="overflow:auto; height:115px; width:720px; font-family: arial; float: left; font-size: 9pt; background-color: whitesmoke;">
+
+                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: white; float: left" cellspacing="0" cellpadding="0">
+                                @foreach (var item in Model)
+                                {
+                                    if (item.V_VR_Deleted == true)
+                                    {
+                                        <tr style="background-color: threedlightshadow;">
+                                            <td>
+                                                @item.V_VR_Name
+                                                <input type="button" id="@item.V_VR_id" class="VRMakeActive" style="border:none;  float:right;" value="Make Active" />
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+        </td>
+    </tr>
+</table>
+
+
+
+@*<table border="0" style="font-family: Arial; float: right;  background-color: whitesmoke; width: auto; height: 100%; ">
+        <tr>
+            <td class="auto-style12">
+                <table border="0" style="font-family: Arial; width: 100%; background-color: threedlightshadow;  float: left" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td align="center" style="font-size:14pt;">
+                            &#10004
+                        </td>
+                        <td>
+                            <input type="button" class="ListTypeConfig" style="background-color:threedlightshadow; font-size:14pt; color:gray;" value="Vacate Reason" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" style="font-size:14pt;">
+                            &#10008
+                        </td>
+                        <td>
+                            <input type="button" class="ListTypeConfig" style="background-color:threedlightshadow; color:gray; font-size:14pt;" value="Outcome" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" style="font-size:14pt;">
+                            &#10004
+                        </td>
+                        <td>
+                            <input type="button" class="ListTypeConfig" style="background-color:threedlightshadow; color:gray; font-size:14pt;" value="Flag" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" style="font-size:14pt;">
+                            &#10008
+                        </td>
+                        <td>
+                            <input type="button" class="ListTypeConfig" style="background-color:threedlightshadow; color:gray; font-size:14pt;" value="Location" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" style="font-size:14pt;">
+                            &#10004
+                        </td>
+                        <td>
+                            <input type="button" class="ListTypeConfig" style="background-color:threedlightshadow; color:gray; font-size:14pt;" value="Category" />
+                        </td>
+                    </tr>
+                </table>
+                <table border="0" style="font-family: Arial; float: right; font-size: 9pt; background-color: transparent; width: auto; height: 100%; ">
+                    <tr>
+                        <td class="auto-style12">
+
+                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: transparent;" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td style="padding:10px;">
+
+                                        <input type="submit" value="Save" class="btn btn-success" />
+                                        <input type="submit" value="Cancel" class="btn btn-danger" />
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:10px;">
+                                        <input type="radio" style="margin-left:10px;" name=" rules" value="CaseType" checked="checked" />&nbsp;Civil
+                                        <input type="radio" style="margin-left:10px;" name="Rules" value="CaseType" />&nbsp;Criminal
+                                        <input type="radio" style="margin-left:10px;" name="Rules" value="CaseType" />&nbsp;Committals
+                                        <input type="radio" style="margin-left:10px;" name="Rules" value="CaseType" />&nbsp;Intervention Orders
+                                        <input type="radio" style="margin-left:10px;" name="Rules" value="CaseType" />&nbsp;VOCAT
+                                        <input type="radio" style="margin-left:10px;" name="Rules" value="CaseType" />&nbsp;Childrens Court
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>*@
+
+@*<table border="1" style="font-family: Arial; float: right; font-size: 9pt; background-color: whitesmoke; width: auto; height: 100%; ">
+        <tr style="background-color: #46568c; color: white; "><th align="center"><b>Activate and Inactive</b></th></tr>
+        <tr>
+            <td class="auto-style12">
+                <select data-val="true" data-val-required="The Event Type field is required." id="EventType" name="EventType">
+                    <option>other</option>
+                    <option selected="selected">Active/Inactive Drown options</option>
+                </select>
+
+                <p style="font-family: Arial; font-size: 10pt; width: 720px; background-color: #46568c; color:white;">&nbsp;Active Location Selected</p>
+
+                <div style="overflow:auto; height:120px; width:720px; font-family: arial; float: left; font-size: 9pt; background-color: whitesmoke;">
+
+                    <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: white; float: left" cellspacing="0" cellpadding="0">
+                        <tr style="background-color: threedlightshadow;">
+                            <td>
+                                Reason 1
+                                <input type="button" style="border:none;  float:right;" value="Make Inactive" />
+                            </td>
+                        </tr>
+                        <tr style="background-color: whitesmoke;">
+                            <td>
+                                Reason 2
+                                <input type="button" style="border:none; float:right;" value="Make Inactive" />
+                            </td>
+                        </tr>
+                        <tr style="background-color: threedlightshadow;">
+                            <td>
+                                Reason 3
+                                <input type="button" style="border:none;  float:right;" value="Make Inactive" />
+                            </td>
+                        </tr>
+
+                        <tr style="background-color: whitesmoke;">
+                            <td>
+                                Reason 4
+                                <input type="button" style="border:none;  float:right;" value="Make Inactive" />
+                            </td>
+                        </tr>
+                        <tr style="background-color: threedlightshadow;">
+                            <td>
+                                Reason5
+                                <input type="button" style="border:none;  float:right;" value="Make Inactive" />
+                            </td>
+                        </tr>
+                        <tr style="background-color: whitesmoke;">
+                            <td>
+                                Reason 6
+                                <input type="button" style="border:none;  float:right;" value="Make Inactive" />
+                            </td>
+                        </tr>
+                        <tr style="background-color: threedlightshadow;">
+                            <td>
+                                Reason 7
+                                <input type="button" style="border:none; float:right;" value="Make Inactive" />
+                            </td>
+                        </tr>
+                        <tr style="background-color: whitesmoke;">
+                            <td>
+                                Reason 8
+                                <input type="button" style="border:none; float:right;" value="Make Inactive" />
+                            </td>
+                        </tr>
+                        <tr style="background-color: threedlightshadow;">
+                            <td>
+                                Reason 9
+                                <input type="button" style="border:none; float:right;" value="Make Inactive" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+    </table>*@
+
+@*<table border="1" style="font-family: Arial; float: right; font-size: 9pt; background-color: whitesmoke; width: auto; height: 100%; ">
+        <tr style="background-color: #46568c; color: white; "><th align="center"><b>Inactive Location Selected</b></th></tr>
+        <tr>
+            <td class="auto-style12">
+                <div style="overflow:auto; height:120px; width:720px; font-family: arial; float: left; font-size: 9pt; background-color: whitesmoke;">
+
+                    <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: white; float: left" cellspacing="0" cellpadding="0">
+
+                        <tr style="background-color: threedlightshadow;">
+                            <td>
+                                Reason 1
+                                <input type="button" style="border:none;  float:right;" value="Make Active" />
+
+                            </td>
+                        </tr>
+                        <tr style="background-color: whitesmoke;">
+                            <td>
+                                Reason 2
+                                <input type="button" style="border:none;  float:right;" value="Make Active" />
+                            </td>
+                        </tr>
+                        <tr style="background-color: threedlightshadow;">
+                            <td>
+                                Reason 3
+                                <input type="button" style="border:none; float:right;" value="Make Active" />
+                            </td>
+                        </tr>
+
+                        <tr style="background-color: whitesmoke;">
+                            <td>
+                                Reason 4
+                                <input type="button" style="border:none; background-color:transparent; float:right;" value="Make Active" />
+
+                            </td>
+                        </tr>
+                        <tr style="background-color: threedlightshadow;">
+                            <td>
+                                Reason 5
+                                <input type="button" style="border:none; background-color:threedlightshadow; float:right;" value="Make Active" />
+                            </td>
+                        </tr>
+                        <tr style="background-color: whitesmoke;">
+                            <td>
+                                Reason 6
+                                <input type="button" style="border:none; background-color:transparent; float:right;" value="Make Active" />
+                            </td>
+                        </tr>
+                        <tr style="background-color: threedlightshadow;">
+                            <td>
+                                Reason 7
+                                <input type="button" style="border:none; background-color:threedlightshadow; float:right;" value="Make Active" />
+
+                            </td>
+                        </tr>
+                        <tr style="background-color: whitesmoke;">
+                            <td>
+                                Reason 8
+                                <input type="button" style="border:none; background-color:transparent; float:right;" value="Make Active" />
+                            </td>
+                        </tr>
+                        <tr style="background-color: threedlightshadow;">
+                            <td>
+                                Reason 9
+                                <input type="button" style="border:none; background-color:threedlightshadow; float:right;" value="Make Active" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+    </table>*@
+
+

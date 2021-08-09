@@ -1,0 +1,101 @@
+﻿@model Diaries.Models.JudicialOfficer
+
+@{
+    ViewBag.Title = "Create Judicial Officer";
+}
+
+<h3>Judicial Officer</h3>
+<br />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.JO_ID)
+
+    <table border="0">
+        <tr>
+            <td class="auto-style16">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                @Html.ActionLink("Cancel", "Index", "JudicialOfficer", new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    </table>
+
+
+    <table border="1" cellspacing="0" cellpadding="10">
+        <tr>
+            <td>
+                <table border="0" style="font-family: Arial; float: left; font-size: 9pt; background-color: whitesmoke; width: auto; height: 100%; ">
+                    <tr style="background-color: #46568c; color: white; "><th align="center"><b>Part Heard Judicial Office Details</b></th></tr>
+                    <tr>
+                        <td class="auto-style12">
+                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: left" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td align="left" nowrap class="auto-style5" width="auto">
+                                        Judicial Officer:
+                                    </td>
+                                    <td align="left">
+                                        <input id="JudicialOfficersDataList" type="text" name="JO_Name" list="JO_Name" value=@Html.Raw('"')@Model.JO_Name@Html.Raw('"') style="width:100%" />
+                                        <datalist data-autocompleteme='@Url.Action("getUsers")' data-val="true" data-val-length="Please enter the user." data-val-length-max="500" id="JO_Name"></datalist>
+                                        @Html.ValidationMessageFor(model => model.JO_Name)
+                                    </td>
+                                </tr>
+
+                            </table>
+
+                        </td>
+
+                    </tr>
+
+                </table>
+
+
+
+                <table border="0" style="font-family: Arial; float: right; font-size: 9pt; background-color: whitesmoke; width: auto; height: 100%; ">
+                    <tr style="background-color: #46568c; color: white; "><th align="center"><b>Part Heard Judicial Office Colours</b></th></tr>
+                    <tr>
+                        <td class="auto-style12">
+                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: left" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td align="left" nowrap class="auto-style5" width="auto">
+                                        Background Colour:
+                                    </td>
+                                    <td align="left" class="input-group color">
+                                        <span class="input-group-addon"><i></i></span>
+
+                                        @Html.ColorPickAreaFor(Model.JO_BackColor,Model.JO_BackColor, "JO_BackColor")                                       
+                                        @Html.ValidationMessageFor(model => model.JO_BackColor)
+                                        
+                                        @*<input type="text" name=model. value="" class="form-control" />*@
+                                    </td>
+                                </tr>
+
+                            </table>
+                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: left" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td align="left" nowrap class="auto-style5" width="auto">
+                                        Text Colour:
+                                    </td>
+                                    <td align="left" class="input-group color">
+                                        <span class="input-group-addon"><i></i></span>
+                                        @Html.ColorPickAreaFor(Model.JO_TextColor, Model.JO_TextColor, "JO_TextColor")
+                                        @Html.ValidationMessageFor(model => model.JO_TextColor)
+                                    </td>
+                                </tr>
+
+                            </table>                        
+                        </td>
+                    </tr>
+                </table>
+
+            </td>
+        </tr>
+    </table>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+

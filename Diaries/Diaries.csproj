@@ -1,0 +1,567 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{07D4AABE-C219-4BDC-A344-B2D703737997}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Diaries</RootNamespace>
+    <AssemblyName>Diaries</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication>disabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\MicosoftReportViewerWebForms_v11.1.0.1\lib\Microsoft.ReportViewer.WebForms.DLL</HintPath>
+    </Reference>
+    <Reference Include="ReportViewerForMvc">
+      <HintPath>..\packages\ReportViewerForMvc.1.0.1\lib\net45\ReportViewerForMvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.0\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.0\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccessController.cs" />
+    <Compile Include="Controllers\CaseOutcomeController.cs" />
+    <Compile Include="Controllers\DayNoteController.cs" />
+    <Compile Include="Controllers\DiaryManagementController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JudicialOfficerController.cs" />
+    <Compile Include="Controllers\JudicialOfficerListingController.cs" />
+    <Compile Include="Controllers\ListTypeController.cs" />
+    <Compile Include="Controllers\NonSittingDayController.cs" />
+    <Compile Include="Controllers\VacateReasonController.cs" />
+    <Compile Include="Controllers\YearlyCalendarDatesController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\HideNameFor.cs" />
+    <Compile Include="Helpers\InputExtensions.cs" />
+    <Compile Include="Helpers\ReadOnlyInput.cs" />
+    <Compile Include="Helpers\ShortDateFormat.cs" />
+    <Compile Include="Helpers\ShortTimeFormat.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Access.cs" />
+    <Compile Include="Models\DiaryListingInfo.cs" />
+    <Compile Include="Models\DiaryListingInfoLog.cs" />
+    <Compile Include="Models\V_DiaryManagement_Home.cs" />
+    <Compile Include="Models\V_ListType_Home.cs" />
+    <Compile Include="Models\YearlyCalendarDates.cs" />
+    <Compile Include="Models\Case.cs" />
+    <Compile Include="Models\CaseOutcome.cs" />
+    <Compile Include="Models\DayNote.cs" />
+    <Compile Include="Models\DiaryVM.cs" />
+    <Compile Include="Models\DN_ApplyToList.cs" />
+    <Compile Include="Models\D_Diaries.cs" />
+    <Compile Include="Models\D_Lists.cs" />
+    <Compile Include="Models\D_L_Category.cs" />
+    <Compile Include="Models\D_L_Flag.cs" />
+    <Compile Include="Models\D_L_Location.cs" />
+    <Compile Include="Models\D_L_Outcome.cs" />
+    <Compile Include="Models\D_L_Vacate_Reason.cs" />
+    <Compile Include="Models\JudicialOfficer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\JudicialOfficerListing.cs" />
+    <Compile Include="Models\Log.cs" />
+    <Compile Include="Models\DiariesDB.cs" />
+    <Compile Include="Models\NonSittingDay.cs" />
+    <Compile Include="Models\VacateReason.cs" />
+    <Compile Include="Models\V_D_DiaryManagement.cs" />
+    <Compile Include="Models\V_D_ListManagement.cs" />
+    <Compile Include="Models\V_HomePage.cs" />
+    <Compile Include="Models\V_Home_Case.cs" />
+    <Compile Include="Models\V_Home_DayNotes.cs" />
+    <Compile Include="Models\V_Home_DiaryListInfo.cs" />
+    <Compile Include="Models\V_Home_DiaryNames.cs" />
+    <Compile Include="Models\V_Home_NSDays.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-colorpicker.css" />
+    <Content Include="Content\bootstrap-colorpicker.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Custom.css" />
+    <Content Include="Content\DataTables-1.10.0\css\dataTables.autoFill.css" />
+    <Content Include="Content\DataTables-1.10.0\css\dataTables.autoFill.min.css" />
+    <Content Include="Content\DataTables-1.10.0\css\dataTables.bootstrap.css" />
+    <Content Include="Content\DataTables-1.10.0\css\dataTables.colReorder.css" />
+    <Content Include="Content\DataTables-1.10.0\css\dataTables.colReorder.min.css" />
+    <Content Include="Content\DataTables-1.10.0\css\dataTables.colVis.css" />
+    <Content Include="Content\DataTables-1.10.0\css\dataTables.colvis.jqueryui.css" />
+    <Content Include="Content\DataTables-1.10.0\css\dataTables.colVis.min.css" />
+    <Content Include="Content\DataTables-1.10.0\css\dataTables.fixedColumns.css" />
+    <Content Include="Content\DataTables-1.10.0\css\dataTables.fixedColumns.min.css" />
+    <Content Include="Content\DataTables-1.10.0\css\dataTables.fixedHeader.css" />
+    <Content Include="Content\DataTables-1.10.0\css\dataTables.fixedHeader.min.css" />
+    <Content Include="Content\DataTables-1.10.0\css\dataTables.foundation.css" />
+    <Content Include="Content\DataTables-1.10.0\css\dataTables.jqueryui.css" />
+    <Content Include="Content\DataTables-1.10.0\css\dataTables.keyTable.css" />
+    <Content Include="Content\DataTables-1.10.0\css\dataTables.keyTable.min.css" />
+    <Content Include="Content\DataTables-1.10.0\css\dataTables.scroller.css" />
+    <Content Include="Content\DataTables-1.10.0\css\dataTables.scroller.min.css" />
+    <Content Include="Content\DataTables-1.10.0\css\dataTables.tableTools.css" />
+    <Content Include="Content\DataTables-1.10.0\css\dataTables.tableTools.min.css" />
+    <Content Include="Content\DataTables-1.10.0\css\jquery.dataTables.css" />
+    <Content Include="Content\DataTables-1.10.0\css\jquery.dataTables.min.css" />
+    <Content Include="Content\DataTables-1.10.0\css\jquery.dataTables_themeroller.css" />
+    <Content Include="Content\DataTables-1.10.0\css\jquery.dataTables_themeroller.min.css" />
+    <Content Include="Content\DataTables-1.10.0\extras\AutoFill\media\css\AutoFill.css" />
+    <Content Include="Content\DataTables-1.10.0\extras\AutoFill\media\docs\media\css\doc.css" />
+    <Content Include="Content\DataTables-1.10.0\extras\AutoFill\media\docs\media\css\shCore.css" />
+    <Content Include="Content\DataTables-1.10.0\extras\AutoFill\media\docs\media\css\shThemeDataTables.css" />
+    <Content Include="Content\DataTables-1.10.0\extras\AutoFill\media\docs\media\images\arrow.jpg" />
+    <Content Include="Content\DataTables-1.10.0\extras\AutoFill\media\docs\media\images\arrow.png" />
+    <Content Include="Content\DataTables-1.10.0\extras\AutoFill\media\docs\media\images\extended.png" />
+    <Content Include="Content\DataTables-1.10.0\extras\AutoFill\media\images\filler.png" />
+    <Content Include="Content\DataTables-1.10.0\extras\ColReorder\media\css\ColReorder.css" />
+    <Content Include="Content\DataTables-1.10.0\extras\ColReorder\media\docs\media\css\doc.css" />
+    <Content Include="Content\DataTables-1.10.0\extras\ColReorder\media\docs\media\css\shCore.css" />
+    <Content Include="Content\DataTables-1.10.0\extras\ColReorder\media\docs\media\css\shThemeDataTables.css" />
+    <Content Include="Content\DataTables-1.10.0\extras\ColReorder\media\docs\media\images\arrow.jpg" />
+    <Content Include="Content\DataTables-1.10.0\extras\ColReorder\media\docs\media\images\arrow.png" />
+    <Content Include="Content\DataTables-1.10.0\extras\ColReorder\media\docs\media\images\extended.png" />
+    <Content Include="Content\DataTables-1.10.0\extras\ColReorder\media\images\insert.png" />
+    <Content Include="Content\DataTables-1.10.0\extras\ColVis\media\css\ColVis.css" />
+    <Content Include="Content\DataTables-1.10.0\extras\ColVis\media\css\ColVisAlt.css" />
+    <Content Include="Content\DataTables-1.10.0\extras\ColVis\media\docs\media\css\doc.css" />
+    <Content Include="Content\DataTables-1.10.0\extras\ColVis\media\docs\media\css\shCore.css" />
+    <Content Include="Content\DataTables-1.10.0\extras\ColVis\media\docs\media\css\shThemeDataTables.css" />
+    <Content Include="Content\DataTables-1.10.0\extras\ColVis\media\docs\media\images\arrow.jpg" />
+    <Content Include="Content\DataTables-1.10.0\extras\ColVis\media\docs\media\images\arrow.png" />
+    <Content Include="Content\DataTables-1.10.0\extras\ColVis\media\docs\media\images\extended.png" />
+    <Content Include="Content\DataTables-1.10.0\extras\ColVis\media\images\button.png" />
+    <Content Include="Content\DataTables-1.10.0\extras\FixedColumns\docs\media\css\doc.css" />
+    <Content Include="Content\DataTables-1.10.0\extras\FixedColumns\docs\media\css\shCore.css" />
+    <Content Include="Content\DataTables-1.10.0\extras\FixedColumns\docs\media\css\shThemeDataTables.css" />
+    <Content Include="Content\DataTables-1.10.0\extras\FixedColumns\docs\media\images\arrow.jpg" />
+    <Content Include="Content\DataTables-1.10.0\extras\FixedColumns\docs\media\images\arrow.png" />
+    <Content Include="Content\DataTables-1.10.0\extras\FixedColumns\docs\media\images\extended.png" />
+    <Content Include="Content\DataTables-1.10.0\extras\Scroller\media\css\dataTables.scroller.css" />
+    <Content Include="Content\DataTables-1.10.0\extras\Scroller\media\docs\media\css\doc.css" />
+    <Content Include="Content\DataTables-1.10.0\extras\Scroller\media\docs\media\css\shCore.css" />
+    <Content Include="Content\DataTables-1.10.0\extras\Scroller\media\docs\media\css\shThemeDataTables.css" />
+    <Content Include="Content\DataTables-1.10.0\extras\Scroller\media\docs\media\images\arrow.jpg" />
+    <Content Include="Content\DataTables-1.10.0\extras\Scroller\media\docs\media\images\arrow.png" />
+    <Content Include="Content\DataTables-1.10.0\extras\Scroller\media\docs\media\images\extended.png" />
+    <Content Include="Content\DataTables-1.10.0\extras\Scroller\media\images\loading-background.png" />
+    <Content Include="Content\DataTables-1.10.0\extras\TableTools\media\css\TableTools.css" />
+    <Content Include="Content\DataTables-1.10.0\extras\TableTools\media\css\TableTools_JUI.css" />
+    <Content Include="Content\DataTables-1.10.0\extras\TableTools\media\images\background.png" />
+    <Content Include="Content\DataTables-1.10.0\extras\TableTools\media\images\collection.png" />
+    <Content Include="Content\DataTables-1.10.0\extras\TableTools\media\images\collection_hover.png" />
+    <Content Include="Content\DataTables-1.10.0\extras\TableTools\media\images\copy.png" />
+    <Content Include="Content\DataTables-1.10.0\extras\TableTools\media\images\copy_hover.png" />
+    <Content Include="Content\DataTables-1.10.0\extras\TableTools\media\images\csv.png" />
+    <Content Include="Content\DataTables-1.10.0\extras\TableTools\media\images\csv_hover.png" />
+    <Content Include="Content\DataTables-1.10.0\extras\TableTools\media\images\pdf.png" />
+    <Content Include="Content\DataTables-1.10.0\extras\TableTools\media\images\pdf_hover.png" />
+    <Content Include="Content\DataTables-1.10.0\extras\TableTools\media\images\print.png" />
+    <Content Include="Content\DataTables-1.10.0\extras\TableTools\media\images\print_hover.png" />
+    <Content Include="Content\DataTables-1.10.0\extras\TableTools\media\images\xls.png" />
+    <Content Include="Content\DataTables-1.10.0\extras\TableTools\media\images\xls_hover.png" />
+    <Content Include="Content\DataTables-1.10.0\extras\TableTools\media\swf\copy_csv_xls.swf" />
+    <Content Include="Content\DataTables-1.10.0\extras\TableTools\media\swf\copy_csv_xls_pdf.swf" />
+    <Content Include="Content\DataTables-1.10.0\images\background.png" />
+    <Content Include="Content\DataTables-1.10.0\images\back_disabled.png" />
+    <Content Include="Content\DataTables-1.10.0\images\back_enabled.png" />
+    <Content Include="Content\DataTables-1.10.0\images\back_enabled_hover.png" />
+    <Content Include="Content\DataTables-1.10.0\images\collection.png" />
+    <Content Include="Content\DataTables-1.10.0\images\collection_hover.png" />
+    <Content Include="Content\DataTables-1.10.0\images\copy.png" />
+    <Content Include="Content\DataTables-1.10.0\images\copy_hover.png" />
+    <Content Include="Content\DataTables-1.10.0\images\csv.png" />
+    <Content Include="Content\DataTables-1.10.0\images\csv_hover.png" />
+    <Content Include="Content\DataTables-1.10.0\images\filler.png" />
+    <Content Include="Content\DataTables-1.10.0\images\forward_disabled.png" />
+    <Content Include="Content\DataTables-1.10.0\images\forward_enabled.png" />
+    <Content Include="Content\DataTables-1.10.0\images\forward_enabled_hover.png" />
+    <Content Include="Content\DataTables-1.10.0\images\insert.png" />
+    <Content Include="Content\DataTables-1.10.0\images\loading-background.png" />
+    <Content Include="Content\DataTables-1.10.0\images\pdf.png" />
+    <Content Include="Content\DataTables-1.10.0\images\pdf_hover.png" />
+    <Content Include="Content\DataTables-1.10.0\images\print.png" />
+    <Content Include="Content\DataTables-1.10.0\images\print_hover.png" />
+    <Content Include="Content\DataTables-1.10.0\images\sort_asc.png" />
+    <Content Include="Content\DataTables-1.10.0\images\sort_asc_disabled.png" />
+    <Content Include="Content\DataTables-1.10.0\images\sort_both.png" />
+    <Content Include="Content\DataTables-1.10.0\images\sort_desc.png" />
+    <Content Include="Content\DataTables-1.10.0\images\sort_desc_disabled.png" />
+    <Content Include="Content\DataTables-1.10.0\images\xls.png" />
+    <Content Include="Content\DataTables-1.10.0\images\xls_hover.png" />
+    <Content Include="Content\DataTables-1.10.0\media\css\demo_page.css" />
+    <Content Include="Content\DataTables-1.10.0\media\css\demo_table.css" />
+    <Content Include="Content\DataTables-1.10.0\media\css\demo_table_jui.css" />
+    <Content Include="Content\DataTables-1.10.0\media\css\jquery.dataTables.css" />
+    <Content Include="Content\DataTables-1.10.0\media\css\jquery.dataTables_themeroller.css" />
+    <Content Include="Content\DataTables-1.10.0\media\images\back_disabled.png" />
+    <Content Include="Content\DataTables-1.10.0\media\images\back_enabled.png" />
+    <Content Include="Content\DataTables-1.10.0\media\images\back_enabled_hover.png" />
+    <Content Include="Content\DataTables-1.10.0\media\images\favicon.ico" />
+    <Content Include="Content\DataTables-1.10.0\media\images\forward_disabled.png" />
+    <Content Include="Content\DataTables-1.10.0\media\images\forward_enabled.png" />
+    <Content Include="Content\DataTables-1.10.0\media\images\forward_enabled_hover.png" />
+    <Content Include="Content\DataTables-1.10.0\media\images\minus.jpg" />
+    <Content Include="Content\DataTables-1.10.0\media\images\minus1.JPG" />
+    <Content Include="Content\DataTables-1.10.0\media\images\plus.jpg" />
+    <Content Include="Content\DataTables-1.10.0\media\images\plus1.JPG" />
+    <Content Include="Content\DataTables-1.10.0\media\images\sort_asc.png" />
+    <Content Include="Content\DataTables-1.10.0\media\images\sort_asc_disabled.png" />
+    <Content Include="Content\DataTables-1.10.0\media\images\sort_both.png" />
+    <Content Include="Content\DataTables-1.10.0\media\images\sort_desc.png" />
+    <Content Include="Content\DataTables-1.10.0\media\images\sort_desc_disabled.png" />
+    <Content Include="Content\DataTables-1.10.0\swf\copy_csv_xls.swf" />
+    <Content Include="Content\DataTables-1.10.0\swf\copy_csv_xls_pdf.swf" />
+    <Content Include="Content\html5.css" />
+    <Content Include="Content\images\ajaxloader.gif" />
+    <Content Include="Content\images\csv_logo.png" />
+    <Content Include="Content\images\gif-loada.gif" />
+    <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\jquery.multiselect.css" />
+    <Content Include="Content\prettify.css" />
+    <Content Include="Content\style.css" />
+    <Content Include="images\diary_logo.jpg" />
+    <Content Include="images\MCV_name.png" />
+    <Content Include="images\ui-icons_454545_256x240.png" />
+    <Content Include="log4net.dll" />
+    <Content Include="ReportViewerWebForm.aspx" />
+    <Content Include="Scripts\CustomListType.js" />
+    <Content Include="Scripts\CustomDiaryMngt.js" />
+    <Content Include="Scripts\CustomHome.js" />
+    <Content Include="Scripts\DataTables-1.10.0\dataTables.autoFill.js" />
+    <Content Include="Scripts\DataTables-1.10.0\dataTables.autoFill.min.js" />
+    <Content Include="Scripts\DataTables-1.10.0\dataTables.bootstrap.js" />
+    <Content Include="Scripts\DataTables-1.10.0\dataTables.colReorder.js" />
+    <Content Include="Scripts\DataTables-1.10.0\dataTables.colReorder.min.js" />
+    <Content Include="Scripts\DataTables-1.10.0\dataTables.colVis.js" />
+    <Content Include="Scripts\DataTables-1.10.0\dataTables.colVis.min.js" />
+    <Content Include="Scripts\DataTables-1.10.0\dataTables.fixedColumns.js" />
+    <Content Include="Scripts\DataTables-1.10.0\dataTables.fixedColumns.min.js" />
+    <Content Include="Scripts\DataTables-1.10.0\dataTables.fixedHeader.js" />
+    <Content Include="Scripts\DataTables-1.10.0\dataTables.fixedHeader.min.js" />
+    <Content Include="Scripts\DataTables-1.10.0\dataTables.foundation.js" />
+    <Content Include="Scripts\DataTables-1.10.0\dataTables.jqueryui.js" />
+    <Content Include="Scripts\DataTables-1.10.0\dataTables.keyTable.js" />
+    <Content Include="Scripts\DataTables-1.10.0\dataTables.keyTable.min.js" />
+    <Content Include="Scripts\DataTables-1.10.0\dataTables.scroller.js" />
+    <Content Include="Scripts\DataTables-1.10.0\dataTables.scroller.min.js" />
+    <Content Include="Scripts\DataTables-1.10.0\dataTables.tableTools.js" />
+    <Content Include="Scripts\DataTables-1.10.0\dataTables.tableTools.min.js" />
+    <Content Include="Scripts\DataTables-1.10.0\extras\AutoFill\media\docs\media\js\doc.js" />
+    <Content Include="Scripts\DataTables-1.10.0\extras\AutoFill\media\docs\media\js\jquery.js" />
+    <Content Include="Scripts\DataTables-1.10.0\extras\AutoFill\media\docs\media\js\shBrushJScript.js" />
+    <Content Include="Scripts\DataTables-1.10.0\extras\AutoFill\media\docs\media\js\shCore.js" />
+    <Content Include="Scripts\DataTables-1.10.0\extras\AutoFill\media\js\AutoFill.js" />
+    <Content Include="Scripts\DataTables-1.10.0\extras\AutoFill\media\js\AutoFill.min.js" />
+    <Content Include="Scripts\DataTables-1.10.0\extras\ColReorder\media\docs\media\js\doc.js" />
+    <Content Include="Scripts\DataTables-1.10.0\extras\ColReorder\media\docs\media\js\jquery.js" />
+    <Content Include="Scripts\DataTables-1.10.0\extras\ColReorder\media\docs\media\js\shBrushJScript.js" />
+    <Content Include="Scripts\DataTables-1.10.0\extras\ColReorder\media\docs\media\js\shCore.js" />
+    <Content Include="Scripts\DataTables-1.10.0\extras\ColReorder\media\js\ColReorder.js" />
+    <Content Include="Scripts\DataTables-1.10.0\extras\ColReorder\media\js\ColReorder.min.js" />
+    <Content Include="Scripts\DataTables-1.10.0\extras\ColVis\media\docs\media\js\doc.js" />
+    <Content Include="Scripts\DataTables-1.10.0\extras\ColVis\media\docs\media\js\jquery.js" />
+    <Content Include="Scripts\DataTables-1.10.0\extras\ColVis\media\docs\media\js\shBrushJScript.js" />
+    <Content Include="Scripts\DataTables-1.10.0\extras\ColVis\media\docs\media\js\shCore.js" />
+    <Content Include="Scripts\DataTables-1.10.0\extras\ColVis\media\js\ColVis.js" />
+    <Content Include="Scripts\DataTables-1.10.0\extras\ColVis\media\js\ColVis.min.js" />
+    <Content Include="Scripts\DataTables-1.10.0\extras\FixedColumns\docs\media\js\doc.js" />
+    <Content Include="Scripts\DataTables-1.10.0\extras\FixedColumns\docs\media\js\jquery.js" />
+    <Content Include="Scripts\DataTables-1.10.0\extras\FixedColumns\docs\media\js\shBrushJScript.js" />
+    <Content Include="Scripts\DataTables-1.10.0\extras\FixedColumns\docs\media\js\shCore.js" />
+    <Content Include="Scripts\DataTables-1.10.0\extras\FixedColumns\media\js\FixedColumns.js" />
+    <Content Include="Scripts\DataTables-1.10.0\extras\FixedColumns\media\js\FixedColumns.min.js" />
+    <Content Include="Scripts\DataTables-1.10.0\extras\Scroller\media\docs\media\js\doc.js" />
+    <Content Include="Scripts\DataTables-1.10.0\extras\Scroller\media\docs\media\js\jquery.js" />
+    <Content Include="Scripts\DataTables-1.10.0\extras\Scroller\media\docs\media\js\shBrushJScript.js" />
+    <Content Include="Scripts\DataTables-1.10.0\extras\Scroller\media\docs\media\js\shCore.js" />
+    <Content Include="Scripts\DataTables-1.10.0\extras\Scroller\media\js\dataTables.scroller.js" />
+    <Content Include="Scripts\DataTables-1.10.0\extras\Scroller\media\js\dataTables.scroller.min.js" />
+    <Content Include="Scripts\DataTables-1.10.0\extras\TableTools\media\js\TableTools.js" />
+    <Content Include="Scripts\DataTables-1.10.0\extras\TableTools\media\js\TableTools.min.js" />
+    <Content Include="Scripts\DataTables-1.10.0\extras\TableTools\media\js\ZeroClipboard.js" />
+    <Content Include="Scripts\DataTables-1.10.0\jquery.dataTables.js" />
+    <Content Include="Scripts\DataTables-1.10.0\jquery.dataTables.min.js" />
+    <Content Include="Scripts\DataTables-1.10.0\jquery.dataTables.rowGrouping.js" />
+    <Content Include="Scripts\DataTables-1.10.0\media\js\jquery-ui.js" />
+    <Content Include="Scripts\DataTables-1.10.0\media\js\jquery.dataTables.js" />
+    <Content Include="Scripts\DataTables-1.10.0\media\js\jquery.dataTables.min.js" />
+    <Content Include="Scripts\DataTables-1.10.0\media\js\jquery.dataTables.rowGrouping.js" />
+    <Content Include="Scripts\DataTables-1.10.0\media\js\jquery.js" />
+    <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Scripts\jquery-ui.min.js" />
+    <Content Include="Content\jquery-ui.structure.css" />
+    <Content Include="Content\jquery-ui.structure.min.css" />
+    <Content Include="Content\jquery.timepicker.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="img\bootstrap-colorpicker\alpha-horizontal.png" />
+    <Content Include="img\bootstrap-colorpicker\alpha.png" />
+    <Content Include="img\bootstrap-colorpicker\hue-horizontal.png" />
+    <Content Include="img\bootstrap-colorpicker\hue.png" />
+    <Content Include="img\bootstrap-colorpicker\saturation.png" />
+    <Content Include="Scripts\bootstrap-colorpicker.js" />
+    <Content Include="Scripts\bootstrap-colorpicker.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\DataTables-1.10.0\css\dataTables.jqueryui.scss" />
+    <Content Include="Content\DataTables-1.10.0\extras\TableTools\media\css\TableTools_JUI.cssold" />
+    <Content Include="Content\DataTables-1.10.0\extras\TableTools\media\images\psd\collection.psd" />
+    <Content Include="Content\DataTables-1.10.0\extras\TableTools\media\images\psd\copy document.psd" />
+    <Content Include="Content\DataTables-1.10.0\extras\TableTools\media\images\psd\file_types.psd" />
+    <Content Include="Content\DataTables-1.10.0\extras\TableTools\media\images\psd\printer.psd" />
+    <Content Include="Content\DataTables-1.10.0\media\images\Sorting icons.psd" />
+    <Content Include="Scripts\DataTables-1.10.0\extras\AutoFill\media\js\AutoFill.min.js.gz" />
+    <Content Include="Scripts\DataTables-1.10.0\extras\ColReorder\media\js\ColReorder.min.js.gz" />
+    <Content Include="Scripts\DataTables-1.10.0\extras\ColVis\media\js\ColVis.min.js.gz" />
+    <Content Include="Scripts\DataTables-1.10.0\extras\FixedColumns\media\js\FixedColumns.min.js.gz" />
+    <Content Include="Scripts\DataTables-1.10.0\extras\Scroller\media\js\dataTables.scroller.min.js.gz" />
+    <Content Include="Scripts\DataTables-1.10.0\extras\TableTools\media\js\TableTools.min.js.gz" />
+    <None Include="Properties\PublishProfiles\Diaries.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Custom.js" />
+    <Content Include="Scripts\jquery-2.1.1.js" />
+    <Content Include="Scripts\jquery-2.1.1.min.js" />
+    <Content Include="Scripts\jquery-2.1.1.min.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <None Include="Scripts\jquery-2.1.1-vsdoc.js" />
+    <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\jquery.multiselect.filter.js" />
+    <Content Include="Scripts\jquery.multiselect.filter.min.js" />
+    <Content Include="Scripts\jquery.multiselect.js" />
+    <Content Include="Scripts\jquery.multiselect.min.js" />
+    <Content Include="Scripts\jquery.timepicker.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\prettify.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\DiaryManagement\Edit.cshtml" />
+    <Content Include="Views\ListType\Edit.cshtml" />
+    <Content Include="Views\Access\Create.cshtml" />
+    <Content Include="Views\Access\Delete.cshtml" />
+    <Content Include="Views\Access\Index.cshtml" />
+    <Content Include="Views\Shared\Alert.cshtml" />
+    <Content Include="Views\Shared\Unauthorised.cshtml" />
+    <Content Include="Views\JudicialOfficer\Create.cshtml" />
+    <Content Include="Views\JudicialOfficer\Delete.cshtml" />
+    <Content Include="Views\JudicialOfficer\Edit.cshtml" />
+    <Content Include="Views\JudicialOfficer\Index.cshtml" />
+    <Content Include="Views\JudicialOfficerListing\Create.cshtml" />
+    <Content Include="Views\JudicialOfficerListing\Delete.cshtml" />
+    <Content Include="Views\JudicialOfficerListing\Edit.cshtml" />
+    <Content Include="Views\JudicialOfficerListing\Index.cshtml" />
+    <Content Include="Views\DayNote\Create.cshtml" />
+    <Content Include="Views\DayNote\Delete.cshtml" />
+    <Content Include="Views\DayNote\Edit.cshtml" />
+    <Content Include="Views\DayNote\Index.cshtml" />
+    <Content Include="Views\Home\_HomeArticle.cshtml" />
+    <Content Include="Views\Home\_TabsDetails.cshtml" />
+    <Content Include="Views\Home\_TabsList.cshtml" />
+    <Content Include="Views\YearlyCalendarDates\Index.cshtml" />
+    <Content Include="Views\NonSittingDay\Create.cshtml" />
+    <Content Include="Views\NonSittingDay\Delete.cshtml" />
+    <Content Include="Views\NonSittingDay\Edit.cshtml" />
+    <Content Include="Views\NonSittingDay\Index.cshtml" />
+    <Content Include="Views\CaseOutcome\Create.cshtml" />
+    <Content Include="Views\CaseOutcome\Delete.cshtml" />
+    <Content Include="Views\CaseOutcome\Edit.cshtml" />
+    <Content Include="Views\CaseOutcome\Index.cshtml" />
+    <Content Include="Views\VacateReason\Create.cshtml" />
+    <Content Include="Views\VacateReason\Delete.cshtml" />
+    <Content Include="Views\VacateReason\Edit.cshtml" />
+    <Content Include="Views\VacateReason\Index.cshtml" />
+    <Content Include="Views\DiaryManagement\_ListTypes.cshtml" />
+    <Content Include="Views\DiaryManagement\_Diary.cshtml" />
+    <Content Include="Views\DiaryManagement\_Lists.cshtml" />
+    <Content Include="Views\DiaryManagement\_ListAttrs.cshtml" />
+    <Content Include="Views\DiaryManagement\_VacateReasons.cshtml" />
+    <Content Include="Views\DiaryManagement\_Outcomes.cshtml" />
+    <Content Include="Views\DiaryManagement\_Flags.cshtml" />
+    <Content Include="Views\DiaryManagement\_Locations.cshtml" />
+    <Content Include="Views\DiaryManagement\_Categories.cshtml" />
+    <Content Include="Views\ListType\_ListingInformation.cshtml" />
+    <Content Include="Views\ListType\_ListingRules.cshtml" />
+    <Content Include="Views\ListType\_ListingDisable.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>7954</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:7954/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

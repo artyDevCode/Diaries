@@ -1,0 +1,188 @@
+﻿@model Diaries.Models.JOListingVM
+
+@{
+    ViewBag.Title = "Edit Judicial Officer Listing";
+}
+
+<h2>Edit Judicial Officer Listing</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.VM_JoId)
+    @Html.HiddenFor(model => model.VM_Id)
+    @Html.HiddenFor(model => model.VM_JOName)
+    @Html.HiddenFor(model => model.VM_JOBackColor)
+    @Html.HiddenFor(model => model.VM_JOTextColor)
+
+
+    <p style="font-size:inherit;color:red">@ViewData["ErrorMessage"]</p>
+
+    <table border="0">
+        <tr>
+            <td class="auto-style16">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                @Html.ActionLink("Cancel", "Index", "JudicialOfficerListing", new { joid = @Model.VM_JoId }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    </table>
+
+    <aside style="width:780px; float:left;">
+        <table cellspacing="0" cellpadding="0" border="1" style="font-family: Arial; float: left; font-size: 18pt; background-color: transparent;  width: auto; height: 100%; ">
+            <tr>
+                <td>
+
+
+                    <table border="0" style="font-family: Arial; float: left; font-size: 9pt; background-color: whitesmoke; width: auto; height: 100%; ">
+                        <tr style="background-color: #46568c; color: white; "><th align="center"><b>Part Heard Judicial Office Details</b></th></tr>
+                        <tr>
+                            <td class="auto-style12">
+                                <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: left" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td align="left" nowrap class="auto-style5" width="auto">
+                                            Judicial Officer:
+                                        </td>
+                                        <td align="left">
+                                            @Html.DisplayFor(model => Model.VM_JOName)
+                                        </td>
+                                    </tr>
+
+                                </table>
+
+                            </td>
+
+                        </tr>
+
+                    </table>
+
+                    <table align="center" border="0" style="font-family: Arial;  font-size: 9pt; background-color: transparent; width: auto; height: 100%; ">
+                        <tr style="background-color: #46568c; color: white;"></tr>
+                        <tr>
+                            <td class="auto-style12">
+                                <table border="0" style="font-family: Arial; float: left; font-size: 9pt; background-color: transparent; width: auto; height: 100%; ">
+                                    <tr style="background-color: #46568c; color: white;"><th align="center"><b>Part Heard Judicial Officer Colours</b></tr>
+                                    <tr>
+                                        <td>
+                                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: left" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td align="left" nowrap class="auto-style5" width="auto">
+                                                        Background Colour:
+                                                    </td>
+                                                    <td align="left" class="input-group color">
+                                                        <span class="input-group-addon"><i></i></span>
+                                                        <input type='text' name='JO_BackColor' id='JO_BackColor' style='width:100%;' class='form-control' readonly='readonly' value=@Model.VM_JOBackColor>
+                                                    </td>
+                                                </tr>
+
+                                            </table>
+                                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: left" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td align="left" nowrap class="auto-style5" width="auto">
+                                                        Text Colour:
+                                                    </td>
+                                                    <td align="left" class="input-group color">
+                                                        <span class="input-group-addon"><i></i></span>
+                                                        <input type='text' name='JO_BackColor' id='JO_BackColor' style='width:100%;' class='form-control' readonly='readonly' value=@Model.VM_JOTextColor>
+                                                    </td>
+                                                </tr>
+
+                                            </table>
+
+                                        </td>
+                                    </tr>
+                                </table>
+
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </aside>
+
+    <aside style="width:780px; float:left;">
+        <table cellspacing="0" cellpadding="0" border="1" style="font-family: Arial; float: left; font-size: 18pt; background-color: transparent;  width: auto; height: 100%; ">
+            <tr>
+                <td>
+
+
+                    <table border="0" style="font-family: Arial; float: left; font-size: 9pt; background-color: whitesmoke; width: auto; height: 100%; ">
+                        <tr style="background-color: #46568c; color: white; "><th align="center"><b>Part Heard Judicial Listing Details</b></th></tr>
+                        <tr>
+                            <td class="auto-style12">
+                                <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: left" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td align="left" nowrap class="auto-style5" width="auto">
+                                            Date:
+                                        </td>
+                                        <td align="left">
+                                            <input type="datetime" class="" id="VM_Date" name="VM_Date" readonly="readonly" value=@Model.VM_Date.Value.ToString("dd-MM-yyyy") style="width:100%; height:100%; align-content:space-around; font-size:12px; padding-top:10px;" />
+                                            @Html.ValidationMessageFor(model => model.VM_Date)</td>
+                                    </tr>
+                                </table>
+
+                                <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: left" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td align="left" nowrap class="auto-style5" width="auto">
+                                            Limit:
+                                        </td>
+                                        <td align="left">
+                                            @Html.EditorFor(model => model.VM_Limit)
+                                            @Html.ValidationMessageFor(model => model.VM_Limit)
+                                        </td>
+                                    </tr>
+                                </table>
+
+                                <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: left" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td align="left" nowrap class="auto-style5" width="auto">
+                                            Notes:
+                                        </td>
+                                        <td align="left">
+                                            @Html.EditorFor(model => model.VM_Notes)
+                                            @Html.ValidationMessageFor(model => model.VM_Notes)
+                                        </td>
+                                    </tr>
+
+                                </table>
+                            </td>
+
+                        </tr>
+
+                    </table>
+
+
+                </td>
+            </tr>
+        </table>
+    </aside>
+
+}
+
+<div>
+    @section DocumentLog
+{
+        <table border="1" cellspacing="0" cellpadding="4" style="font-family: Arial; font-size: 10pt; width: 100%; background-color: threedlightshadow;">
+            <tr>
+                <td align="left" nowrap class="auto-style14">
+                    Record modified by @Model.VM_CreatedBy on @Model.VM_CreatedOn.ToString("dd-MM-yyyy")
+                </td>
+            </tr>
+        </table>
+
+        <table border="1" cellspacing="0" cellpadding="4" style="font-family: Arial; font-size: 10pt; width: 100%; background-color: threedlightshadow;">
+            <tr>
+                <td align="left" nowrap class="auto-style14">
+                    Record created by @Model.VM_ModifiedBy on @Model.VM_ModifiedOn.ToString("dd-MM-yyyy")
+                </td>
+            </tr>
+        </table>
+    }
+
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

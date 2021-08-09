@@ -1,0 +1,295 @@
+﻿@model Diaries.Models.JOListingVM
+
+@{
+    ViewBag.Title = "Create Judicial Officer Listing";
+}
+
+<h2>Create Judicial Officer Listing</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.VM_JoId)
+    @Html.HiddenFor(model => model.VM_JOName)
+    @Html.HiddenFor(model => model.VM_JOBackColor)
+    @Html.HiddenFor(model => model.VM_JOTextColor)
+    @*@Html.HiddenFor(model => model.VM_Limit)
+    @Html.HiddenFor(model => model.VM_Available)
+    @Html.HiddenFor(model => model.VM_Notes)*@
+
+        <p style="font-size:inherit;color:red" >@ViewData["ErrorMessage"]</p>
+
+    <table border="0">
+        <tr>
+            <td class="auto-style16">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                @Html.ActionLink("Cancel", "Index", "JudicialOfficerListing", new { joid = @Model.VM_JoId }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    </table>
+    
+    <aside style="width:780px; float:left;">
+        <table cellspacing="0" cellpadding="0" border="1" style="font-family: Arial; float: left; font-size: 18pt; background-color: transparent;  width: auto; height: 100%; ">
+            <tr>
+                <td>
+
+
+                    <table border="0" style="font-family: Arial; float: left; font-size: 9pt; background-color: whitesmoke; width: auto; height: 100%; ">
+                        <tr style="background-color: #46568c; color: white; "><th align="center"><b>Part Heard Judicial Office Details</b></th></tr>
+                        <tr>
+                            <td class="auto-style12">
+                                <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: left" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td align="left" nowrap class="auto-style5" width="auto">
+                                            Judicial Officer:
+                                        </td>
+                                        <td align="left">
+                                            @Html.DisplayFor(model => Model.VM_JOName)
+                                        </td>
+                                    </tr>
+
+                                </table>
+
+                            </td>
+
+                        </tr>
+
+                    </table>
+
+                    <table align="center" border="0" style="font-family: Arial;  font-size: 9pt; background-color: transparent; width: auto; height: 100%; ">
+                        <tr style="background-color: #46568c; color: white;"></tr>
+                        <tr>
+                            <td class="auto-style12">
+                                <table border="0" style="font-family: Arial; float: left; font-size: 9pt; background-color: transparent; width: auto; height: 100%; ">
+                                    <tr style="background-color: #46568c; color: white;"><th align="center"><b>Part Heard Judicial Officer Colours</b></tr>
+                                    <tr>
+                                        <td>
+                                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: left" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td align="left" nowrap class="auto-style5" width="auto">
+                                                        Background Colour:
+                                                    </td>
+                                                    <td align="left" class="input-group color">
+                                                        <span class="input-group-addon"><i></i></span>
+                                                        <input type='text' name='JO_BackColor' id='JO_BackColor' style='width:100%;' class='form-control' readonly='readonly' value=@Model.VM_JOBackColor>
+                                                    </td>
+                                                </tr>
+
+                                            </table>
+                                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: left" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td align="left" nowrap class="auto-style5" width="auto">
+                                                        Text Colour:
+                                                    </td>
+                                                    <td align="left" class="input-group color">
+                                                        <span class="input-group-addon"><i></i></span>
+                                                        <input type='text' name='JO_BackColor' id='JO_BackColor' style='width:100%;' class='form-control' readonly='readonly' value=@Model.VM_JOTextColor>
+                                                    </td>
+                                                </tr>
+
+                                            </table>
+
+                                        </td>
+                                    </tr>
+                                </table>
+
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </aside>
+
+    <aside style="width:780px; float:left;">
+        <table cellspacing="0" cellpadding="0" border="1" style="font-family: Arial; float: left; font-size: 18pt; background-color: transparent;  width: auto; height: 100%; ">
+            <tr>
+                <td>
+
+
+                    <table border="0" style="font-family: Arial; float: left; font-size: 9pt; background-color: whitesmoke; width: auto; height: 100%; ">
+                        <tr style="background-color: #46568c; color: white; "><th align="center"><b>Part Heard Judicial Listing Details</b></th></tr>
+                        <tr>
+                            <td class="auto-style12">
+                                <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: left" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td align="left" nowrap class="auto-style5" width="auto">
+                                            Date:
+                                        </td>
+                                        <td align="left">
+                                            <input type="text" class="datepickeryear" data-val="true" data-val-length="The listing date must be a date." data-val-length-max="10" data-val-required="The listing date must be entered."  id="VM_Date" name="VM_Date" value=@Model.VM_Date.Value.ToString("dd-MM-yyyy") style="font-size:12px; padding-top:5px;" />
+                                            @Html.ValidationMessageFor(model => model.VM_Date)
+                                        </td>
+                                    </tr>
+                                </table>
+
+                                <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: left" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td align="left" nowrap class="auto-style5" width="auto">
+                                            Limit:
+                                        </td>
+                                        <td align="left">
+                                            @Html.EditorFor(model => model.VM_Limit)
+                                            @Html.ValidationMessageFor(model => model.VM_Limit)
+                                        </td>
+                                    </tr>
+                                </table>
+
+                                <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: left" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td align="left" nowrap class="auto-style5" width="auto">
+                                            Notes:
+                                        </td>
+                                        <td align="left">
+                                            @Html.EditorFor(model => model.VM_Notes)
+                                            @Html.ValidationMessageFor(model => model.VM_Notes)
+                                        </td>
+                                    </tr>
+
+                                </table>
+                            </td>
+
+                        </tr>
+
+                    </table>
+
+
+                </td>
+            </tr>
+        </table>
+    </aside>
+    
+    @*<div class="form-horizontal">
+        <h4>JudicialOfficerListing</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.JO_ID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.JO_ID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.JO_ID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.JOL_Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.JOL_Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.JOL_Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.JOL_BackColor, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.JOL_BackColor, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.JOL_BackColor, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.JOL_TextColor, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.JOL_TextColor, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.JOL_TextColor, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.JOL_Date, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.JOL_Date, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.JOL_Date, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.JOL_Limit, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.JOL_Limit, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.JOL_Limit, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.JOL_Current, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.JOL_Current, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.JOL_Current, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.JOL_Available, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.JOL_Available, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.JOL_Available, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.JOL_Notes, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.JOL_Notes, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.JOL_Notes, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CreatedBy, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CreatedBy, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CreatedBy, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CreatedOn, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CreatedOn, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CreatedOn, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ModifiedBy, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ModifiedBy, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ModifiedBy, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ModifiedOn, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ModifiedOn, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ModifiedOn, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Deleted, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.Deleted)
+                    @Html.ValidationMessageFor(model => model.Deleted, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>*@
+}
+
+@*<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

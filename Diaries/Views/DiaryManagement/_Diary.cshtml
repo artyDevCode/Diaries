@@ -1,0 +1,155 @@
+﻿@model  Diaries.Models.V_Diary_Details
+
+<head>
+    <title>Diary PartialView</title>
+</head>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div id="DiaryDetailSection" class="AjaxCall">
+        <div id="DiaryDetailTable" class="AjaxCall"></div>
+
+
+
+        <table border="1" cellspacing="0" cellpadding="10">
+            <tr>
+                <td>
+
+                    <table border="0" style="font-family: Arial; float: left; font-size: 9pt; background-color: whitesmoke; width: auto; height: 100%; ">
+                        <tr style="background-color: #46568c; color: white; "><th align="center"><b>Diary Details</b></th></tr>
+                        <tr>
+                            <td class="auto-style12">
+
+                                @if (Model != null)
+                                {
+
+                                    <input class="text-box single-line" id="hid_Did" name="hid_Did" type="text" value=@Model.D_id hidden="hidden" />
+
+                                    <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: left" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td align="left" nowrap class="auto-style5" width="auto">
+                                                Diary:
+                                            </td>
+                                            <td align="left">
+                                                <input class="text-box single-line" data-val="true" data-val-required="The Diary Name field is required." id="D_DiaryName" name="D_DiaryName" type="text" value=@Model.D_DiaryName />
+                                                <span class="field-validation-valid" data-valmsg-for="D_DiaryName" data-valmsg-replace="true"></span>
+                                            </td>
+                                        </tr>
+
+                                    </table>
+                                    <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: threedlightshadow;" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td align="left" nowrap class="auto-style5" width="auto">
+                                                Fields:
+                                            </td>
+                                            <td align="left">
+                                                @Html.DropDownListFor(model => model.D_Fields, new SelectList(Model.D_SelectD_Fields, "Value", "Text", Model.D_Fields))
+                                                @Html.ValidationMessageFor(model => model.D_Fields)
+                                            </td>
+                                        </tr>
+
+                                    </table>
+                                    <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke;" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td align="left" nowrap class="auto-style5" width="auto">
+                                                Date Picker:
+                                            </td>
+                                            <td align="left">
+                                                @Html.DropDownListFor(model => model.D_DatePickerButton, new SelectList(Model.D_DatePicker_Fields, "Value", "Text", Model.D_DatePickerButton))
+                                                @Html.ValidationMessageFor(model => model.D_DatePickerButton)
+                                            </td>
+                                        </tr>
+
+                                    </table>
+                                    <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: threedlightshadow; float: right" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td align="left" nowrap class="auto-style5" width="auto">
+                                                Dates:
+                                            </td>
+                                            <td align="left">
+                                                @Html.DropDownListFor(model => model.D_Dates, new SelectList(Model.D_Dates_Fields, "Value", "Text", Model.D_Dates))
+                                                @Html.ValidationMessageFor(model => model.D_Dates)
+                                            </td>
+                                        </tr>
+
+                                    </table>                                }
+                            </td>
+
+                        </tr>
+
+                    </table>
+
+                    <table border="0" style="font-family: Arial; float: right; font-size: 9pt; background-color: whitesmoke; width: auto; height: 100%; ">
+                        <tr style="background-color: #46568c; color: white; "><th align="center"><b>Diary Configuration</b></th></tr>
+                        <tr>
+                            <td class="auto-style12">
+                                <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: left" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td align="left" nowrap class="auto-style5" width="auto">
+                                            Background Icon Colour:
+                                        </td>
+
+                                        <td align="left" class="input-group color">
+                                            <span class="input-group-addon"><i></i></span>
+                                            <input type="text" value=@Model.D_Bckground_Icon_Colour id="D_Bckground_Icon_Colour" name="D_Bckground_Icon_Colour" class="form-control" />
+                                            @Html.ValidationMessageFor(model => model.D_Bckground_Icon_Colour)
+
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: threedlightshadow; float: left" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td align="left" nowrap class="auto-style5" width="auto">
+                                            Multi-Day Cases:
+                                        </td>
+                                        <td align="left">
+                                            @Html.DropDownListFor(model => model.D_Multiday_Cases, new SelectList(Model.D_Multiday_Cases_Fields, "Value", "Text", Model.D_Multiday_Cases))
+                                            @Html.ValidationMessageFor(model => model.D_Multiday_Cases)
+                                        </td>
+                                    </tr>
+
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table border="0" style="font-family: Arial; float: right; font-size: 9pt; background-color: whitesmoke; width: auto; height: 100%; ">
+                        <tr>
+                            <td class="auto-style12">
+                                <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: threedlightshadow; float: right" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td align="left" nowrap class="auto-style5" width="auto">
+                                            Vacated:
+                                        </td>
+                                        <td align="left">
+                                            @Html.DropDownListFor(model => model.D_Vacated, new SelectList(Model.D_Vacated_Fields, "Value", "Text", Model.D_Vacated))
+                                            @Html.ValidationMessageFor(model => model.D_Vacated)
+                                        </td>
+                                    </tr>
+
+                                </table>
+                                <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: right" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td align="left" nowrap class="auto-style5" width="auto">
+                                            List Selection:
+                                        </td>
+                                        <td align="left">
+                                            @Html.DropDownListFor(model => model.D_ListSelection, new SelectList(Model.D_ListSelection_Fields, "Value", "Text", Model.D_ListSelection))
+                                            @Html.ValidationMessageFor(model => model.D_ListSelection)
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+
+}

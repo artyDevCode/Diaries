@@ -1,0 +1,135 @@
+﻿
+/*article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section { 
+    display:block;
+}*/
+
+
+#wrapper {
+    max-width: 100%;
+    margin: 0 auto;
+    position: relative;
+    background-color: white;
+}
+
+
+nav {
+    background: #878787;
+}
+
+
+    nav ul li {
+        display: inline-block; /* makes the menu horizontal ie home, about us etc*/
+        padding: 10px; /* 0 padding right 10 left*/
+    }
+
+
+        nav ul li a { /* styling the a tag within nav ul li*/
+            color: red;
+            text-decoration: none; /*takes the underline out of the menu options*/
+        }
+
+            nav ul li a:hover {
+                color: #545454; /*as you hover the mouse over the menu option, change color and underline */
+                text-decoration: underline;
+            }
+
+
+/*article {
+
+	float: left;
+	width: 100%;
+	background-color:transparent;
+    display:inline-table;
+}
+
+article section {
+  	float: right;
+	width: auto;
+	margin: 0px auto;
+	padding: 2px;
+	background-color: transparent;
+}*/
+td {
+    font-size: 9pt;
+    font-family:Arial;
+}
+
+th b { 
+    font-size: 9pt;
+    font-family:Arial;
+}
+
+
+
+.btn { 
+    font-size: 11px;
+    font-family:Arial;
+}
+
+ul li { 
+    font-size: 9pt;
+    font-family:Arial;
+}
+
+article {
+    float: left;
+    width: 80%;
+    display: inline-table;
+    background: white;
+}
+
+    article section {
+        float: left;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0px;
+    }
+
+
+aside {
+    float: left;
+    width: 240px;
+    padding: 10px;
+}
+
+a {
+    color: mediumblue;
+    text-decoration: none;
+}
+
+a:hover {
+    color: deepskyblue;
+    text-decoration: none;
+}
+/*article section a {
+    color: white;
+    text-decoration: none;
+}
+
+article section a:hover {
+    color: white;
+    text-decoration: none;
+}*/
+
+/*aside{
+	float: left;
+	width: 100%;
+	padding: 2px;
+	background-color:transparent;
+}*/
+
+hgroup {
+    margin: 0, auto;
+}
+
+footer {
+    margin: 0, auto;
+}
+
+
+.logo { /* using the class=logo from the html5 */
+    padding: 10px;
+    color: #000;
+    height: 40px;
+}

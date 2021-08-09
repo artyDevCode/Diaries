@@ -1,0 +1,359 @@
+﻿@model  Diaries.Models.V_ListType_ListingRules
+
+<head>
+    <title>List Rules PartialView</title>
+</head>
+
+
+
+@using (Html.BeginForm())
+{
+<script>
+    function deleteRow(rowcount) {
+        try {
+            var table = document.getElementById('dataTable');
+            var rowCount = table.rows.length;
+
+            table.deleteRow(rowcount);
+
+            //for (var i = 0; i < rowCount; i++) {
+            //    var row = table.rows[i];
+            //    var chkbox = row.cells[0].childNodes[0];
+            //    if (null != chkbox && true == chkbox.checked) {
+            //        table.deleteRow(i);
+            //        rowCount--;
+            //        i--;
+            //    }
+            //}
+        } catch (e) {
+            alert(e);
+        }
+    }
+
+</script>
+    
+    @Html.AntiForgeryToken()
+
+    @*<form id="samplecode" name="samplecode" method="POST" action="">*@
+
+        <div id="ListingRulesSection" class="AjaxCall">
+
+            <div id="ListingRuleDetailTable" class="AjaxCall"></div>
+
+
+            @*<div id="loading-image" style="padding:0px;">
+                <input type="image" class="AjaxGif" style="height:100px;" />
+            </div>*@
+
+
+            <table align="center" border="0" style="font-family: Arial;  font-size: 9pt; background-color: transparent; width: auto; height: 100%; ">
+                <tr style="background-color: #46568c; color: white;"></tr>
+                <tr>
+                    <td class="auto-style12">
+                        <table border="0" style="font-family: Arial; float: left; font-size: 9pt; background-color: transparent; width: auto; height: 100%; ">
+                            <tr style="background-color: #46568c; color: white;"><th align="center"><b>List Rule</b></tr>
+                            <tr>
+                                <td>
+                                    <input class="text-box single-line" id="hid_DLid" name="hid_DLid" type="text" value=@Model.D_L_id hidden="hidden" />
+                                    @*<table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: threedlightshadow;" cellspacing="0" cellpadding="0">
+                                            <tr>
+                                                <td style="width:50px;">
+                                                    Limit:
+                                                </td>
+                                                <td align="left" style="padding:5px;">
+                                                    <input maxlength="2" style="width:20px;" class="text-box single-line" data-val="true" data-val-required="The Event Name field is required." id="DM_Diary" name="DM_Diary" type="text" value="" />
+                                                    <span class="field-validation-valid" data-valmsg-for="EventName" data-valmsg-replace="true"></span>
+                                                </td>
+                                            </tr>
+                                        </table>*@
+
+                                    <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: threedlightshadow;" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td style="width:40px;">
+                                                Limit:
+                                            </td>
+                                            <td align="left" style="padding:5px;">
+                                                <input maxlength="2" style="width:20px;" class="text-box single-line" data-val="true" data-val-required="The limit field is required." id="V_Limit" name="V_Limit" type="text" value="" />
+                                                <span class="field-validation-valid" data-valmsg-for="EventName" data-valmsg-replace="true"></span>
+                                            </td>
+                                            <td align="left" style="padding:5px;">
+                                                @Html.EditorFor(model => model.MondaySelected)
+                                                @*<input type="checkbox" name="Rules1" value="Rules1" style="width:20px;" />Monday*@
+                                                Monday &nbsp; &nbsp; &nbsp;
+                                                @Html.EditorFor(model => model.TuesdaySelected)
+                                                @*<input type="checkbox" name="Rules2" value="Rules2" style="width:20px;" />Tuesday*@
+                                                Tuesday &nbsp; &nbsp; &nbsp;
+                                                @*<input type="checkbox" name="Rules3" value="Rules3" style="width:20px;">Wednesday*@
+                                                @Html.EditorFor(model => model.WednesdaySelected)
+                                                Wednesday &nbsp; &nbsp; &nbsp;
+                                                @Html.EditorFor(model => model.ThursdaySelected)
+                                                @*<input type="checkbox" name="Rules4" value="Rules4" style="width:20px;" />Thursday*@
+                                                Thursday &nbsp; &nbsp; &nbsp;
+                                                @Html.EditorFor(model => model.FridaySelected)
+                                                Friday
+                                                @*<input type="checkbox" name="Rules4" value="Rules4" style="width:20px;" />Friday*@
+                                                <span class="field-validation-valid" data-valmsg-for="EventName" data-valmsg-replace="true"></span>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                    @*<table border="0" align="center" style="font-family: Arial; font-size: 9pt; width:auto; padding-top:20px; height:100%;">
+                                            <tr>
+                                                <td>
+                                                    <div>Select Week Day AND/OR Custom dates  </div>
+                                                    <div class="datepickerList" style="font-size:16px; padding-top:20px; align-items:center; "></div>
+                                                </td>
+                                            </tr>
+                                        </table>*@
+
+                                    @*<div class="red1 box1" style="font-size:12px; padding-top:10px;">
+                                           <table border="0" align="center" style="font-family: Arial; font-size: 9pt; width:auto; padding-top:20px; height:100%;">
+                                            <tr>
+                                                <td>
+                                                    <div>Select Week Day AND/OR Custom dates  </div>
+                                                    <input type="text" id="datepickernextyearList" name="datepickernextyearList" class="datepickernextyearList" value=@DateTime.Now />
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>*@
+
+                                    <div class="green1 box1" style="font-size:12px; padding-top:10px;">
+                                        <table border="0" align="center" style="font-family: Arial; font-size: 9pt; width:auto; padding-top:20px; height:100%;">
+                                            <tr>
+                                                <td>
+                                                    <div>Select Week Day AND/OR Custom dates  </div>
+                                                    <div id="datepickercustomList" class="datepickercustomList" style="font-size:16px; padding-top:20px; align-items:center; "></div>
+                                                    @*<input type="date" id="datepickernextyearList" name="datepickernextyearList" class="datepickernextyearList" value=@DateTime.Now  />*@
+                                                    @*<div class="datepickernextyearList" style="font-size:16px; padding-top:20px; align-items:center; "></div>*@
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                    <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: threedlightshadow;" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td style="width:50px;">
+                                                Notes:
+                                            </td>
+                                            <td align="left" style="padding:10px;">
+                                                <input type="text" id="V_Notes"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: transparent; float: right;">
+                                        <tr>
+                                            <td align="left" style="padding:10px;">
+                                                <input type="button" id="SaveListRules" value="Save" class="btn btn-success" />
+                                                <input type="button" id="CancelListRules" value="Cancel" class="btn btn-danger" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <table border="0" style="font-family: Arial; font-size: 9pt; background-color: transparent; width: 250px; height: auto; ">
+                            <tr style="background-color: #46568c; color: white;"><th align="center"><b>Selected Custom Dates</b></th></tr>
+                            <tr style="background-color: #46568c; color: white; "><th align="center"><a style="word-spacing: 80px; color: white; ">Day Date </a></th></tr>
+                            <tr>
+                                <td>
+                                    <div style="overflow:auto; height:400px; width:100%;  font-family: arial; font-size: 9pt;">
+
+                                        <table id="dataTable" border="0" style="font-family: Arial; font-size: 9pt; width:100%; height:auto;">
+                                            <tr >
+                                                
+                                            </tr>
+                                        </table>
+
+
+
+                                        <table border="0" style="font-family: Arial; font-size: 9pt; width:100%; height:auto;">
+
+                                            <tr class ="ListTypeMng" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: whitesmoke; ">
+                                                <td id="ListTypeMngDetail"></td>
+                                            </tr>
+
+
+                                            @*@if (Model != null)
+                                                {
+                                                    int i = 0;
+                                                    foreach (var item in Model)
+                                                    {
+                                                        i = i + 1;
+
+                                                        <tr class="ListTypeMng" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: @(i % 2 == 0 ? "threedlightshadow" : "whitesmoke"); ">
+
+                                                        </tr>
+                                                    }
+                                                }*@
+
+                                            @*<tr class="ListTypeMng" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: whitesmoke; ">
+                                                    <td align="left" width="50px">
+                                                        Tuesday
+                                                    </td>
+                                                    <td align="left" width="50px">
+                                                        14/06/2014
+                                                    </td>
+                                                    <td style="width:20px;">
+                                                        remove
+                                                    </td>
+                                                </tr>
+                                                <tr class="ListTypeMng" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: threedlightshadow; ">
+                                                    <td align="left" width="50px">
+                                                        Wednesday
+                                                    </td>
+                                                    <td align="left" width="50px">
+                                                        15/06/2014
+                                                    </td>
+                                                    <td style="width:20px;">
+                                                        remove
+                                                    </td>
+                                                </tr>
+                                                <tr class="ListTypeMng" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: whitesmoke; ">
+                                                    <td align="left" width="50px">
+                                                        Thursday
+                                                    </td>
+                                                    <td align="left" width="50px">
+                                                        16/06/2014
+                                                    </td>
+                                                    <td style="width:20px;">
+                                                        remove
+                                                    </td>
+                                                </tr>*@
+                                        </table>
+
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+
+
+                        <table border="0" style="font-family: Arial; float: left; font-size: 9pt; background-color: transparent; width: auto; height: 100%; ">
+                            <tr style="background-color: #46568c; color: white;"><th align="center"><b>Disable Rule</b></th></tr>
+                            <tr>
+                                <td class="auto-style12">
+                                    <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke;" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td style="background-color:red">
+                                                Do Not Apply this Listing Rule To:
+                                            </td>
+                                        </tr>
+
+                                    </table>
+
+                                    <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: threedlightshadow;" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td align="left" style="padding:10px;">
+                                                @Html.EditorFor(model => model.dMondaySelected)
+                                                Monday &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                                @Html.EditorFor(model => model.dTuesdaySelected)
+                                                Tuesday &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                                @Html.EditorFor(model => model.dWednesdaySelected)
+                                                Wednesday &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                                @Html.EditorFor(model => model.dThursdaySelected)
+                                                Thursday &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                                @Html.EditorFor(model => model.dFridaySelected)
+                                                Friday
+                                            </td>
+                                        </tr>
+
+                                    </table>
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                Entire Date Range:
+                                            </td>
+                                            <td align="left" style="padding:10px;">
+
+                                                <input type="radio" id="DisableEntireRange" name="DisableEntireRange" value="Yes"  style="width:20px" />Yes
+                                                &nbsp; &nbsp; &nbsp; &nbsp;
+                                                <input type="radio" id="DisableEntireRange" name="DisableEntireRange" value="No" checked="checked" style="width:20px" />No
+
+                                                @*<input type="radio" name="DisableEntireRange" value="Yes" style="width:20px" />Yes
+                                                &nbsp;    &nbsp; &nbsp; &nbsp;
+                                                <input type="radio" name="DisableEntireRange" value="No" style="width:20px" checked="checked" />No
+                                                <span class="field-validation-valid" data-valmsg-for="EventName" data-valmsg-replace="true"></span>*@
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: threedlightshadow;" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td style="width:50px;">
+                                                Notes:
+                                            </td>
+                                            <td align="left" style="padding:10px;">
+                                                <input type="text" id="V_Notes" />
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                    <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: transparent; float: right;">
+                                        <tr>
+                                            <td align="left" style="padding:10px;">
+                                                <input type="button" id="SaveDisableRules" value="Save" class="btn btn-success" />
+                                                <input type="button" id="CancelDisableRules" value="Cancel" class="btn btn-danger" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <div style="overflow:auto; height: 100%; width: 100%; font-family: arial; font-size: 9pt;" class="updatehistory">
+                            <table border="1" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: transparent; padding-top: 1px; height: 100%; ">
+                                <tr style="background-color: #46568c; color: white; height: 5px;"><th align="center"><b>Update History</b></th></tr>
+
+
+                                    @if (Model.UpdateHistory.Count != 0)
+                                    {
+                                        int i = 0;
+                                        foreach (var item in Model.UpdateHistory)
+                                        {
+                                            i = i + 1;
+
+                                            <tr style="background-color: @(i % 2 == 0 ? "threedlightshadow": "whitesmoke");">
+                                                <td valign="top" align="left">
+                                                    @item.LogText
+                                                </td>
+                                            </tr>
+
+                                        }
+                                    }
+                                    else
+                                    { 
+                                        <tr style="background-color: transparent; height: 100px;">
+                                            <td valign="top" align="left">
+                                                No history available
+                                            </td>
+                                        </tr>
+                                    }
+
+
+                            </table>
+                        </div>
+
+                            @*<table border="0" style="font-family: Arial; float: left; font-size: 9pt; background-color: transparent; width: auto; height: 100%; ">
+                                <tr style="background-color: #46568c; color: white;"><th align="center"><b>Update History</b></th></tr>
+                                <tr>
+                                    <td class="auto-style12">
+
+                                        <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: threedlightshadow;" cellspacing="0" cellpadding="0">
+                                            <tr>
+                                                <td style="width:50px;">
+                                                    Update by Ric on 15/08/2014
+                                                </td>
+
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>*@
+
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    @*  </form>*@
+
+}

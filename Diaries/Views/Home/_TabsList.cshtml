@@ -1,0 +1,294 @@
+﻿@model Diaries.Models.V_HomePage
+
+<div id="tabsLists" class="AjaxCall" style=" height:300px; overflow:auto; width:100%; ">
+
+    <div id="tabs-1">
+        <section>
+            <div>
+                <table  border="0" style="width:230px; float:left;  outline: 5px solid white;" data-listday1="Monday">
+                    <tr class="tableListHdr" data-listdayhdr1="Monday" style="background-color: #46568c; color: white; ">
+                        <th align="center">
+                            <b>Monday @Model.V_HomePage_DiaryListDetails.Where(r => r.V_H_DiaryListDetails_DateCreated.DayOfWeek == DayOfWeek.Monday).Select(r => r.V_H_DiaryListDetails_DateCreated.ToShortDateString()).FirstOrDefault().ToString()</b>
+                        </th>
+                    </tr>
+
+                    @foreach (var item in Model.V_HomePage_DiaryListDetails)
+                    {
+
+                        if (item.V_H_DiaryListDetails_DateCreated.DayOfWeek == DayOfWeek.Monday)
+                        {
+                            <tr class="ListTypeDiary" id="@item.V_H_DiaryListDetails_id" style="font-family: Arial;  font-size: 9pt; width: 100%; background-color: @item.V_H_DiaryListDetails_Colour; float: left">
+                                <td align="center" width="30px">
+                                    <span class="ColourDiary" style="background-color:@item.V_H_DiaryListDetails_BkgColour"><i></i></span>
+                                </td>
+                                <td align="left" style="width:90px;">
+                                    @item.V_H_DiaryListDetails_SName
+                                </td>
+                                <td align="left" style="width:45px;">
+                                    A:@item.V_H_DiaryListDetails_Avail
+                                </td>
+                                <td align="left" style="width:45px;">
+                                    T:@item.V_H_DiaryListDetails_Total
+                                </td>
+                            </tr>
+                        }
+                    }
+
+
+                </table>
+
+
+                <table  border="0" style="width:230px; float:left; outline: 5px solid white; " data-listday1="Tuesday">
+                    <tr class="tableListHdr" data-listdayhdr1="Tuesday" style="background-color: #46568c; color: white;">
+                        <th align="center"><b>Tuesday @Model.V_HomePage_DiaryListDetails.Where(r => r.V_H_DiaryListDetails_DateCreated.DayOfWeek == DayOfWeek.Tuesday).Select(r => r.V_H_DiaryListDetails_DateCreated.ToShortDateString()).FirstOrDefault().ToString()</b></th>
+                    </tr>
+
+                    @foreach (var item in Model.V_HomePage_DiaryListDetails)
+                    {
+                        if (item.V_H_DiaryListDetails_DateCreated.DayOfWeek == DayOfWeek.Tuesday)
+                        {
+                            <tr class="ListTypeDiary" id="@item.V_H_DiaryListDetails_id" style="font-family: Arial;  font-size: 9pt; width: 100%; background-color: @item.V_H_DiaryListDetails_Colour; float: left">
+                                <td align="center" width="30px">
+                                    <span class="ColourDiary" style="background-color:@item.V_H_DiaryListDetails_BkgColour"><i></i></span>
+                                </td>
+                                <td align="left" style="width:90px;">
+                                    @item.V_H_DiaryListDetails_SName
+                                </td>
+                                <td align="left" style="width:45px;">
+                                    @item.V_H_DiaryListDetails_Avail
+                                </td>
+                                <td align="left" style="width:45px;">
+                                    @item.V_H_DiaryListDetails_Total
+                                </td>
+                            </tr>
+                        }
+                    }
+
+                </table>
+
+                <table  border="0" style="width:230px; float:left; outline: 5px solid white; " data-listday1="Wednesday">
+                    <tr class="tableListHdr" data-listdayhdr1="Wednesday" style="background-color: #46568c; color: white;"><th align="center"><b>Wednesday @Model.V_HomePage_DiaryListDetails.Where(r => r.V_H_DiaryListDetails_DateCreated.DayOfWeek == DayOfWeek.Wednesday).Select(r => r.V_H_DiaryListDetails_DateCreated.ToShortDateString()).FirstOrDefault().ToString()</b></th></tr>
+
+                    @foreach (var item in Model.V_HomePage_DiaryListDetails)
+                    {
+                        if (item.V_H_DiaryListDetails_DateCreated.DayOfWeek == DayOfWeek.Wednesday)
+                        {
+                            <tr class="ListTypeDiary" id="@item.V_H_DiaryListDetails_id" style="font-family: Arial;  font-size: 9pt; width: 100%; background-color: @item.V_H_DiaryListDetails_Colour; float: left">
+                                <td align="center" width="30px">
+                                    <span class="ColourDiary" style="background-color:@item.V_H_DiaryListDetails_BkgColour"><i></i></span>
+                                </td>
+                                <td align="left" style="width:90px;">
+                                    @item.V_H_DiaryListDetails_SName
+                                </td>
+                                <td align="left" style="width:45px;">
+                                    @item.V_H_DiaryListDetails_Avail
+                                </td>
+                                <td align="left" style="width:45px;">
+                                    @item.V_H_DiaryListDetails_Total
+                                </td>
+                            </tr>
+                        }
+                    }
+
+                </table>
+
+                <table  border="0" style="width:230px; float:left; outline: 5px solid white; " data-listday1="Thursday">
+                    <tr class="tableListHdr" data-listdayhdr1="Thursday" style="background-color: #46568c; color: white;"><th align="center"><b>Thursday @Model.V_HomePage_DiaryListDetails.Where(r => r.V_H_DiaryListDetails_DateCreated.DayOfWeek == DayOfWeek.Thursday).Select(r => r.V_H_DiaryListDetails_DateCreated.ToShortDateString()).FirstOrDefault().ToString()</b></th></tr>
+
+                    @foreach (var item in Model.V_HomePage_DiaryListDetails)
+                    {
+                        if (item.V_H_DiaryListDetails_DateCreated.DayOfWeek == DayOfWeek.Thursday)
+                        {
+                            <tr class="ListTypeDiary" id="@item.V_H_DiaryListDetails_id" style="font-family: Arial;  font-size: 9pt; width: 100%; background-color: @item.V_H_DiaryListDetails_Colour; float: left">
+                                <td align="center" width="30px">
+                                    <span class="ColourDiary" style="background-color:@item.V_H_DiaryListDetails_BkgColour"><i></i></span>
+                                </td>
+                                <td align="left" style="width:90px;">
+                                    @item.V_H_DiaryListDetails_SName
+                                </td>
+                                <td align="left" style="width:45px;">
+                                    @item.V_H_DiaryListDetails_Avail
+                                </td>
+                                <td align="left" style="width:45px;">
+                                    @item.V_H_DiaryListDetails_Total
+                                </td>
+                            </tr>
+                        }
+                    }
+
+                </table>
+
+
+
+                <table border="0" style="width:230px; float:left; outline: 5px solid white;" data-listday1="Friday">
+                    <tr class="tableListHdr" data-listdayhdr1="Friday" style="background-color: #46568c; color: white;"><th><b>Friday @Model.V_HomePage_DiaryListDetails.Where(r => r.V_H_DiaryListDetails_DateCreated.DayOfWeek == DayOfWeek.Friday).Select(r => r.V_H_DiaryListDetails_DateCreated.ToShortDateString()).FirstOrDefault().ToString()</b></th></tr>
+
+                    @foreach (var item in Model.V_HomePage_DiaryListDetails)
+                    {
+                        if (item.V_H_DiaryListDetails_DateCreated.DayOfWeek == DayOfWeek.Friday)
+                        {
+                            <tr class="ListTypeDiary" id="@item.V_H_DiaryListDetails_id" style="font-family: Arial;  font-size: 9pt; width: 100%; background-color: @item.V_H_DiaryListDetails_Colour; float: left">
+                                <td align="center" width="30px">
+                                    <span class="ColourDiary" style="background-color:@item.V_H_DiaryListDetails_BkgColour"><i></i></span>
+                                </td>
+                                <td align="left" style="width:90px;">
+                                    @item.V_H_DiaryListDetails_SName
+                                </td>
+                                <td align="left" style="width:45px;">
+                                    @item.V_H_DiaryListDetails_Avail
+                                </td>
+                                <td align="left" style="width:45px;">
+                                    @item.V_H_DiaryListDetails_Total
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+
+            </div>
+        </section>
+    </div>
+    <div id="tabs-2">
+        <section>
+            <div>
+                <table id="TableListMonday" border="0" style="width:100%; float:left; " data-listday2="Monday">
+                    <tr class="tableListHdr" data-listdayhdr2="Monday" style="background-color: #46568c; color: white; ">
+                        <th align="center"><b>Monday @Model.V_HomePage_DiaryListDetails.Where(r => r.V_H_DiaryListDetails_DateCreated.DayOfWeek == DayOfWeek.Monday).Select(r => r.V_H_DiaryListDetails_DateCreated.ToShortDateString()).FirstOrDefault().ToString()</b></th>
+                    </tr>
+
+                    @foreach (var item in Model.V_HomePage_DiaryListDetails)
+                    {
+                        if (item.V_H_DiaryListDetails_DateCreated.DayOfWeek == DayOfWeek.Monday)
+                        {
+                            <tr class="ListTypeDiary" id="@item.V_H_DiaryListDetails_id" style="font-family: Arial;  font-size: 9pt; width: 100%; background-color: @item.V_H_DiaryListDetails_Colour; float: left">
+                                <td align="center" width="30px">
+                                    <span class="ColourDiary" style="background-color:@item.V_H_DiaryListDetails_BkgColour"><i></i></span>
+                                </td>
+                                <td align="left" style="width:90px;">
+                                    @item.V_H_DiaryListDetails_SName
+                                </td>
+                                <td align="left" style="width:45px;">
+                                    A:@item.V_H_DiaryListDetails_Avail
+                                </td>
+                                <td align="left" style="width:45px;">
+                                    T:@item.V_H_DiaryListDetails_Total
+                                </td>
+                            </tr>
+                        }
+                    }
+
+                </table>
+                <table id="TableListTuesday" hidden="hidden" border="0" style="width:100%; float:left;  " data-listday2="Tuesaday">
+                    <tr class="tableListHdr" data-listdayhdr2="Tuesday" style="background-color: #46568c; color: white; ">
+                        <th align="center"><b>Tuesday @Model.V_HomePage_DiaryListDetails.Where(r => r.V_H_DiaryListDetails_DateCreated.DayOfWeek == DayOfWeek.Tuesday).Select(r => r.V_H_DiaryListDetails_DateCreated.ToShortDateString()).FirstOrDefault().ToString()</b></th>
+                    </tr>
+
+                    @foreach (var item in Model.V_HomePage_DiaryListDetails)
+                    {
+                        if (item.V_H_DiaryListDetails_DateCreated.DayOfWeek == DayOfWeek.Monday)
+                        {
+                            <tr class="ListTypeDiary" id="@item.V_H_DiaryListDetails_id" style="font-family: Arial;  font-size: 9pt; width: 100%; background-color: @item.V_H_DiaryListDetails_Colour; float: left">
+                                <td align="center" width="30px">
+                                    <span class="ColourDiary" style="background-color:@item.V_H_DiaryListDetails_BkgColour"><i></i></span>
+                                </td>
+                                <td align="left" style="width:90px;">
+                                    @item.V_H_DiaryListDetails_SName
+                                </td>
+                                <td align="left" style="width:45px;">
+                                    A:@item.V_H_DiaryListDetails_Avail
+                                </td>
+                                <td align="left" style="width:45px;">
+                                    T:@item.V_H_DiaryListDetails_Total
+                                </td>
+                            </tr>
+                        }
+                    }
+
+                </table>
+                <table id="TableListWednesday" hidden="hidden" border="0" style="width:100%; float:left; " data-listday2="Wednesday">
+                    <tr class="tableListHdr" data-listdayhdr2="Wednesday" style="background-color: #46568c; color: white; ">
+                        <th align="center"><b>Wednesday @Model.V_HomePage_DiaryListDetails.Where(r => r.V_H_DiaryListDetails_DateCreated.DayOfWeek == DayOfWeek.Wednesday).Select(r => r.V_H_DiaryListDetails_DateCreated.ToShortDateString()).FirstOrDefault().ToString()</b></th>
+                    </tr>
+
+                    @foreach (var item in Model.V_HomePage_DiaryListDetails)
+                    {
+                        if (item.V_H_DiaryListDetails_DateCreated.DayOfWeek == DayOfWeek.Monday)
+                        {
+                            <tr class="ListTypeDiary" id="@item.V_H_DiaryListDetails_id" style="font-family: Arial;  font-size: 9pt; width: 100%; background-color: @item.V_H_DiaryListDetails_Colour; float: left">
+                                <td align="center" width="30px">
+                                    <span class="ColourDiary" style="background-color:@item.V_H_DiaryListDetails_BkgColour"><i></i></span>
+                                </td>
+                                <td align="left" style="width:90px;">
+                                    @item.V_H_DiaryListDetails_SName
+                                </td>
+                                <td align="left" style="width:45px;">
+                                    A:@item.V_H_DiaryListDetails_Avail
+                                </td>
+                                <td align="left" style="width:45px;">
+                                    T:@item.V_H_DiaryListDetails_Total
+                                </td>
+                            </tr>
+                        }
+                    }
+
+                </table>
+                <table id="TableListThursday" hidden="hidden" border="0" style="width:100%; float:left; " data-listday2="Thursday">
+                    <tr class="tableListHdr" data-listdayhdr2="Thursday" style="background-color: #46568c; color: white; ">
+                        <th align="center"><b>Thursday @Model.V_HomePage_DiaryListDetails.Where(r => r.V_H_DiaryListDetails_DateCreated.DayOfWeek == DayOfWeek.Thursday).Select(r => r.V_H_DiaryListDetails_DateCreated.ToShortDateString()).FirstOrDefault().ToString()</b></th>
+                    </tr>
+
+                    @foreach (var item in Model.V_HomePage_DiaryListDetails)
+                    {
+                        if (item.V_H_DiaryListDetails_DateCreated.DayOfWeek == DayOfWeek.Monday)
+                        {
+                            <tr class="ListTypeDiary" id="@item.V_H_DiaryListDetails_id" style="font-family: Arial;  font-size: 9pt; width: 100%; background-color: @item.V_H_DiaryListDetails_Colour; float: left">
+                                <td align="center" width="30px">
+                                    <span class="ColourDiary" style="background-color:@item.V_H_DiaryListDetails_BkgColour"><i></i></span>
+                                </td>
+                                <td align="left" style="width:90px;">
+                                    @item.V_H_DiaryListDetails_SName
+                                </td>
+                                <td align="left" style="width:45px;">
+                                    A:@item.V_H_DiaryListDetails_Avail
+                                </td>
+                                <td align="left" style="width:45px;">
+                                    T:@item.V_H_DiaryListDetails_Total
+                                </td>
+                            </tr>
+                        }
+                    }
+
+                </table>
+                <table id="TableListFriday"  hidden="hidden" border="0" style="width:100%; float:left; " data-listday2="Friday">
+                    <tr class="tableListHdr" data-listdayhdr2="Friday" style="background-color: #46568c; color: white; ">
+                        <th align="center"><b>Friday @Model.V_HomePage_DiaryListDetails.Where(r => r.V_H_DiaryListDetails_DateCreated.DayOfWeek == DayOfWeek.Friday).Select(r => r.V_H_DiaryListDetails_DateCreated.ToShortDateString()).FirstOrDefault().ToString()</b></th>
+                    </tr>
+
+                    @foreach (var item in Model.V_HomePage_DiaryListDetails)
+                    {
+                        if (item.V_H_DiaryListDetails_DateCreated.DayOfWeek == DayOfWeek.Monday)
+                        {
+                            <tr class="ListTypeDiary" id="@item.V_H_DiaryListDetails_id" style="font-family: Arial;  font-size: 9pt; width: 100%; background-color: @item.V_H_DiaryListDetails_Colour; float: left">
+                                <td align="center" width="30px">
+                                    <span class="ColourDiary" style="background-color:@item.V_H_DiaryListDetails_BkgColour"><i></i></span>
+                                </td>
+                                <td align="left" style="width:90px;">
+                                    @item.V_H_DiaryListDetails_SName
+                                </td>
+                                <td align="left" style="width:45px;">
+                                    A:@item.V_H_DiaryListDetails_Avail
+                                </td>
+                                <td align="left" style="width:45px;">
+                                    T:@item.V_H_DiaryListDetails_Total
+                                </td>
+                            </tr>
+                        }
+                    }
+
+                </table>
+            </div>
+        </section>
+    </div>
+</div>
+
+

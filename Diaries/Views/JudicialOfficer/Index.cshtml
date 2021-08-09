@@ -1,0 +1,117 @@
+﻿@model IEnumerable<Diaries.Models.JudicialOfficer>
+
+@{
+    ViewBag.Title = "Judicial Officers";
+}
+
+<h3>Judicial Officers</h3>
+<br />
+<p>
+    @Html.ActionLink("Add", "Create", null, new { @class = "btn btn-primary" })
+</p>
+
+
+@*<table border="1" style="font-family: Arial; float: left; font-size: 9pt; background-color: whitesmoke; width: auto; height: 100%; ">
+    <tr style="background-color: #46568c; color: white; "><th align="center"><b>Judicial Officers</b></th></tr>
+    <tr>
+        <td class="auto-style12">
+
+            <div style="overflow:auto; height:120px; width:720px; font-family: arial; float: left; font-size: 9pt; background-color: whitesmoke;">
+
+                <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: white; float: left" cellspacing="0" cellpadding="0">
+
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr style="background-color: threedlightshadow;">
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.JO_Name)
+                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                    @Html.ActionLink("Edit", "Edit", "JudicialOfficer", new { id = item.JO_ID }, null)
+                                    &nbsp; &nbsp; &nbsp;
+                                    @Html.ActionLink("Delete", "Delete", "JudicialOfficer", new { id = item.JO_ID },null)
+
+                                    @Html.ActionLink("Edit", "Edit", "JudicialOfficer", new { id = item.JO_ID, @class = "btn btn-primary" })
+                                    @Html.ActionLink("Delete", "Delete", "JudicialOfficer", new { id = item.JO_ID, @class = "btn btn-primary" })
+                                </td>
+                            </tr>
+
+                        }
+                    }
+
+                </table>
+            </div>
+        </td>
+    </tr>
+</table>*@
+
+
+<table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td>
+            <div style="overflow:auto; height:100px; width:100%; font-family: arial; float: left; font-size: 9pt; background-color: whitesmoke;">
+                <table border="1" style="font-family: Arial; float: left; font-size: 9pt; background-color: whitesmoke; width: auto; height: 100%; ">
+                    <tr style="background-color: #46568c; color: white; "><th align="center"><b>Judicial Officers</b></th></tr>
+                    <tr>
+                        <td class="auto-style12">
+                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: left" cellspacing="0" cellpadding="0">
+                                <thead>
+                                    <tr>
+                                        @*<th>@Html.DisplayNameFor(model => model.JO_Name)</th>
+                                        <td>&nbsp</td>*@
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @if (Model != null)
+                                    {
+                                        int i = 0;
+                                        foreach (var item in Model)
+                                        {
+                                                i = i + 1;
+                                                <tr style="background-color: @(i % 2 == 0 ? "threedlightshadow": "whitesmoke");">
+
+                                                <td>@Html.DisplayFor(modelItem => item.JO_Name) </td>
+                                                <td>@Html.ActionLink("Edit", "Edit", "JudicialOfficer", new { id = item.JO_ID, @class = "btn btn-primary", @style = "width:100px" }, null) &nbsp;&nbsp;&nbsp; @Html.ActionLink("Delete", "Delete", "JudicialOfficer", new { id = item.JO_ID, @class = "btn btn-primary", @style = "width:100px" }, null) &nbsp;&nbsp;&nbsp; @Html.ActionLink("Listing Rules", "Index", "JudicialOfficerListing", new { joid = item.JO_ID, @class = "btn btn-primary", @style = "width:100px" }, null)</td>
+
+                                            </tr>
+                                        }
+                                    }
+
+                                </tbody>
+                            </table>
+
+                        </td>
+
+                    </tr>
+
+                </table>
+            </div>
+        </td>
+    </tr>
+</table>
+
+@*<table id="judicialofficers" border="0" cellpadding="10" cellspacing="0">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.JO_Name)</th>
+            <td>&nbsp</td>
+        </tr>
+    </thead>
+
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>@Html.DisplayFor(modelItem => item.JO_Name) </td>
+                    <td>@Html.ActionLink("Edit", "Edit", "JudicialOfficer", new { id = item.JO_ID, @class = "btn btn-primary", @style = "width:100px" },null) &nbsp;&nbsp;&nbsp; @Html.ActionLink("Delete", "Delete", "JudicialOfficer", new { id = item.JO_ID, @class = "btn btn-primary", @style = "width:100px" } ,null) &nbsp;&nbsp;&nbsp; @Html.ActionLink("Listing Rules", "Index", "JudicialOfficerListing", new { joid = item.JO_ID, @class = "btn btn-primary", @style = "width:100px" }, null)</td>
+
+                </tr>
+            }
+        }
+    </tbody>
+</table>*@

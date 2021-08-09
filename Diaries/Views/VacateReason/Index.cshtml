@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Diaries.Models.VacateReason>
+
+@{
+    ViewBag.Title = "Vacate Reasons";
+}
+
+<h3>Vacate Reasons</h3>
+@*<br />*@
+<p>
+    @Html.ActionLink("Add", "Create", null, new { @class = "btn btn-primary" })
+</p>
+
+<table border="1" cellspacing="0" cellpadding="10" style="width: auto; height: 100%">
+    <tr>
+        <td>
+            <table border="0" style="font-family: Arial; float: left; font-size: 9pt; background-color: whitesmoke; width: 950px; height: 100%; ">
+                @*<tr style="background-color: #46568c; color: white; "><th align="center"><b>Access Group Listings</b></th></tr>*@
+                <tr>
+                    <td>
+                        <table id="caseoutcomes" border="0" cellpadding="0" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>@Html.DisplayNameFor(model => model.VR_Type)</th>
+                                    <th>@Html.DisplayNameFor(model => model.VR_Name)</th>
+                                    <td>&nbsp</td>
+                                    <td>&nbsp</td>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @if (Model != null)
+                                {
+                                    foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@Html.DisplayFor(modelItem => item.VR_Type)</td>
+                                            <td id="tab1"> @Html.DisplayFor(modelItem => item.VR_Name)</td>
+                                            <td>@Html.ActionLink("Edit", "Edit", "VacateReason", new { id = item.VR_ID }, null)</td>
+                                            <td>@Html.ActionLink("Delete", "Delete", "VacateReason", new { id = item.VR_ID }, null)</td>
+
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>

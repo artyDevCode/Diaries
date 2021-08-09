@@ -1,0 +1,863 @@
+﻿@*@model IEnumerable<Diaries.Models.V_D_DiaryManagement>*@
+@model IEnumerable<Diaries.Models.D_Diaries>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+        <p style="font-size:inherit;color:red" >@ViewData["ErrorMessage"]</p>
+    
+        <table border="0" cellspacing="0" cellpadding="5">
+        <tr>
+            <td>
+
+                <table border="1" style="font-family: Arial; float: left; font-size: 9pt; background-color: whitesmoke; width: auto; height: 100%; ">
+                    <tr style="background-color: #46568c; color: white;"><th align="center"><b>Diary Management</b></th></tr>
+                    <tr>
+                        <td class="auto-style12">
+                            <div style="overflow:auto; height:100px; width:100%; font-family: arial; float: left; font-size: 9pt; background-color: whitesmoke;">
+                                <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke;" cellspacing="0" cellpadding="0">
+
+
+                                    @if (Model != null)
+                                    {
+                                        int i = 0;
+                                        foreach (var item in Model)
+                                        {
+                                            i = i + 1;
+                                            <tr class="DiaryManage" style="background-color: @(i % 2 == 0 ? "threedlightshadow": "whitesmoke");">
+                                                <td class="DiaryMngId" hidden="hidden">
+                                                    @item.D_id
+                                                </td>
+                                                <td>
+                                                    <span class="ColourDiary" style="background-color:@item.D_Bckground_Icon_Colour;"><i></i></span>
+                                                </td>
+                                                <td class="DiaryMng">
+                                                    @*<input type="button" class="DiaryMng" value=@item.D_DiaryName style="width:100px"/>*@
+                                                    @item.D_DiaryName
+                                                </td>
+
+                                            </tr>
+
+                                        }
+                                    }
+                                    
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+                <table border="0" style="font-family: Arial; float: right; font-size: 9pt; background-color: transparent; width: auto; height: 100%; ">
+                    <tr style="background-color: transparent; color: white; "><th align="center"><b></b></th></tr>
+                    <tr>
+                        <td class="auto-style12">
+
+                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: transparent; float: right;">
+                                <tr>
+                                    <td align="left" style="padding:10px;">                                   
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                <table border="0" style="font-family: Arial; float: right; font-size: 9pt; background-color: transparent; width: auto; height: 100%; ">
+                    <tr style="background-color: transparent; color: white; "><th align="center" ><b></b></th></tr>
+                    <tr>
+                        <td class="auto-style12">
+
+                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: transparent; float: right;">
+                                <tr>
+                                    <td align="left" >
+                                        <input type="button" id="AddDiary" value="Add Diary" class="btn btn-primary" />
+                                        <input type="button" id="SaveDiary" value="Save Diary" class="btn btn-success" />
+                                        <input type="button" id="CancelDiary" value="Cancel Diary" class="btn btn-danger" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <div style="padding-bottom:5px;"></div>
+
+    <div id="DiariesSection">
+        <div id="DiaryDetailTable"></div>
+    </div>
+    <div style="padding-bottom:10px;"></div>
+
+    <div id="ListsSection">
+        <div id="ListDetailTable"></div>
+    </div>
+    <div style="padding-bottom:10px;"></div>
+
+    
+    //Ric Start
+    
+        @*<table border="1" cellspacing="0" cellpadding="10">
+        <tr>
+            <td>
+                <table border="0" style="font-family: Arial; float: left; font-size: 9pt; background-color: whitesmoke; width: auto; height: 100%; ">
+                    <tr style="background-color: #46568c; color: white;"><th align="center"><b>List Type Details</b></th></tr>
+                    <tr>
+                        <td class="auto-style12">
+                          
+                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: threedlightshadow;" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td align="left" nowrap class="auto-style5">
+                                        List:
+                                    </td>
+                                    <td align="left">
+                                        <select data-val="true" data-val-required="The Event Type field is required." id="EventType" name="EventType">
+                                            <option>other</option>
+                                            <option selected="selected">Arbitrations</option>
+                                        </select>
+
+                                    </td>
+                                </tr>
+
+                            </table>
+                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke;" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td align="left" nowrap class="auto-style5">
+                                        Short Name:
+                                    </td>
+                                    <td align="left">
+                                        <input class="text-box single-line" data-val="true" data-val-required="The Event Name field is required." id="DM_Diary" name="DM_Diary" type="text" value="ABR" />
+                                        <span class="field-validation-valid" data-valmsg-for="EventName" data-valmsg-replace="true"></span>
+                                    </td>
+                                </tr>
+
+                            </table>
+
+                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke;" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td align="left" nowrap class="auto-style5">
+                                        Rules:
+                                    </td>
+                                    <td align="left">
+                                        
+                                        <input type="radio" name="Rules" value="Yes" style="width:20px" />Yes   
+                                        &nbsp;    &nbsp; &nbsp; &nbsp;                                
+                                        <input type="radio" name="Rules" value="No" style="width:20px"  checked="checked" />No
+                                        <span class="field-validation-valid" data-valmsg-for="EventName" data-valmsg-replace="true"></span>
+                                    </td>
+                                </tr>
+
+                            </table>
+                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: threedlightshadow;" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td align="left" nowrap class="auto-style5">
+                                        Type:
+                                    </td>
+                                    <td align="left">
+                                        <select data-val="true" data-val-required="The Event Type field is required." id="EventType" name="EventType">
+                                            <option>Other</option>
+                                            <option selected="selected">Standard</option>
+                                        </select>
+
+                                    </td>
+                                </tr>
+
+                            </table>
+                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke;" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td align="left" nowrap class="auto-style5">
+                                        Rules Apply To:
+                                    </td>
+                                    <td align="left">
+                                        <select data-val="true" data-val-required="The Event Type field is required." id="EventType" name="EventType">
+                                            <option>other</option>
+                                            <option selected="selected">Every Day</option>
+                                        </select>
+
+                                    </td>
+                                </tr>
+
+                            </table>
+                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: threedlightshadow;" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td align="left" nowrap class="auto-style5">
+                                        Vacate Options:
+                                    </td>
+                                    <td align="left">
+                                        <select data-val="true" data-val-required="The Event Type field is required." id="EventType" name="EventType">
+                                            <option>other</option>
+                                            <option selected="selected">Update Listing Rules(Give Back Space)</option>
+                                        </select>
+
+                                    </td>
+                                </tr>
+
+                            </table>
+
+
+                        </td>
+
+                    </tr>
+
+                </table>
+
+
+                <table border="0" style="font-family: Arial; float: right; font-size: 9pt; background-color: whitesmoke; width: auto; height: 100%; ">
+                    <tr style="background-color: #46568c; color: white; "><th align="center"><b>List Type Configuration</b></th></tr>
+                    <tr>
+                        <td class="auto-style12">
+                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: right" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td align="left" nowrap class="auto-style5" width="auto">
+                                        Background Row Colour:
+                                    </td>
+                                    <td align="left" class="input-group color">
+                                        <span class="input-group-addon"><i></i></span>
+                                        <input type="text" value="White" class="form-control" />
+                                    </td>
+                                </tr>
+
+                            </table>
+                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: threedlightshadow; float: right" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td align="left" nowrap class="auto-style5" width="auto">
+                                        Text Colour:
+                                    </td>
+                                    <td align="left" class="input-group color">
+                                        <span class="input-group-addon"><i></i></span>
+                                        <input type="text" value="Black" class="form-control" />
+                                    </td>
+                                </tr>
+
+                            </table>
+                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: right" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td align="left" nowrap class="auto-style5" width="auto">
+                                        Mandatory Fields:
+                                    </td>
+                                    <td align="left">
+                                        <input type="checkbox" name="Rules1" value="Rules1" />&nbsp;Category
+                                        <input type="checkbox" name="Rules2" value="Rules2" />&nbsp;Duration
+                                        <input type="checkbox" name="Rules3" value="Rules3" />&nbsp;Location
+                                        <input type="checkbox" name="Rules4" value="Rules4" />&nbsp;Start Time
+                                        <span class="field-validation-valid" data-valmsg-for="EventName" data-valmsg-replace="true"></span>
+                                    </td>
+                                </tr>
+
+                            </table>
+                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: threedlightshadow; float: right" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td align="left" nowrap class="auto-style5" width="auto">
+                                        Default Start Time:
+                                    </td>
+                                    <td align="left">
+                                        <input type='text' name='StartTime' id='StartTime' data-date-format='HH:mm' style='width:100%;' class='input-small' value='11:00 AM'>
+                                        <span class="field-validation-valid" data-valmsg-for="EventName" data-valmsg-replace="true"></span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                <table border="0" style="font-family: Arial; float: right; font-size: 9pt; background-color: transparent; width: auto; height: 100%; ">
+                    <tr style="background-color: transparent; color: white; "><th align="center" ><b></b></th></tr>
+                    <tr>
+                        <td class="auto-style12">
+
+                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: transparent; float: right;">
+                                <tr>
+                                    <td align="left" style="padding:10px;">
+                                        <input type="submit" value="Add List" class="btn btn-primary" />
+                                        <input type="submit" value="Save List" class="btn btn-success" />
+                                        <input type="submit" value="Cancel List" class="btn btn-danger" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+
+            </td>
+        </tr>
+    </table>*@
+
+
+
+    <div id="ListTypesSection">
+        <div class="ListTypesDetailTableClass" id="ListTypesDetailTable"></div>
+    </div>
+
+    //@Html.Partial("_ListTypes", Model)
+
+    <div style="padding-bottom:10px;"></div>
+    
+    @*<table border="1" cellspacing="0" cellpadding="10">
+        <tr>
+            <td>
+                <p style="font-family: Arial; font-size: 10pt; width: 100%;  background-color: #46568c; color:white;">&nbsp; List Types and List Attributes</p>
+
+                <div style="overflow:auto; height:550px; width:720px; font-family: arial; float: left; font-size: 9pt; background-color: whitesmoke;">
+
+                    <table border="0">
+                        <tr class="Listings" style="font-family: Arial; width: 100%; background-color: lightcoral; float: left">
+                            <td align="center" width="30px">
+                                &#10004
+                            </td>
+                            <td align="left" width="100px">
+                                1D+
+                            </td>
+                            <td>
+                                OneDay Contest
+                            </td>
+                        </tr>
+
+                        <tr class="Listings" style="font-family: Arial; width: 100%; background-color: lightblue; float: left">
+                            <td align="center" width="30px">
+                                &#10008
+                            </td>
+                            <td align="left" width="100px">
+                                B/APP
+                            </td>
+                            <td>
+                                Bail Applications
+                            </td>
+
+                        </tr>
+ 
+                        <tr class="Listings" style="font-family: Arial; width: 100%; float: left; background-color: orange ">
+                            <td align="center" width="30px">
+                                &#10004
+                            </td>
+                            <td align="left" width="100px">
+                                CFV
+                            </td>
+                            <td>
+                                Crimes Family Violence
+                            </td>
+
+                        </tr>
+
+                        <tr class="Listings" style="font-family: Arial; width: 100%; background-color: lightgreen; float: left">
+                            <td align="center" width="30px">
+                                &#10004
+                            </td>
+                            <td align="left" width="100px">
+                                CISP
+                            </td>
+                            <td>
+                                CISP Rollovers
+                            </td>
+
+                        </tr>
+
+                        <tr class="Listings" style="font-family: Arial; width: 100%; background-color: yellow; float: left">
+                            <td align="center" width="30px">
+                                &#10004
+                            </td>
+                            <td align="left" width="100px">
+                                CME-AM
+                            </td>
+                            <td>
+                                Contest Mention
+                            </td>
+
+                        </tr>
+
+                        <tr class="Listings" style="font-family: Arial; width: 100%; background-color: lightgray; float: left">
+                            <td align="center" width="30px">
+                                &#10004
+                            </td>
+                            <td align="left" width="100px">
+                                CME-VLA-arr
+                            </td>
+                            <td>
+                                Contest Mention Vla
+                            </td>
+
+                        </tr>
+
+                        <tr class="Listings" style="font-family: Arial; width: 100%; background-color: lightskyblue; float: left">
+                            <td align="center" width="30px">
+                                &#10004
+                            </td>
+                            <td align="left" width="100px">
+                                COM
+                            </td>
+                            <td>
+                                Committal
+                            </td>
+
+                        </tr>
+
+                        <tr class="Listings" style="font-family: Arial; width: 100%; background-color: lightsteelblue; float: left">
+                            <td align="center" width="30px">
+                                &#10004
+                            </td>
+                            <td align="left" width="100px">
+                                FIX VPOL
+                            </td>
+                            <td>
+                                Fixture VPOL
+                            </td>
+
+                        </tr>
+
+                        <tr class="Listings" style="font-family: Arial; width: 100%; background-color: lightcoral; float: left">
+                            <td align="center" width="30px">
+                                &#10004
+                            </td>
+                            <td align="left" width="100px">
+                                1D+
+                            </td>
+                            <td>
+                                OneDay Contest
+                            </td>
+                        </tr>
+
+                        <tr class="Listings" style="font-family: Arial; width: 100%; background-color: lightblue; float: left">
+                            <td align="center" width="30px">
+                                &#10008
+                            </td>
+                            <td align="left" width="100px">
+                                B/APP
+                            </td>
+                            <td>
+                                Bail Applications
+                            </td>
+
+                        </tr>
+
+                        <tr class="Listings" style="font-family: Arial; width: 100%; float: left; background-color: orange ">
+                            <td align="center" width="30px">
+                                &#10004
+                            </td>
+                            <td align="left" width="100px">
+                                CFV
+                            </td>
+                            <td>
+                                Crimes Family Violence
+                            </td>
+
+                        </tr>
+
+                        <tr class="Listings" style="font-family: Arial; width: 100%; background-color: lightgreen; float: left">
+                            <td align="center" width="30px">
+                                &#10004
+                            </td>
+                            <td align="left" width="100px">
+                                CISP
+                            </td>
+                            <td>
+                                CISP Rollovers
+                            </td>
+
+                        </tr>
+
+                        <tr class="Listings" style="font-family: Arial; width: 100%; background-color: yellow; float: left">
+                            <td align="center" width="30px">
+                                &#10004
+                            </td>
+                            <td align="left" width="100px">
+                                CME-AM
+                            </td>
+                            <td>
+                                Contest Mention
+                            </td>
+
+                        </tr>
+
+                        <tr class="Listings" style="font-family: Arial; width: 100%; background-color: lightgray; float: left">
+                            <td align="center" width="30px">
+                                &#10004
+                            </td>
+                            <td align="left" width="100px">
+                                CME-VLA-arr
+                            </td>
+                            <td>
+                                Contest Mention Vla
+                            </td>
+
+                        </tr>
+
+                        <tr class="Listings" style="font-family: Arial; width: 100%; background-color: lightskyblue; float: left">
+                            <td align="center" width="30px">
+                                &#10004
+                            </td>
+                            <td align="left" width="100px">
+                                COM
+                            </td>
+                            <td>
+                                Committal
+                            </td>
+
+                        </tr>
+
+                        <tr class="Listings" style="font-family: Arial; width: 100%; background-color: lightsteelblue; float: left">
+                            <td align="center" width="30px">
+                                &#10004
+                            </td>
+                            <td align="left" width="100px">
+                                FIX VPOL
+                            </td>
+                            <td>
+                                Fixture VPOL
+                            </td>
+
+                        </tr>
+
+                        <tr class="Listings" style="font-family: Arial; width: 100%; background-color: lightcoral; float: left">
+                            <td align="center" width="30px">
+                                &#10004
+                            </td>
+                            <td align="left" width="100px">
+                                1D+
+                            </td>
+                            <td>
+                                OneDay Contest
+                            </td>
+                        </tr>
+
+                        <tr class="Listings" style="font-family: Arial; width: 100%; background-color: lightblue; float: left">
+                            <td align="center" width="30px">
+                                &#10008
+                            </td>
+                            <td align="left" width="100px">
+                                B/APP
+                            </td>
+                            <td>
+                                Bail Applications
+                            </td>
+
+                        </tr>
+
+                        <tr class="Listings" style="font-family: Arial; width: 100%; float: left; background-color: orange ">
+                            <td align="center" width="30px">
+                                &#10004
+                            </td>
+                            <td align="left" width="100px">
+                                CFV
+                            </td>
+                            <td>
+                                Crimes Family Violence
+                            </td>
+
+                        </tr>
+
+                        <tr class="Listings" style="font-family: Arial; width: 100%; background-color: lightgreen; float: left">
+                            <td align="center" width="30px">
+                                &#10004
+                            </td>
+                            <td align="left" width="100px">
+                                CISP
+                            </td>
+                            <td>
+                                CISP Rollovers
+                            </td>
+
+                        </tr>
+
+                        <tr class="Listings" style="font-family: Arial; width: 100%; background-color: yellow; float: left">
+                            <td align="center" width="30px">
+                                &#10004
+                            </td>
+                            <td align="left" width="100px">
+                                CME-AM
+                            </td>
+                            <td>
+                                Contest Mention
+                            </td>
+
+                        </tr>
+
+                        <tr class="Listings" style="font-family: Arial; width: 100%; background-color: lightgray; float: left">
+                            <td align="center" width="30px">
+                                &#10004
+                            </td>
+                            <td align="left" width="100px">
+                                CME-VLA-arr
+                            </td>
+                            <td>
+                                Contest Mention Vla
+                            </td>
+
+                        </tr>
+
+                        <tr class="Listings" style="font-family: Arial; width: 100%; background-color: lightskyblue; float: left">
+                            <td align="center" width="30px">
+                                &#10004
+                            </td>
+                            <td align="left" width="100px">
+                                COM
+                            </td>
+                            <td>
+                                Committal
+                            </td>
+
+                        </tr>
+
+                        <tr class="Listings" style="font-family: Arial; width: 100%; background-color: lightsteelblue; float: left">
+                            <td align="center" width="30px">
+                                &#10004
+                            </td>
+                            <td align="left" width="100px">
+                                FIX VPOL
+                            </td>
+                            <td>
+                                Fixture VPOL
+                            </td>
+
+                        </tr>
+
+                    </table>
+                </div>
+
+                <table border="0" style="font-family: Arial; float: right;  background-color: whitesmoke; width: auto; height: 100%; ">
+                    <tr>
+                        <td class="auto-style12">
+                            <table border="0" style="font-family: Arial; width: 100%; background-color: threedlightshadow;  float: left" cellspacing="0" cellpadding="0">
+                                <tr >
+                                    <td align="center" style="font-size:14pt;">
+                                        &#10004
+                                    </td>
+                                    <td>
+                                        <input type="button" class="ListTypeConfig" style="background-color:threedlightshadow; font-size:14pt; color:gray;" value="Vacate Reason" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" style="font-size:14pt;">
+                                        &#10008
+                                    </td>
+                                    <td>
+                                        <input type="button" class="ListTypeConfig" style="background-color:threedlightshadow; color:gray; font-size:14pt;" value="Outcome" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" style="font-size:14pt;">
+                                        &#10004
+                                    </td>
+                                    <td>
+                                        <input type="button" class="ListTypeConfig" style="background-color:threedlightshadow; color:gray; font-size:14pt;" value="Flag" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" style="font-size:14pt;">
+                                        &#10008
+                                    </td>
+                                    <td>
+                                        <input type="button" class="ListTypeConfig" style="background-color:threedlightshadow; color:gray; font-size:14pt;" value="Location" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" style="font-size:14pt;">
+                                        &#10004
+                                    </td>
+                                    <td>
+                                        <input type="button" class="ListTypeConfig" style="background-color:threedlightshadow; color:gray; font-size:14pt;" value="Category" />
+                                    </td>
+                                </tr>
+                            </table>
+                            <table border="0" style="font-family: Arial; float: right; font-size: 9pt; background-color: transparent; width: auto; height: 100%; ">
+                                <tr>
+                                    <td class="auto-style12">
+
+                                        <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: transparent;" cellspacing="0" cellpadding="0">
+                                            <tr>
+                                                <td style="padding:10px;">
+
+                                                    <input type="submit" value="Save" class="btn btn-success" />
+                                                    <input type="submit" value="Cancel" class="btn btn-danger" />
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding:10px;">
+                                                    <input type="radio" style="margin-left:10px;" name=" rules" value="CaseType" checked="checked" />&nbsp;Civil
+                                                    <input type="radio" style="margin-left:10px;" name="Rules" value="CaseType" />&nbsp;Criminal
+                                                    <input type="radio" style="margin-left:10px;" name="Rules" value="CaseType" />&nbsp;Committals
+                                                    <input type="radio" style="margin-left:10px;" name="Rules" value="CaseType" />&nbsp;Intervention Orders
+                                                    <input type="radio" style="margin-left:10px;" name="Rules" value="CaseType" />&nbsp;VOCAT
+                                                    <input type="radio" style="margin-left:10px;" name="Rules" value="CaseType" />&nbsp;Childrens Court
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                <table border="1" style="font-family: Arial; float: right; font-size: 9pt; background-color: whitesmoke; width: auto; height: 100%; ">
+                    <tr style="background-color: #46568c; color: white; "><th align="center"><b>Activate and Inactive</b></th></tr>
+                    <tr>
+                        <td class="auto-style12">
+                            <select data-val="true" data-val-required="The Event Type field is required." id="EventType" name="EventType">
+                                <option>other</option>
+                                <option selected="selected">Active/Inactive Drown options</option>
+                            </select>
+
+                            <p style="font-family: Arial; font-size: 10pt; width: 720px; background-color: #46568c; color:white;">&nbsp;Active Location Selected</p>
+
+                            <div style="overflow:auto; height:120px; width:720px; font-family: arial; float: left; font-size: 9pt; background-color: whitesmoke;">
+
+                                <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: white; float: left" cellspacing="0" cellpadding="0">
+                                    <tr style="background-color: threedlightshadow;">
+                                        <td>
+                                            Reason 1
+                                            <input type="button" style="border:none;  float:right;" value="Make Inactive" />
+                                        </td>
+                                    </tr>
+                                    <tr style="background-color: whitesmoke;">
+                                        <td>
+                                            Reason 2
+                                            <input type="button" style="border:none; float:right;" value="Make Inactive" />
+                                        </td>
+                                    </tr>
+                                    <tr style="background-color: threedlightshadow;">
+                                        <td>
+                                            Reason 3
+                                            <input type="button" style="border:none;  float:right;" value="Make Inactive" />
+                                        </td>
+                                    </tr>
+
+                                    <tr style="background-color: whitesmoke;">
+                                        <td>
+                                            Reason 4
+                                            <input type="button" style="border:none;  float:right;" value="Make Inactive" />
+                                        </td>
+                                    </tr>
+                                    <tr style="background-color: threedlightshadow;">
+                                        <td>
+                                            Reason5
+                                            <input type="button" style="border:none;  float:right;" value="Make Inactive" />
+                                        </td>
+                                    </tr>
+                                    <tr style="background-color: whitesmoke;">
+                                        <td>
+                                            Reason 6
+                                            <input type="button" style="border:none;  float:right;" value="Make Inactive" />
+                                        </td>
+                                    </tr>
+                                    <tr style="background-color: threedlightshadow;">
+                                        <td>
+                                            Reason 7
+                                            <input type="button" style="border:none; float:right;" value="Make Inactive" />
+                                        </td>
+                                    </tr>
+                                    <tr style="background-color: whitesmoke;">
+                                        <td>
+                                            Reason 8
+                                            <input type="button" style="border:none; float:right;" value="Make Inactive" />
+                                        </td>
+                                    </tr>
+                                    <tr style="background-color: threedlightshadow;">
+                                        <td>
+                                            Reason 9
+                                            <input type="button" style="border:none; float:right;" value="Make Inactive" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <table border="1" style="font-family: Arial; float: right; font-size: 9pt; background-color: whitesmoke; width: auto; height: 100%; ">
+                    <tr style="background-color: #46568c; color: white; "><th align="center"><b>Inactive Location Selected</b></th></tr>
+                    <tr>
+                        <td class="auto-style12">
+                            <div style="overflow:auto; height:120px; width:720px; font-family: arial; float: left; font-size: 9pt; background-color: whitesmoke;">
+
+                                <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: white; float: left" cellspacing="0" cellpadding="0">
+
+                                    <tr style="background-color: threedlightshadow;">
+                                        <td>
+                                            Reason 1
+                                            <input type="button" style="border:none;  float:right;" value="Make Active" />
+
+                                        </td>
+                                    </tr>
+                                    <tr style="background-color: whitesmoke;">
+                                        <td>
+                                            Reason 2
+                                            <input type="button" style="border:none;  float:right;" value="Make Active" />
+                                        </td>
+                                    </tr>
+                                    <tr style="background-color: threedlightshadow;">
+                                        <td>
+                                            Reason 3
+                                            <input type="button" style="border:none; float:right;" value="Make Active" />
+                                        </td>
+                                    </tr>
+
+                                    <tr style="background-color: whitesmoke;">
+                                        <td>
+                                            Reason 4
+                                            <input type="button" style="border:none; background-color:transparent; float:right;" value="Make Active" />
+
+                                        </td>
+                                    </tr>
+                                    <tr style="background-color: threedlightshadow;">
+                                        <td>
+                                            Reason 5
+                                            <input type="button" style="border:none; background-color:threedlightshadow; float:right;" value="Make Active" />
+                                        </td>
+                                    </tr>
+                                    <tr style="background-color: whitesmoke;">
+                                        <td>
+                                            Reason 6
+                                            <input type="button" style="border:none; background-color:transparent; float:right;" value="Make Active" />
+                                        </td>
+                                    </tr>
+                                    <tr style="background-color: threedlightshadow;">
+                                        <td>
+                                            Reason 7
+                                            <input type="button" style="border:none; background-color:threedlightshadow; float:right;" value="Make Active" />
+
+                                        </td>
+                                    </tr>
+                                    <tr style="background-color: whitesmoke;">
+                                        <td>
+                                            Reason 8
+                                            <input type="button" style="border:none; background-color:transparent; float:right;" value="Make Active" />
+                                        </td>
+                                    </tr>
+                                    <tr style="background-color: threedlightshadow;">
+                                        <td>
+                                            Reason 9
+                                            <input type="button" style="border:none; background-color:threedlightshadow; float:right;" value="Make Active" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>*@
+
+
+@*<div>
+    @section DocumentLog
+{
+        <table border="1" cellspacing="0" cellpadding="4" style="font-family: Arial; font-size: 10pt; width: 100%; background-color: threedlightshadow;">
+            <tr>
+                <td align="left" nowrap class="auto-style14">
+                    Record modified by CSV 
+                </td>
+            </tr>
+        </table>
+
+        <table border="1" cellspacing="0" cellpadding="4" style="font-family: Arial; font-size: 10pt; width: 100%; background-color: threedlightshadow;">
+            <tr>
+                <td align="left" nowrap class="auto-style14">
+                    Record created by CSV
+                </td>
+            </tr>
+        </table>
+    }
+
+</div>*@
+
+}
+

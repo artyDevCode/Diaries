@@ -1,0 +1,98 @@
+﻿@model Diaries.Models.CaseOutcome
+
+@{
+    ViewBag.Title = "Delete Case Outcome";
+}
+
+<h3>Delete Case Outcome</h3>
+
+<h4>Please confirm delete?</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.CO_ID)
+    @Html.HiddenFor(model => model.CreatedBy)
+    @Html.HiddenFor(model => model.CreatedOn)
+
+    <table border="0">
+        <tr>
+            <td class="auto-style16">
+                <input type="submit" value="Delete" class="btn btn-primary" />
+                @Html.ActionLink("Cancel", "Index", "CaseOutcome", new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    </table>
+    <br />
+
+
+    <table border="1" cellspacing="0" cellpadding="10">
+        <tr>
+            <td>
+                <table border="0" style="font-family: Arial; float: left; font-size: 9pt; background-color: whitesmoke; width: auto; height: 100%; ">
+                    <tr style="background-color: #46568c; color: white; "><th align="center"><b>Case Outcome Details</b></th></tr>
+                    <tr>
+                        <td class="auto-style12">
+                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: left" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td align="left" nowrap class="auto-style5" width="auto">
+                                        Case Outcome:
+                                    </td>
+                                    <td align="left">
+                                        @Html.DisplayFor(model => model.CO_Name)
+                                        @Html.ValidationMessageFor(model => model.CO_Name)
+                                    </td>
+                                </tr>
+
+                            </table>
+
+                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: left" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td align="left" nowrap class="auto-style5" width="auto">
+                                        Case Outcome Type:
+                                    </td>
+                                    <td align="left">
+                                        @Html.DisplayFor(model => model.CO_Type)
+                                        @Html.ValidationMessageFor(model => model.CO_Type)
+                                    </td>
+                                </tr>
+
+                            </table>
+
+                        </td>
+
+                    </tr>
+
+                </table>
+
+            </td>
+        </tr>
+    </table>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<div>
+    @section DocumentLog
+{
+        <table border="1" cellspacing="0" cellpadding="4" style="font-family: Arial; font-size: 10pt; width: 100%; background-color: threedlightshadow;">
+            <tr>
+                <td align="left" nowrap class="auto-style14">
+                    Record modified by @Model.CreatedBy on @Model.CreatedOn.ToString("dd-MM-yyyy")
+                </td>
+            </tr>
+        </table>
+
+        <table border="1" cellspacing="0" cellpadding="4" style="font-family: Arial; font-size: 10pt; width: 100%; background-color: threedlightshadow;">
+            <tr>
+                <td align="left" nowrap class="auto-style14">
+                    Record created by @Model.ModifiedBy on @Model.ModifiedOn.ToString("dd-MM-yyyy")
+                </td>
+            </tr>
+        </table>
+    }
+
+</div>

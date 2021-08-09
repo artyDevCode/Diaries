@@ -1,0 +1,98 @@
+﻿@model Diaries.Models.DayNote
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DayNote</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DN_Start_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DN_Start_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DN_End_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DN_End_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DN_BackColor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DN_BackColor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DN_TextColor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DN_TextColor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DN_Note)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DN_Note)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Deleted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Deleted)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DN_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

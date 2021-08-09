@@ -1,0 +1,76 @@
+﻿@model Diaries.Models.CaseOutcome
+
+@{
+    ViewBag.Title = "Create Case Outcome";
+}
+
+<h3>Create Case Outcome</h3>
+<p></p>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.CO_ID)
+
+   <p style="font-size:inherit;color:red" >@ViewData["ErrorMessage"]</p>
+
+    <table border="0">
+        <tr>
+            <td class="auto-style16">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                @Html.ActionLink("Cancel", "Index", "CaseOutcome", new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    </table>
+<br />
+
+
+    <table border="1" cellspacing="0" cellpadding="10">
+        <tr>
+            <td>
+                <table border="0" style="font-family: Arial; float: left; font-size: 9pt; background-color: whitesmoke; width: auto; height: 100%; ">
+                    <tr style="background-color: #46568c; color: white; "><th align="center"><b>Case Outcome Details</b></th></tr>
+                    <tr>
+                        <td class="auto-style12">
+                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: left" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td align="left" nowrap class="auto-style5" width="auto">
+                                        Case Outcome:
+                                    </td>
+                                    <td align="left">
+                                        @Html.EditorFor(model => model.CO_Name)
+                                        @Html.ValidationMessageFor(model => model.CO_Name)
+                                    </td>
+                                </tr>
+
+                            </table>
+
+                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: left" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td align="left" nowrap class="auto-style5" width="auto">
+                                        Case Outcome Type:
+                                    </td>
+                                    <td align="left">
+                                        @Html.DropDownList("CO_Type", ViewData["COTypes"] as SelectList)
+                                        @Html.ValidationMessageFor(model => model.CO_Type)
+                                    </td>
+                                </tr>
+
+                            </table>
+
+                        </td>
+
+                    </tr>
+
+                </table>
+
+            </td>
+        </tr>
+    </table>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+

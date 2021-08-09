@@ -1,0 +1,120 @@
+﻿@model Diaries.Models.JudicialOfficer
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h3>Delete Judicial Officer</h3>
+
+<h4>Please confirm delete?</h4>
+<div>
+    @*<h4>Judicial Officer</h4>*@
+    <hr />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @*<p></p>*@
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-primary" /> 
+            @Html.ActionLink("Cancel", "Index", "JudicalOfficer", new { @class = "btn btn-danger" })
+        </div>
+        <p></p>
+    }
+    <table border="1" cellspacing="0" cellpadding="10">
+        <tr>
+            <td>
+                <table border="0" style="font-family: Arial; float: left; font-size: 9pt; background-color: whitesmoke; width: auto; height: 100%; ">
+                    <tr style="background-color: #46568c; color: white; "><th align="center"><b>Part Heard Judicial Office Details</b></th></tr>
+                    <tr>
+                        <td class="auto-style12">
+                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: left" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td align="left" nowrap class="auto-style5" width="auto">
+                                        Judicial Officer:
+                                    </td>
+                                    <td align="left">
+                                        @Html.DisplayFor(model => model.JO_Name)
+                                    </td>
+                                </tr>
+
+                            </table>
+
+                        </td>
+
+                    </tr>
+
+                </table>
+
+
+
+                <table border="0" style="font-family: Arial; float: right; font-size: 9pt; background-color: whitesmoke; width: auto; height: 100%; ">
+                    <tr style="background-color: #46568c; color: white; "><th align="center"><b>Part Heard Judicial Office Colours</b></th></tr>
+                    <tr>
+                        <td class="auto-style12">
+                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: left" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td align="left" nowrap class="auto-style5" width="auto">
+                                        Background Colour:
+                                    </td>
+                                    <td align="left" class="input-group color">
+                                        <span class="input-group-addon"><i></i></span>
+                                        @Html.ColorPickAreaReadOnlyFor(Model.JO_BackColor, Model.JO_BackColor, "JO_BackColor")
+                                    </td>
+                                </tr>
+
+                            </table>
+                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: left" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td align="left" nowrap class="auto-style5" width="auto">
+                                        Text Colour:
+                                    </td>
+                                    <td align="left" class="input-group color">
+                                        <span class="input-group-addon"><i></i></span>
+                                        @Html.ColorPickAreaReadOnlyFor(Model.JO_TextColor, Model.JO_TextColor, "JO_TextColor")
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+
+            </td>
+        </tr>
+    </table>
+    
+        @*<dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.JO_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JO_Name)
+        </dd>
+
+    </dl>*@
+
+
+</div>
+
+<div>
+    @section DocumentLog
+{
+        <table border="1" cellspacing="0" cellpadding="4" style="font-family: Arial; font-size: 10pt; width: 100%; background-color: threedlightshadow;">
+            <tr>
+                <td align="left" nowrap class="auto-style14">
+                    Record modified by @Model.ModifiedBy on @Model.ModifiedOn.ToString("dd-MM-yyyy")
+                </td>
+            </tr>
+        </table>
+
+        <table border="1" cellspacing="0" cellpadding="4" style="font-family: Arial; font-size: 10pt; width: 100%; background-color: threedlightshadow;">
+            <tr>
+                <td align="left" nowrap class="auto-style14">
+                    Record created by @Model.CreatedBy on @Model.CreatedOn.ToString("dd-MM-yyyy")
+                </td>
+            </tr>
+        </table>
+    }
+
+</div>

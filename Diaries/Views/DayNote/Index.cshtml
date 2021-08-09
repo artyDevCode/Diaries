@@ -1,0 +1,113 @@
+﻿@model IEnumerable<Diaries.Models.DayNote>
+
+@{
+    ViewBag.Title = "Day Notes";
+}
+
+<h2>Day Notes</h2>
+
+<p>
+    @Html.ActionLink("Create", "Create", null, new { @class = "btn btn-primary" })
+</p>
+
+<table border="1" cellspacing="0" cellpadding="10" style="width:auto;height:100%">
+    <tr>
+        <td>
+            <table border="0" style="font-family: Arial; float: left; font-size: 9pt; background-color: whitesmoke; width: 950px; height: 100%; ">
+                @*<tr style="background-color: #46568c; color: white; "><th align="center"><b>Day Note Listings</b></th></tr>*@
+                <tr>
+                    <td>
+                    <table id="daynotes" border="0" cellpadding="0" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Status</th>
+                                <th>Year</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Day Note</th>
+                            </tr>
+                        </thead>
+                    </table>
+                    </td>
+             </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+@*<table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DN_Start_Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DN_End_Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DN_BackColor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DN_TextColor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DN_Note)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModifiedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModifiedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Deleted)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DN_Start_Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DN_End_Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DN_BackColor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DN_TextColor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DN_Note)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedOn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedOn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Deleted)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.DN_ID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.DN_ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.DN_ID })
+            </td>
+        </tr>
+    }
+
+    </table>*@

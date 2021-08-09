@@ -1,0 +1,99 @@
+﻿@model Diaries.Models.VacateReason
+
+@{
+    ViewBag.Title = "Create Vacate Reason";
+}
+
+<h3>Delete Vacate Reason</h3>
+
+<h4>Please confirm delete?</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.VR_ID)
+
+    <p style="font-size:inherit;color:red">@ViewData["ErrorMessage"]</p>
+
+    <table border="0">
+        <tr>
+            <td class="auto-style16">
+                <input type="submit" value="Delete" class="btn btn-primary" />
+                @Html.ActionLink("Cancel", "Index", "VacateReason", new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    </table>
+    <br />
+
+
+    <table border="1" cellspacing="0" cellpadding="10">
+        <tr>
+            <td>
+                <table border="0" style="font-family: Arial; float: left; font-size: 9pt; background-color: whitesmoke; width: auto; height: 100%; ">
+                    <tr style="background-color: #46568c; color: white; "><th align="center"><b>Vacate Reason Details</b></th></tr>
+                    <tr>
+                        <td class="auto-style12">
+                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: left" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td align="left" nowrap class="auto-style5" width="auto">
+                                        Vacate Reason:
+                                    </td>
+                                    <td align="left">
+                                        @Html.DisplayFor(model => model.VR_Name)
+                                        @Html.ValidationMessageFor(model => model.VR_Name)
+                                    </td>
+                                </tr>
+
+                            </table>
+
+                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: left" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td align="left" nowrap class="auto-style5" width="auto">
+                                        Vacate Reason Type:
+                                    </td>
+                                    <td align="left">
+                                        @Html.DisplayFor(model => model.VR_Type)
+                                        @Html.ValidationMessageFor(model => model.VR_Type)
+                                    </td>
+                                </tr>
+
+                            </table>
+
+                        </td>
+
+                    </tr>
+
+                </table>
+
+            </td>
+        </tr>
+    </table>
+}
+
+<div>
+    @section DocumentLog
+{
+        <table border="1" cellspacing="0" cellpadding="4" style="font-family: Arial; font-size: 10pt; width: 100%; background-color: threedlightshadow;">
+            <tr>
+                <td align="left" nowrap class="auto-style14">
+                    Record modified by @Model.CreatedBy on @Model.CreatedOn.ToString("dd-MM-yyyy")
+                </td>
+            </tr>
+        </table>
+
+        <table border="1" cellspacing="0" cellpadding="4" style="font-family: Arial; font-size: 10pt; width: 100%; background-color: threedlightshadow;">
+            <tr>
+                <td align="left" nowrap class="auto-style14">
+                    Record created by @Model.ModifiedBy on @Model.ModifiedOn.ToString("dd-MM-yyyy")
+                </td>
+            </tr>
+        </table>
+    }
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+

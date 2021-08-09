@@ -1,0 +1,187 @@
+﻿@model Diaries.Models.YearlyCalendarDates
+
+@{
+    ViewBag.Title = "Yearly Calendar Dates";
+}
+
+<h3>Yearly Calendar Dates</h3>
+
+
+@using (Html.BeginForm())
+{
+
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Calendar_Id)
+    @Html.HiddenFor(model => model.CreatedOn)
+    @Html.HiddenFor(model => model.CreatedBy)
+    @Html.HiddenFor(model => model.ModifiedBy)
+    @Html.HiddenFor(model => model.ModifiedOn)
+
+    <p style="font-size:inherit;color:red">@ViewData["ErrorMessage"]</p>
+
+    <table border="0">
+        <tr>
+            <td class="auto-style16">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </td>
+        </tr>
+    </table>
+
+    <p></p>
+
+    <div id="tabsYearDates" style=" height:200px; width:800px;" >
+
+        <ul>
+
+            <li><a href="#tabyeardatescurrent">Current</a></li>
+
+            <li><a href="#tabyeardatesnext">Next</a></li>
+
+        </ul>
+
+        <div id="tabyeardatescurrent">
+            <table border="0" style="font-family: Arial; float: right; font-size: 9pt; background-color: whitesmoke; width: auto; height: 100%; ">
+                <tr>
+                    <td class="auto-style12">
+                        <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: left" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td align="left" nowrap class="auto-style5" width="auto">
+                                    Current Start:
+                                </td>
+                                <td align="left">
+                                    <input type="text" class="datepickeryear" data-val="true" data-val-length="The current year start must be a date." data-val-length-max="10" data-val-required="The current year start date must be entered." id="CurrentStartDate" name="CurrentStartDate" value=@Model.CurrentStartDate.ToString("dd-MM-yyyy") style="font-size:12px; padding-top:5px;" />
+                                    @Html.ValidationMessageFor(model => model.CurrentStartDate)
+                                </td>
+                            </tr>
+
+                        </table>
+                <tr></tr>
+                <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: ThreeDLightShadow; float: left" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td align="left" nowrap class="auto-style5" width="auto">
+                            Current End:
+                        </td>
+                        <td align="left">
+                            <input type="text" class="datepickeryear" data-val="true" data-val-length="The current year end must be a date." data-val-length-max="10" data-val-required="The current year end date must be entered." id="CurrentEndDate" name="CurrentEndDate" value=@Model.CurrentEndDate.ToString("dd-MM-yyyy") style="font-size:12px; padding-top:5px;" />
+                            @Html.ValidationMessageFor(model => model.CurrentEndDate)
+                        </td>
+                    </tr>
+
+                </table>
+
+                </td>
+                </tr>
+            </table>
+
+        </div>
+
+        <div id="tabyeardatesnext">
+
+            <table border="0" style="font-family: Arial; float: right; font-size: 9pt; background-color: whitesmoke; width: auto; height: 100%; ">
+                <tr>
+                    <td class="auto-style12">
+                        <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: left" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td align="left" nowrap class="auto-style5" width="auto">
+                                    Next Start:
+                                </td>
+                                <td align="left">
+                                    <input type="text" class="datepickeryear" data-val="true" data-val-length="The next year start must be a date." data-val-length-max="10" data-val-required="The next year start date must be entered." id="NextStartDate" name="NextStartDate" value=@Model.NextStartDate.ToString("dd-MM-yyyy") style="font-size:12px; padding-top:5px;" />
+                                    @Html.ValidationMessageFor(model => model.NextStartDate)
+                                </td>
+                            </tr>
+
+                        </table>
+                <tr></tr>
+                <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: ThreeDLightShadow; float: left" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td align="left" nowrap class="auto-style5" width="auto">
+                            Next End:
+                        </td>
+                        <td align="left">
+                            <input type="text" class="datepickeryear" data-val="true" data-val-length="The next year end must be a date." data-val-length-max="10" data-val-required="The next year end date must be entered." id="NextEndDate" name="NextEndDate" value=@Model.NextEndDate.ToString("dd-MM-yyyy") style="font-size:12px; padding-top:5px;" />
+                            @Html.ValidationMessageFor(model => model.NextEndDate)
+                        </td>
+                    </tr>
+
+                </table>
+
+                </td>
+                </tr>
+            </table>
+        </div>
+
+
+    </div>
+
+
+<div>
+    @section DocumentLog
+{
+        <table border="1" cellspacing="0" cellpadding="4" style="font-family: Arial; font-size: 10pt; width: 100%; background-color: threedlightshadow;">
+            <tr>
+                <td align="left" nowrap class="auto-style14">
+                    Record modified by @Model.CreatedBy on @Model.CreatedOn
+                </td>
+            </tr>
+        </table>
+
+        <table border="1" cellspacing="0" cellpadding="4" style="font-family: Arial; font-size: 10pt; width: 100%; background-color: threedlightshadow;">
+            <tr>
+                <td align="left" nowrap class="auto-style14">
+                    Record created by @Model.ModifiedBy on @Model.ModifiedOn
+                </td>
+            </tr>
+        </table>
+    }
+
+</div>
+
+
+        @section Scripts {
+           @Scripts.Render("~/bundles/jqueryval")
+        }
+
+}
+
+                        @*<table class="table">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CurrentStatDate)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CurrentEndDate)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.NextStatDate)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.NextEndDate)
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CurrentStatDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CurrentEndDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NextStatDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NextEndDate)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.Calendar_Id }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.Calendar_Id }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.Calendar_Id })
+                                </td>
+                            </tr>
+                        }
+
+                    </table>*@

@@ -1,0 +1,258 @@
+﻿@model IEnumerable<Diaries.Models.JOListingVM>
+
+@{
+    ViewBag.Title = "Judicial Officers Lising Rules";
+}
+
+<h3>Judicial Officer Listing Rules</h3>
+<br />
+<p>
+    @Html.ActionLink("Add", "Create", new { joid = @Model.FirstOrDefault().VM_JoId }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Back", "Index", "JudicialOfficer", null, new { @class = "btn btn-primary" })
+</p>
+
+@if (Model.Count() != 0)
+{
+
+    <aside style="width:780px; float:left;">
+        <table cellspacing="0" cellpadding="0" border="1" style="font-family: Arial; float: left; font-size: 18pt; background-color: transparent;  width: auto; height: 100%; ">
+            <tr>
+                <td>
+
+
+                    <table border="0" style="font-family: Arial; float: left; font-size: 9pt; background-color: whitesmoke; width: auto; height: 100%; ">
+                        <tr style="background-color: #46568c; color: white; "><th align="center"><b>Part Heard Judicial Office Details</b></th></tr>
+                        <tr>
+                            <td class="auto-style12">
+                                <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: left" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td align="left" nowrap class="auto-style5" width="auto">
+                                            Judicial Officer:
+                                        </td>
+                                        <td align="left">
+                                            @Html.DisplayFor(model => Model.FirstOrDefault().VM_JOName)
+                                        </td>
+                                    </tr>
+
+                                </table>
+
+                            </td>
+
+                        </tr>
+
+                    </table>
+
+                    <table align="center" border="0" style="font-family: Arial;  font-size: 9pt; background-color: transparent; width: auto; height: 100%; ">
+                        <tr style="background-color: #46568c; color: white;"></tr>
+                        <tr>
+                            <td class="auto-style12">
+                                <table border="0" style="font-family: Arial; float: left; font-size: 9pt; background-color: transparent; width: auto; height: 100%; ">
+                                    <tr style="background-color: #46568c; color: white;"><th align="center"><b>Part Heard Judicial Officer Colours</b></tr>
+                                    <tr>
+                                        <td>
+                                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: left" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td align="left" nowrap class="auto-style5" width="auto">
+                                                        Background Colour:
+                                                    </td>
+                                                    <td align="left" class="input-group color">
+                                                        <span class="input-group-addon"><i></i></span>
+                                                        <input type='text' name='JO_BackColor' id='JO_BackColor' style='width:100%;' class='form-control' readonly='readonly' value=@Model.FirstOrDefault().VM_JOBackColor>
+                                                    </td>
+                                                </tr>
+
+                                            </table>
+                                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: left" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td align="left" nowrap class="auto-style5" width="auto">
+                                                        Text Colour:
+                                                    </td>
+                                                    <td align="left" class="input-group color">
+                                                        <span class="input-group-addon"><i></i></span>
+                                                        <input type='text' name='JO_BackColor' id='JO_BackColor' style='width:100%;' class='form-control' readonly='readonly' value=@Model.FirstOrDefault().VM_JOTextColor>
+                                                    </td>
+                                                </tr>
+
+                                            </table>
+
+                                        </td>
+                                    </tr>
+                                </table>
+
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </aside>
+
+    @*<table border="1" cellspacing="0" cellpadding="10">
+            <tr>
+                <td>
+                    <table border="0" style="font-family: Arial; float: left; font-size: 9pt; background-color: whitesmoke; width: auto; height: 100%; ">
+                        <tr style="background-color: #46568c; color: white; "><th align="center"><b>Part Heard Judicial Office Details</b></th></tr>
+                        <tr>
+                            <td class="auto-style12">
+                                <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: left" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td align="left" nowrap class="auto-style5" width="auto">
+                                            Judicial Officer:
+                                        </td>
+                                        <td align="left">
+                                            @Html.DisplayFor(model => Model.FirstOrDefault().VM_JOName)
+                                        </td>
+                                    </tr>
+
+                                </table>
+
+                            </td>
+
+                        </tr>
+
+                    </table>
+
+
+
+                    <table border="0" style="font-family: Arial; float: right; font-size: 9pt; background-color: whitesmoke; width: auto; height: 100%; ">
+                        <tr style="background-color: #46568c; color: white; "><th align="center"><b>Part Heard Judicial Office Colours</b></th></tr>
+                        <tr>
+                            <td class="auto-style12">
+                                <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: left" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td align="left" nowrap class="auto-style5" width="auto">
+                                            Background Colour:
+                                        </td>
+                                        <td align="left" class="input-group color">
+                                            <span class="input-group-addon"><i></i></span>
+                                            <input type='text' name='JO_BackColor' id='JO_BackColor' style='width:100%;' class='form-control' readonly='readonly' value= @Model.FirstOrDefault().VM_JOBackColor>
+                                        </td>
+                                    </tr>
+
+                                </table>
+                                <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: left" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td align="left" nowrap class="auto-style5" width="auto">
+                                            Text Colour:
+                                        </td>
+                                        <td align="left" class="input-group color">
+                                            <span class="input-group-addon"><i></i></span>
+                                            <input type='text' name='JO_BackColor' id='JO_BackColor' style='width:100%;' class='form-control' readonly='readonly' value=@Model.FirstOrDefault().VM_JOTextColor>
+                                        </td>
+                                    </tr>
+
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+
+                </td>
+            </tr>
+        </table>*@
+}
+
+
+@*<br />*@
+
+@*<table border="1" style="font-family: Arial; float: left; font-size: 18pt; background-color: transparent;  width: auto; height: 100%; ">
+    <tr>
+        <td>*@
+<aside style="width:780px; float:left;">
+
+    @*<table cellspacing="0" cellpadding="0" border="1" style="font-family: Arial; float: left; font-size: 18pt; background-color: transparent;  width: auto; height: 100%; ">
+        <tr>
+            <td>*@
+
+                <table border="1" cellspacing="0" cellpadding="0" style="vertical-align:text-top">
+
+                    <tr>
+                        <td>
+                            <div style="overflow:auto; text-align:left; height:310px; width:100%; font-family: arial; float: left; font-size: 9pt; background-color: whitesmoke;">
+                                <table border="0" style="font-family: Arial; float: left; font-size: 9pt; background-color: whitesmoke; width: auto; height: 100%; ">
+                                    <tr style="background-color: #46568c; color: white; width: auto; height: 20px;"><th align="center"><b>Listing Rules</b></th></tr>
+                                    <tr>
+                                        <td class="auto-style12" style="vertical-align:text-top">
+                                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; height:auto; background-color: whitesmoke; float: left; vertical-align:text-top" cellspacing="0" cellpadding="0">
+                                                <thead style="vertical-align:top">
+                                                    <tr>
+                                                        <th>@Html.DisplayNameFor(model => model.VM_Date)</th>
+                                                        <th>@Html.DisplayNameFor(model => model.VM_Limit)</th>
+                                                        <th>@Html.DisplayNameFor(model => model.VM_Current)</th>
+                                                        <th>@Html.DisplayNameFor(model => model.VM_Available)</th>
+                                                        <td>&nbsp</td>
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody style="vertical-align:top">
+                                                    @if (Model != null)
+                                                    {
+                                                        int b = 0;
+                                                        foreach (var item in Model)
+                                                        {
+                                                            b = b + 1;
+                                                            if (item.VM_Date.HasValue)
+                                                            {
+                                                                <tr id="1" class="JOListDetails" style="background-color:   @(b % 2 == 0 ? "threedlightshadow": "whitesmoke") ">
+                                                                    @*<td>@Html.DisplayFor(modelItem => item.VM_Date.Value.DayOfWeek)  &nbsp; @Html.DisplayFor(modelItem => item.VM_Date)</td>*@
+                                                                    @* <td>@Html.DisplayFor(modelItem => item.VM_Date.HasValue ? item.VM_Date.Value.ToString("dd") : "") &nbsp; @Html.DisplayFor(modelItem => item.VM_Date)</td>*@
+                                                                    @*<td>@Html.DisplayFor(modelItem => item.VM_Date) &ndash; @Html.DisplayFor(modelItem => item.VM_Date) </td>*@
+                                                                    <td>@Html.DisplayFor(modelItem => item.VM_Date) </td>
+                                                                    <td>@Html.DisplayFor(modelItem => item.VM_Limit) </td>
+                                                                    <td>@Html.DisplayFor(modelItem => item.VM_Current) </td>
+                                                                    <td>@Html.DisplayFor(modelItem => item.VM_Available) </td>
+                                                                    <td>@Html.ActionLink("Edit", "Edit", "JudicialOfficerListing", new { joid = item.VM_Id, @class = "btn btn-primary", @style = "width:100px" }, null) &nbsp;&nbsp;&nbsp; @Html.ActionLink("Delete", "Delete", "JudicialOfficerListing", new { joid = item.VM_Id, @class = "btn btn-primary", @style = "width:100px" }, null) </td>
+                                                                </tr>
+                                                            }
+                                                        }
+                                                    }
+
+                                                </tbody>
+                                            </table>
+
+                                        </td>
+
+                                    </tr>
+
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+                        @*</td>
+                    </tr>
+                </table>*@
+</aside>
+
+    @*</td>
+        </tr>
+        </table>*@
+    @*<table id="judicialofficersListings" border="0" cellpadding="0" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.VM_Date)</th>
+                    <th>@Html.DisplayNameFor(model => model.VM_Limit)</th>
+                    <th>@Html.DisplayNameFor(model => model.VM_Current)</th>
+                    <th>@Html.DisplayNameFor(model => model.VM_Available)</th>
+                    <td>&nbsp</td>
+                </tr>
+            </thead>
+
+            <tbody>
+                @if (Model != null)
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr>
+
+                            <td>@Html.DisplayFor(modelItem => item.VM_Date.DayOfWeek) &nbsp; @Html.DisplayFor(modelItem => item.VM_Date)</td>
+                            <td>@Html.DisplayFor(modelItem => item.VM_Limit) </td>
+                            <td>@Html.DisplayFor(modelItem => item.VM_Current) </td>
+                            <td>@Html.DisplayFor(modelItem => item.VM_Available) </td>
+                            <td>@Html.ActionLink("Edit", "Edit", "JudicialOfficerListing", new { id = item.VM_Id, @class = "btn btn-primary", @style = "width:100px" }, null) &nbsp;&nbsp;&nbsp; @Html.ActionLink("Delete", "Delete", "JudicialOfficer", new { id = item.VM_Id, @class = "btn btn-primary", @style = "width:100px" }, null) </td>
+
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>*@

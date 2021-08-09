@@ -1,0 +1,194 @@
+﻿@model Diaries.Models.DayNote
+
+@{
+    ViewBag.Title = "Edit Day Note";
+}
+
+
+<h3>Edit Day Note</h3>
+<p></p>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.DN_ID)
+    @Html.HiddenFor(model => model.CreatedBy)
+    @Html.HiddenFor(model => model.CreatedOn)
+    @Html.HiddenFor(model => model.Deleted)
+
+    <p style="font-size:inherit;color:red">@ViewData["ErrorMessage"]</p>
+
+    <table border="0">
+        <tr>
+            <td class="auto-style16">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                @Html.ActionLink("Delete", "Delete", "DayNote", new { id = @Model.DN_ID}, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Cancel", "Index", "DayNote", new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    </table>
+
+    <p></p>
+
+
+    <table border="1" cellspacing="0" cellpadding="10">
+        <tr>
+            <td>
+                <table border="0" style="font-family: Arial; float: left; font-size: 9pt; background-color: whitesmoke; width: auto; height: 100%; ">
+                    <tr style="background-color: #46568c; color: white; "><th align="center"><b>Day Notes</b></th></tr>
+                    <tr>
+                        <td class="auto-style12">
+
+                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: left" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td align="left" nowrap class="auto-style5" width="auto">
+                                        Start Date:
+                                    </td>
+                                    <td align="left">
+                                        <input type="datetime" readonly="readonly" id="DN_Start_Date" name="DN_Start_Date" value=@Model.DN_Start_Date.ToString("dd-MM-yyyy") style="width:100%; height:100%; font-size:12px; padding-top:5px;" />
+                                        @Html.ValidationMessageFor(model => model.DN_Start_Date)
+                                    </td>
+                                </tr>
+
+                            </table>
+
+                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: ThreeDLightShadow; float: left" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td align="left" nowrap class="auto-style5" width="auto">
+                                        End Date:
+                                    </td>
+                                    <td align="left">
+                                        <input type="datetime" readonly="readonly" id="DN_End_Date" name="DN_End_Date" value=@Model.DN_End_Date.ToString("dd-MM-yyyy") style="width:100%; height:100%; font-size:12px; padding-top:5px;" />
+                                        @Html.ValidationMessageFor(model => model.DN_End_Date)
+                                    </td>
+                                </tr>
+
+                            </table>
+
+
+                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: left" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td align="left" nowrap class="auto-style5" width="auto">
+                                        Apply To:
+                                    </td>
+                                    <td align="left">
+
+                                        @Html.DropDownList("SubmittedDiaries", new MultiSelectList(Model.AvailableDiaries, "D_id", "D_DiaryName",
+                                                    Model.DefaultEditableDiaries.Select(m => m.D_id)),
+                                                    new { multiple = "multiple", @class = "multiselect", @style = "width:100px" })
+                                    </td>
+                                </tr>
+
+                            </table>
+
+                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: ThreeDLightShadow; float: left" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td align="left" nowrap class="auto-style5" width="auto">
+                                        Note:
+                                    </td>
+                                    <td align="left">
+                                        @Html.EditorFor(model => model.DN_Note)
+                                        @Html.ValidationMessageFor(model => model.DN_Note)
+                                    </td>
+                                </tr>
+
+                            </table>
+
+                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: ThreeDLightShadow; float: left" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td align="left" nowrap class="auto-style5" width="auto">
+                                        Active:
+                                    </td>
+                                    <td align="left">
+                                        @*@if (Model.IsActive == true)
+                                        {
+                                            @*<input type="checkbox" disabled="disabled" readonly="readonly" name="IsActive" id="IsActive" value=true checked="checked" />
+                                            <input type="checkbox" name="IsActive" id="IsActive" value=true checked="checked" />
+                                        }
+                                        else
+                                        {
+                                            <input type="checkbox" name="IsActive" id="IsActive" value=false />
+                                        }*@
+                                        @Html.EditorFor(model => model.IsActive)
+                                        @Html.ValidationMessageFor(model => model.IsActive)
+                                    </td>
+                                </tr>
+
+                            </table>
+
+
+
+
+                        </td>
+
+                    </tr>
+
+                </table>
+
+                <table border="0" style="font-family: Arial; float: right; font-size: 9pt; background-color: whitesmoke; width: auto; height: 100%; ">
+                    <tr style="background-color: #46568c; color: white; "><th align="center"><b>Colours</b></th></tr>
+                    <tr>
+                        <td class="auto-style12">
+                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: left" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td align="left" nowrap class="auto-style5" width="auto">
+                                        Background Colour:
+                                    </td>
+                                    <td align="left" class="input-group color">
+                                        <span class="input-group-addon"><i></i></span>
+
+                                        @Html.ColorPickAreaFor(Model.DN_BackColor, Model.DN_BackColor, "DN_BackColor")
+                                        @Html.ValidationMessageFor(model => model.DN_BackColor)
+
+                                        @*<input type="text" name=model. value="" class="form-control" />*@
+                                    </td>
+                                </tr>
+
+                            </table>
+                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: left" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td align="left" nowrap class="auto-style5" width="auto">
+                                        Text Colour:
+                                    </td>
+                                    <td align="left" class="input-group color">
+                                        <span class="input-group-addon"><i></i></span>
+                                        @Html.ColorPickAreaFor(Model.DN_TextColor, Model.DN_TextColor, "DN_TextColor")
+                                        @Html.ValidationMessageFor(model => model.DN_TextColor)
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <div>
+    @section DocumentLog
+{
+        <table border="1" cellspacing="0" cellpadding="4" style="font-family: Arial; font-size: 10pt; width: 100%; background-color: threedlightshadow;">
+            <tr>
+                <td align="left" nowrap class="auto-style14">
+                    Record modified by @Model.CreatedBy on @Model.CreatedOn.ToString("dd-MM-yyyy")
+                </td>
+            </tr>
+        </table>
+
+        <table border="1" cellspacing="0" cellpadding="4" style="font-family: Arial; font-size: 10pt; width: 100%; background-color: threedlightshadow;">
+            <tr>
+                <td align="left" nowrap class="auto-style14">
+                    Record created by @Model.ModifiedBy on @Model.ModifiedOn.ToString("dd-MM-yyyy")
+                </td>
+            </tr>
+        </table>
+    }
+
+</div>
+    
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+
+}

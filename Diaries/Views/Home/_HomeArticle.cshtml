@@ -1,0 +1,46 @@
+﻿@model Diaries.Models.V_HomePage
+
+<article id="article">
+
+
+    <div id="tabsLists1">
+        <ul>
+            <li>
+                <button class=" btn-default" id="PrevListSelectionList">Prev</button>
+            </li>
+            <li><a href="#tabs-1">Week</a></li>
+            <li><a href="#tabs-2">Day</a></li>
+            <li><button class="btn-default">Date Picker</button></li>
+            <li style="float:right;"><button class="btn-default" id="NextListSelectionList">Next</button></li>
+        </ul>
+        @Html.Partial("_TabsList", Model)
+
+    </div>
+
+
+
+    <div style="padding-top:30px;"></div>
+
+    <div id="tabsDetails1">
+        <ul>
+            <li><button class="btn-default" id="PrevListSelectionDetail">Prev</button></li>
+            <li><a href="#tabs-4">Day</a></li>
+            <li><a href="#tabs-3">Week</a></li>
+            
+            <li>
+                <label style="  margin: 0 10px 0 30px;" for="FilterList">Filter</label>
+                <select name="FilterList" id="FilterList">
+                    <option>List Type</option>
+                    <option>Category</option>
+                    <option>Juditial Officer</option>
+                    <option>View All</option>
+                </select>
+            </li>
+            <li style="float:right;"><button class="btn-default" id="NextListSelectionDetail">Next</button></li>
+        </ul>
+        @Html.Partial("_TabsDetails", Model)
+
+    </div>
+
+</article>
+

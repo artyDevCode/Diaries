@@ -1,0 +1,216 @@
+﻿@model  Diaries.Models.V_Diary_List_Details
+
+<head>
+    <title>Diary PartialView</title>
+</head>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div id="ListDetailSection" class="AjaxCall">
+        <div id="ListDetailTable" class="AjaxCall"></div>
+
+
+
+        <table border="1" cellspacing="0" cellpadding="10">
+            <tr>
+                <td>
+                    <table border="0" style="font-family: Arial; float: left; font-size: 9pt; background-color: whitesmoke; width: auto; height: 100%; ">
+                        <tr style="background-color: #46568c; color: white;"><th align="center"><b>List Type Details</b></th></tr>
+                        <tr>
+                            <td class="auto-style12">
+
+                                @if (Model != null)
+                                {
+                                <input class="text-box single-line" id="hid_Did" name="hid_Did" type="text" value=@Model.D_id hidden="hidden" />
+                                <input class="text-box single-line" id="hid_DLid" name="hid_Did" type="text" value=@Model.D_L_id hidden="hidden" />
+                                    
+                                <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: threedlightshadow;" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td align="left" nowrap class="auto-style5">
+                                            List:
+                                        </td>
+                                        <td align="left">
+                                            @Html.EditorFor(model => model.D_L_Lists)
+                                            @*<input class="text" data-val="true" data-val-required="The List Name field is required." id="D_L_Lists" name="D_L_Lists" type="text" value=@Model.D_L_Lists />*@
+                                            <span class="field-validation-valid" data-valmsg-for="D_L_Lists" data-valmsg-replace="true"></span>
+                                        </td>
+                                    </tr>
+
+                                </table>
+                                <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke;" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td align="left" nowrap class="auto-style5">
+                                            Short Name:
+                                        </td>
+                                        <td align="left">
+                                            @Html.EditorFor(model => model.D_L_ShortName)
+                                            @*<input class="text-box single-line" data-val="true" data-val-required="The List Short Name field is required." id="D_L_ShortName" name="D_L_ShortName" type="text" value=@Model.D_L_ShortName />*@
+                                            <span class="field-validation-valid" data-valmsg-for="D_L_ShortName" data-valmsg-replace="true"></span>
+                                        </td>
+                                    </tr>
+
+                                </table>
+
+                                <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke;" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td align="left" nowrap class="auto-style5">
+                                            Rules:
+                                        </td>
+                                        <td align="left">
+                                            @Html.EditorFor(model => model.D_L_Rules) 
+                                            @Html.ValidationMessageFor(model => model.D_L_Rules)
+                                            @*<input type="radio" name="D_L_Rules" value="Yes" style="width:20px" />Yes
+                                            &nbsp;    &nbsp; &nbsp; &nbsp;
+                                            <input type="radio" name="D_L_Rules" value="No" style="width:20px" checked="checked" />No
+                                            <span class="field-validation-valid" data-valmsg-for="D_L_Rules" data-valmsg-replace="true"></span>*@
+                                        </td>
+                                    </tr>
+
+                                </table>
+                                <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: threedlightshadow;" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td align="left" nowrap class="auto-style5">
+                                            Type:
+                                        </td>
+                                        <td align="left">
+                                            @Html.DropDownListFor(model => model.D_L_Type, new SelectList(Model.D_L_Select_Type, "Value", "Text", Model.D_L_Type))
+                                            @Html.ValidationMessageFor(model => model.D_L_Type)
+                                        </td>
+                                    </tr>
+
+                                </table>
+                                <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke;" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td align="left" nowrap class="auto-style5">
+                                            Rules Apply To:
+                                        </td>
+                                        <td align="left">
+                                            @Html.DropDownListFor(model => model.D_L_RulesApplyTo, new SelectList(Model.D_L_Select_RulesApplyTo, "Value", "Text", Model.D_L_RulesApplyTo))
+                                            @Html.ValidationMessageFor(model => model.D_L_RulesApplyTo)
+                                        </td>
+                                    </tr>
+
+                                </table>
+                                <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: threedlightshadow;" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td align="left" nowrap class="auto-style5">
+                                            Vacate Options:
+                                        </td>
+                                        <td align="left">
+                                            @Html.DropDownListFor(model => model.D_L_VacateOptions, new SelectList(Model.D_L_Select_VacateOptions, "Value", "Text", Model.D_L_VacateOptions))
+                                            @Html.ValidationMessageFor(model => model.D_L_VacateOptions)
+                                        </td>
+                                    </tr>
+
+                                </table>
+                                }
+
+                            </td>
+
+                        </tr>
+
+                    </table>
+
+
+                    <table border="0" style="font-family: Arial; float: right; font-size: 9pt; background-color: whitesmoke; width: auto; height: 100%; ">
+                        <tr style="background-color: #46568c; color: white; "><th align="center"><b>List Type Configuration</b></th></tr>
+                        <tr>
+                            <td class="auto-style12">
+                                @if (Model != null)
+                                {
+                                <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: right" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td align="left" nowrap class="auto-style5" width="auto">
+                                            Background Row Colour:
+                                        </td>
+                                        <td align="left" class="input-group color">
+                                            <span class="input-group-addon"><i></i></span>
+                                            <input type="text" value=@Model.D_L_Bckground_row_Colour id="D_L_Bckground_row_Colour" name="D_L_Bckground_row_Colour" class="form-control" />
+                                            @Html.ValidationMessageFor(model => model.D_L_Bckground_row_Colour)
+                                        </td>
+                                    </tr>
+
+                                </table>
+                                <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: threedlightshadow; float: right" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td align="left" nowrap class="auto-style5" width="auto">
+                                            Text Colour:
+                                        </td>
+                                        <td align="left" class="input-group color">
+                                            <span class="input-group-addon"><i></i></span>
+                                            <input type="text" value=@Model.D_L_Text_Colour id="D_L_Text_Colour" name="D_L_Text_Colour" class="form-control" />
+                                            @Html.ValidationMessageFor(model => model.D_L_Text_Colour)
+                                        </td>
+                                    </tr>
+
+                                </table>
+                                <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: right" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td align="left" nowrap class="auto-style5" width="auto">
+                                            Mandatory Fields:
+                                        </td>
+                                        <td align="left">
+
+                                            @Html.EditorFor(model => model.D_L_MandatoryCategory) Category
+                                            @Html.ValidationMessageFor(model => model.D_L_MandatoryCategory)
+
+                                            @Html.EditorFor(model => model.D_L_MandatoryDuration) Duration
+                                            @Html.ValidationMessageFor(model => model.D_L_MandatoryDuration)
+
+                                            @Html.EditorFor(model => model.D_L_MandatoryLocation) Location
+                                            @Html.ValidationMessageFor(model => model.D_L_MandatoryLocation)
+
+                                            @Html.EditorFor(model => model.D_L_MandatoryStartTime) Start Time
+                                            @Html.ValidationMessageFor(model => model.D_L_MandatoryStartTime)
+
+                                        </td>
+                                    </tr>
+
+                                </table>
+                                <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: threedlightshadow; float: right" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td align="left" nowrap class="auto-style5" width="auto">
+                                            Default Start Time:
+                                        </td>
+                                        <td align="left">
+                                            <input type='text' name='D_L_Default_StartTime' id='D_L_Default_StartTime' data-date-format='HH:mm' style='width:100%;' class='input-small' value=@Model.D_L_Default_StartTime>
+                                            <span class="field-validation-valid" data-valmsg-for="D_L_Default_StartTime" data-valmsg-replace="true"></span>
+                                        </td>
+                                    </tr>
+                                </table>
+                                }
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div id="ListingActions" class="AjaxCall" style="height: 100%; width: auto; font-family: arial; float: right; font-size: 9pt; background-color: none;">
+
+                        <table border="0" style="font-family: Arial; float: right; font-size: 9pt; background-color: transparent; width: auto; height: 100%; ">
+                            <tr style="background-color: transparent; color: white; "><th align="center"><b></b></th></tr>
+                            <tr>
+                                <td class="auto-style12">
+
+                                    <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: transparent; float: right;">
+                                        <tr>
+                                            <td align="left" style="padding:10px;">
+                                                <input type="button" id="AddList" value="Add List" class="btn btn-primary" />
+                                                <input type="button" id="SaveList" value="Save List" class="btn btn-success" />
+                                                <input type="button" id="CancelList" value="Cancel List" class="btn btn-danger" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                   </div>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+
+}

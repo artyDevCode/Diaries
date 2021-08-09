@@ -1,0 +1,582 @@
+﻿@model Diaries.Models.V_HomePage
+<div id="tabsDetails" class="AjaxCall" style=" height:500px; overflow:scroll; width:100%; ">
+
+    <div id="tabs-3">
+        <section>
+            <div>
+                <table border="0" style="width:230px; float:left; outline: 5px solid white;" data-detailsday3="Monday">
+                    <tr class="tableDetails" data-detaildayhdr3="Monday" style="background-color: #46568c; color: white;"><th align="center"><b>Monday @Model.V_HomePage_DiaryListDetails.Where(r => r.V_H_DiaryListDetails_DateCreated.DayOfWeek == DayOfWeek.Monday).Select(r => r.V_H_DiaryListDetails_DateCreated.ToShortDateString()).First().ToString()</b></th></tr>
+
+                    @{
+                        int Monday3 = 0;
+
+                        foreach (var item in Model.V_HomePage_NSDays)
+                        {
+                            Monday3 = Monday3 + 1;
+                            <tr class="ListDateDetails" style="background-color: @(Monday3 % 2 == 0 ? "threedlightshadow" : "whitesmoke") ; color:red;">
+                                <td>
+                                    @item.V_H_NSDays_SName
+                                    R: @item.V_H_NSDays_Reason
+                                </td>
+                            </tr>
+                        }
+                        foreach (var item in Model.V_HomePage_DayNotes)
+                        {
+                            Monday3 = Monday3 + 1;
+                            <tr class="ListDateDetails" style="background-color: @(Monday3 % 2 == 0 ? "threedlightshadow" : "whitesmoke") ; color:green;">
+                                <td>
+                                    @item.V_H_DayNotes_SName
+                                    N: @item.V_H_DayNotes_Notes
+                                </td>
+                            </tr>
+                        }
+                        foreach (var item in Model.V_HomePage_Cases)
+                        {
+                            Monday3 = Monday3 + 1;
+                            <tr style="background-color: white; color: black;"><th align="center"><b>@item.V_H_Case_SName</b></th></tr>
+                            <tr class="ListDateDetails" style="background-color:   @(Monday3 % 2 == 0 ? "threedlightshadow" : "whitesmoke") ">
+                                <td>
+
+                                    MC: @item.V_H_Case_MajorChange
+                                    S: @item.V_H_Case_Solicitor
+                                    @item.V_H_Case_Location
+                                    @item.V_H_Case_Category
+                                    Notes: @item.V_H_Case_Notes
+                                    A: @item.V_H_Case_Accused
+                                    @item.V_H_Case_Number
+                                    I: @item.V_H_Case_Informant
+                                    @item.V_H_Case_NoOfDays
+                                    Joff: @item.V_H_Case_JudicialOfficer
+                                    @item.V_H_Case_StartTime
+                                    Date: @item.V_H_Case_DateFrom
+                                    @item.V_H_Case_DateTo
+                                    @item.V_H_Case_Location
+                                    @foreach (var items in item.V_H_Case_Flag)
+                                    {
+                                        @items.F_Name
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+
+                <table border="0" style="width:230px; float:left; outline: 5px solid white;" data-detailsday3="Tuesday">
+                    <tr class="tableDetails" data-detaildayhdr3="Tuesday" style="background-color: #46568c; color: white;"><th align="center"><b>Tuesday @Model.V_HomePage_DiaryListDetails.Where(r => r.V_H_DiaryListDetails_DateCreated.DayOfWeek == DayOfWeek.Tuesday).Select(r => r.V_H_DiaryListDetails_DateCreated.ToShortDateString()).First().ToString()</b></th></tr>
+                    @{
+                        int Tuesday3 = 0;
+                        foreach (var item in Model.V_HomePage_NSDays)
+                        {
+                            Tuesday3 = Tuesday3 + 1;
+                            <tr class="ListDateDetails" style="background-color: @(Tuesday3 % 2 == 0 ? "threedlightshadow" : "whitesmoke") ; color:red;">
+                                <td>
+                                    @item.V_H_NSDays_SName
+                                    R: @item.V_H_NSDays_Reason
+                                </td>
+                            </tr>
+                        }
+                        foreach (var item in Model.V_HomePage_DayNotes)
+                        {
+                            Tuesday3 = Tuesday3 + 1;
+                            <tr class="ListDateDetails" style="background-color: @(Tuesday3 % 2 == 0 ? "threedlightshadow" : "whitesmoke") ; color:green;">
+                                <td>
+                                    @item.V_H_DayNotes_SName
+                                    N: @item.V_H_DayNotes_Notes
+                                </td>
+                            </tr>
+                        }
+                        foreach (var item in Model.V_HomePage_Cases)
+                        {
+                            Tuesday3 = Tuesday3 + 1;
+                            <tr style="background-color: white; color: black;"><th align="center"><b>@item.V_H_Case_SName</b></th></tr>
+                            <tr class="ListDateDetails" style="background-color:   @(Tuesday3 % 2 == 0 ? "threedlightshadow" : "whitesmoke") ">
+                                <td>
+
+                                    MC: @item.V_H_Case_MajorChange
+                                    S: @item.V_H_Case_Solicitor
+                                    @item.V_H_Case_Location
+                                    @item.V_H_Case_Category
+                                    Notes: @item.V_H_Case_Notes
+                                    A: @item.V_H_Case_Accused
+                                    @item.V_H_Case_Number
+                                    I: @item.V_H_Case_Informant
+                                    @item.V_H_Case_NoOfDays
+                                    Joff: @item.V_H_Case_JudicialOfficer
+                                    @item.V_H_Case_StartTime
+                                    Date: @item.V_H_Case_DateFrom
+                                    @item.V_H_Case_DateTo
+                                    @item.V_H_Case_Location
+                                    @foreach (var items in item.V_H_Case_Flag)
+                                    {
+                                        @items.F_Name
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    }
+
+
+                </table>
+
+                <table border="0" style="width:230px; float:left; outline: 5px solid white;" data-detailsday3="Wednesday">
+                    <tr class="tableDetails" data-detaildayhdr3="Wednesday" style="background-color: #46568c; color: white;"><th align="center"><b>Wednesday @Model.V_HomePage_DiaryListDetails.Where(r => r.V_H_DiaryListDetails_DateCreated.DayOfWeek == DayOfWeek.Wednesday).Select(r => r.V_H_DiaryListDetails_DateCreated.ToShortDateString()).First().ToString()</b></th></tr>
+
+                    @{
+                        int Wednesday3 = 0;
+                        foreach (var item in Model.V_HomePage_NSDays)
+                        {
+                            Wednesday3 = Wednesday3 + 1;
+                            <tr class="ListDateDetails" style="background-color: @(Wednesday3 % 2 == 0 ? "threedlightshadow" : "whitesmoke") ; color:red;">
+                                <td>
+                                    @item.V_H_NSDays_SName
+                                    R: @item.V_H_NSDays_Reason
+                                </td>
+                            </tr>
+                        }
+                        foreach (var item in Model.V_HomePage_DayNotes)
+                        {
+                            Wednesday3 = Wednesday3 + 1;
+                            <tr class="ListDateDetails" style="background-color: @(Wednesday3 % 2 == 0 ? "threedlightshadow" : "whitesmoke") ; color:green;">
+                                <td>
+                                    @item.V_H_DayNotes_SName
+                                    N: @item.V_H_DayNotes_Notes
+                                </td>
+                            </tr>
+                        }
+                        foreach (var item in Model.V_HomePage_Cases)
+                        {
+                            Wednesday3 = Wednesday3 + 1;
+                            <tr style="background-color: white; color: black;"><th align="center"><b>@item.V_H_Case_SName</b></th></tr>
+                            <tr class="ListDateDetails" style="background-color:   @(Wednesday3 % 2 == 0 ? "threedlightshadow" : "whitesmoke") ">
+                                <td>
+
+                                    MC: @item.V_H_Case_MajorChange
+                                    S: @item.V_H_Case_Solicitor
+                                    @item.V_H_Case_Location
+                                    @item.V_H_Case_Category
+                                    Notes: @item.V_H_Case_Notes
+                                    A: @item.V_H_Case_Accused
+                                    @item.V_H_Case_Number
+                                    I: @item.V_H_Case_Informant
+                                    @item.V_H_Case_NoOfDays
+                                    Joff: @item.V_H_Case_JudicialOfficer
+                                    @item.V_H_Case_StartTime
+                                    Date: @item.V_H_Case_DateFrom
+                                    @item.V_H_Case_DateTo
+                                    @item.V_H_Case_Location
+                                    @foreach (var items in item.V_H_Case_Flag)
+                                    {
+                                        @items.F_Name
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    }
+
+                </table>
+
+                <table border="0" style="width:230px; float:left; outline: 5px solid white;" data-detailsday3="Thursday">
+                    <tr class="tableDetails" data-detaildayhdr3="Thursday" style="background-color: #46568c; color: white;"><th align="center"><b>Thursday @Model.V_HomePage_DiaryListDetails.Where(r => r.V_H_DiaryListDetails_DateCreated.DayOfWeek == DayOfWeek.Thursday).Select(r => r.V_H_DiaryListDetails_DateCreated.ToShortDateString()).First().ToString()</b></th></tr>
+
+                    @{
+                        int Thursday3 = 0;
+                        foreach (var item in Model.V_HomePage_NSDays)
+                        {
+                            Thursday3 = Thursday3 + 1;
+                            <tr class="ListDateDetails" style="background-color: @(Thursday3 % 2 == 0 ? "threedlightshadow" : "whitesmoke") ; color:red;">
+                                <td>
+                                    @item.V_H_NSDays_SName
+                                    R: @item.V_H_NSDays_Reason
+                                </td>
+                            </tr>
+                        }
+                        foreach (var item in Model.V_HomePage_DayNotes)
+                        {
+                            Thursday3 = Thursday3 + 1;
+                            <tr class="ListDateDetails" style="background-color: @(Thursday3 % 2 == 0 ? "threedlightshadow" : "whitesmoke") ; color:green;">
+                                <td>
+                                    @item.V_H_DayNotes_SName
+                                    N: @item.V_H_DayNotes_Notes
+                                </td>
+                            </tr>
+                        }
+                        foreach (var item in Model.V_HomePage_Cases)
+                        {
+                            Thursday3 = Thursday3 + 1;
+                            <tr style="background-color: white; color: black;"><th align="center"><b>@item.V_H_Case_SName</b></th></tr>
+                            <tr class="ListDateDetails" style="background-color:   @(Thursday3 % 2 == 0 ? "threedlightshadow" : "whitesmoke") ">
+                                <td>
+
+                                    MC: @item.V_H_Case_MajorChange
+                                    S: @item.V_H_Case_Solicitor
+                                    @item.V_H_Case_Location
+                                    @item.V_H_Case_Category
+                                    Notes: @item.V_H_Case_Notes
+                                    A: @item.V_H_Case_Accused
+                                    @item.V_H_Case_Number
+                                    I: @item.V_H_Case_Informant
+                                    @item.V_H_Case_NoOfDays
+                                    Joff: @item.V_H_Case_JudicialOfficer
+                                    @item.V_H_Case_StartTime
+                                    Date: @item.V_H_Case_DateFrom
+                                    @item.V_H_Case_DateTo
+                                    @item.V_H_Case_Location
+                                    @foreach (var items in item.V_H_Case_Flag)
+                                    {
+                                        @items.F_Name
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    }
+
+                </table>
+
+
+
+                <table border="0" style="width:230px; float:left; outline: 5px solid white;" data-detailsday3="Friday">
+                    <tr class="tableDetails" data-detaildayhdr3="Friday" style="background-color: #46568c; color: white;"><th align="center"><b>Friday @Model.V_HomePage_DiaryListDetails.Where(r => r.V_H_DiaryListDetails_DateCreated.DayOfWeek == DayOfWeek.Friday).Select(r => r.V_H_DiaryListDetails_DateCreated.ToShortDateString()).First().ToString()</b></th></tr>
+
+                    @{
+                        int Friday3 = 0;
+                        foreach (var item in Model.V_HomePage_NSDays)
+                        {
+                            Friday3 = Friday3 + 1;
+                            <tr class="ListDateDetails" style="background-color: @(Friday3 % 2 == 0 ? "threedlightshadow" : "whitesmoke") ; color:red;">
+                                <td>
+                                    @item.V_H_NSDays_SName
+                                    R: @item.V_H_NSDays_Reason
+                                </td>
+                            </tr>
+                        }
+                        foreach (var item in Model.V_HomePage_DayNotes)
+                        {
+                            Friday3 = Friday3 + 1;
+                            <tr class="ListDateDetails" style="background-color: @(Friday3 % 2 == 0 ? "threedlightshadow" : "whitesmoke") ; color:green;">
+                                <td>
+                                    @item.V_H_DayNotes_SName
+                                    N: @item.V_H_DayNotes_Notes
+                                </td>
+                            </tr>
+                        }
+                        foreach (var item in Model.V_HomePage_Cases)
+                        {
+                            Friday3 = Friday3 + 1;
+                            <tr style="background-color: white; color: black;"><th align="center"><b>@item.V_H_Case_SName</b></th></tr>
+                            <tr class="ListDateDetails" style="background-color:   @(Friday3 % 2 == 0 ? "threedlightshadow" : "whitesmoke") ">
+                                <td>
+
+                                    MC: @item.V_H_Case_MajorChange
+                                    S: @item.V_H_Case_Solicitor
+                                    @item.V_H_Case_Location
+                                    @item.V_H_Case_Category
+                                    Notes: @item.V_H_Case_Notes
+                                    A: @item.V_H_Case_Accused
+                                    @item.V_H_Case_Number
+                                    I: @item.V_H_Case_Informant
+                                    @item.V_H_Case_NoOfDays
+                                    Joff: @item.V_H_Case_JudicialOfficer
+                                    @item.V_H_Case_StartTime
+                                    Date: @item.V_H_Case_DateFrom
+                                    @item.V_H_Case_DateTo
+                                    @item.V_H_Case_Location
+                                    @foreach (var items in item.V_H_Case_Flag)
+                                    {
+                                        @items.F_Name
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+        </section>
+    </div>
+    <div id="tabs-4">
+        <section>
+            <div>
+                <table id="TableDetailsMonday" border="0" style="width:100%; float:left; outline: 5px solid white;" data-detailsday4="Monday">
+                    <tr class="tableDetails" data-detaildayhdr4="Monday" style="background-color: #46568c; color: white;">
+                        <th align="center"><b>Monday @Model.V_HomePage_DiaryListDetails.Where(r => r.V_H_DiaryListDetails_DateCreated.DayOfWeek == DayOfWeek.Monday).Select(r => r.V_H_DiaryListDetails_DateCreated.ToShortDateString()).First().ToString()</b></th>
+                    </tr>
+                    @{
+                        int Monday4 = 0;
+                        foreach (var item in Model.V_HomePage_NSDays)
+                        {
+                            Monday4 = Monday4 + 1;
+                            <tr class="ListDateDetails" style="background-color: @(Monday4 % 2 == 0 ? "threedlightshadow" : "whitesmoke") ; color:red;">
+                                <td>
+                                    @item.V_H_NSDays_SName
+                                    R: @item.V_H_NSDays_Reason
+                                </td>
+                            </tr>
+                        }
+                        foreach (var item in Model.V_HomePage_DayNotes)
+                        {
+                            Monday4 = Monday4 + 1;
+                            <tr class="ListDateDetails" style="background-color: @(Monday4 % 2 == 0 ? "threedlightshadow" : "whitesmoke") ; color:green;">
+                                <td>
+                                    @item.V_H_DayNotes_SName
+                                    N: @item.V_H_DayNotes_Notes
+                                </td>
+                            </tr>
+                        }
+                        foreach (var item in Model.V_HomePage_Cases)
+                        {
+                            Monday4 = Monday4 + 1;
+                            <tr style="background-color: white; color: black;"><th align="center"><b>@item.V_H_Case_SName</b></th></tr>
+                            <tr class="ListDateDetails" style="background-color:   @(Monday4 % 2 == 0 ? "threedlightshadow" : "whitesmoke") ">
+                                <td>
+
+                                    MC: @item.V_H_Case_MajorChange
+                                    S: @item.V_H_Case_Solicitor
+                                    @item.V_H_Case_Location
+                                    @item.V_H_Case_Category
+                                    Notes: @item.V_H_Case_Notes
+                                    A: @item.V_H_Case_Accused
+                                    @item.V_H_Case_Number
+                                    I: @item.V_H_Case_Informant
+                                    @item.V_H_Case_NoOfDays
+                                    Joff: @item.V_H_Case_JudicialOfficer
+                                    @item.V_H_Case_StartTime
+                                    Date: @item.V_H_Case_DateFrom
+                                    @item.V_H_Case_DateTo
+                                    @item.V_H_Case_Location
+                                    @foreach (var items in item.V_H_Case_Flag)
+                                    {
+                                        @items.F_Name
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+                <table id="TableDetailsTuesday" hidden="hidden" border="0" style="width:100%; float:left; outline: 5px solid white;" data-detailsday4="Tuesday">
+                    <tr class="tableDetails" data-detaildayhdr4="Tuesday" style="background-color: #46568c; color: white;">
+                        <th align="center"><b>Tuesday @Model.V_HomePage_DiaryListDetails.Where(r => r.V_H_DiaryListDetails_DateCreated.DayOfWeek == DayOfWeek.Tuesday).Select(r => r.V_H_DiaryListDetails_DateCreated.ToShortDateString()).First().ToString()</b></th>
+                    </tr>
+                    @{
+                        int Tuesday4 = 0;
+                        foreach (var item in Model.V_HomePage_NSDays)
+                        {
+                            Tuesday4 = Tuesday4 + 1;
+                            <tr class="ListDateDetails" style="background-color: @(Tuesday4 % 2 == 0 ? "threedlightshadow" : "whitesmoke") ; color:red;">
+                                <td>
+                                    @item.V_H_NSDays_SName
+                                    R: @item.V_H_NSDays_Reason
+                                </td>
+                            </tr>
+                        }
+                        foreach (var item in Model.V_HomePage_DayNotes)
+                        {
+                            Tuesday4 = Tuesday4 + 1;
+                            <tr class="ListDateDetails" style="background-color: @(Tuesday4 % 2 == 0 ? "threedlightshadow" : "whitesmoke") ; color:green;">
+                                <td>
+                                    @item.V_H_DayNotes_SName
+                                    N: @item.V_H_DayNotes_Notes
+                                </td>
+                            </tr>
+                        }
+                        foreach (var item in Model.V_HomePage_Cases)
+                        {
+                            Tuesday4 = Tuesday4 + 1;
+                            <tr style="background-color: white; color: black;"><th align="center"><b>@item.V_H_Case_SName</b></th></tr>
+                            <tr class="ListDateDetails" style="background-color:   @(Tuesday4 % 2 == 0 ? "threedlightshadow": "whitesmoke") ">
+                                <td>
+
+                                    MC: @item.V_H_Case_MajorChange
+                                    S: @item.V_H_Case_Solicitor
+                                    @item.V_H_Case_Location
+                                    @item.V_H_Case_Category
+                                    Notes: @item.V_H_Case_Notes
+                                    A: @item.V_H_Case_Accused
+                                    @item.V_H_Case_Number
+                                    I: @item.V_H_Case_Informant
+                                    @item.V_H_Case_NoOfDays
+                                    Joff: @item.V_H_Case_JudicialOfficer
+                                    @item.V_H_Case_StartTime
+                                    Date: @item.V_H_Case_DateFrom
+                                    @item.V_H_Case_DateTo
+                                    @item.V_H_Case_Location
+                                    @foreach (var items in item.V_H_Case_Flag)
+                                    {
+                                        @items.F_Name
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+                <table id="TableDetailsWednesday" hidden="hidden" border="0" style="width:100%; float:left; outline: 5px solid white;" data-detailsday4="Wednesday">
+                    <tr class="tableDetails" data-detaildayhdr4="Wednesday" style="background-color: #46568c; color: white;">
+                        <th align="center"><b>Wednesday @Model.V_HomePage_DiaryListDetails.Where(r => r.V_H_DiaryListDetails_DateCreated.DayOfWeek == DayOfWeek.Wednesday).Select(r => r.V_H_DiaryListDetails_DateCreated.ToShortDateString()).First().ToString()</b></th>
+                    </tr>
+                    @{
+                        int Wednesday4 = 0;
+                        foreach (var item in Model.V_HomePage_NSDays)
+                        {
+                            Wednesday4 = Wednesday4 + 1;
+                            <tr class="ListDateDetails" style="background-color: @(Wednesday4 % 2 == 0 ? "threedlightshadow" : "whitesmoke") ; color:red;">
+                                <td>
+                                    @item.V_H_NSDays_SName
+                                    R: @item.V_H_NSDays_Reason
+                                </td>
+                            </tr>
+                        }
+                        foreach (var item in Model.V_HomePage_DayNotes)
+                        {
+                            Wednesday4 = Wednesday4 + 1;
+                            <tr class="ListDateDetails" style="background-color: @(Wednesday4 % 2 == 0 ? "threedlightshadow" : "whitesmoke") ; color:green;">
+                                <td>
+                                    @item.V_H_DayNotes_SName
+                                    N: @item.V_H_DayNotes_Notes
+                                </td>
+                            </tr>
+                        }
+                        foreach (var item in Model.V_HomePage_Cases)
+                        {
+                            Wednesday4 = Wednesday4 + 1;
+                            <tr style="background-color: white; color: black;"><th align="center"><b>@item.V_H_Case_SName</b></th></tr>
+                            <tr class="ListDateDetails" style="background-color:   @(Wednesday4 % 2 == 0 ? "threedlightshadow" : "whitesmoke") ">
+                                <td>
+
+                                    MC: @item.V_H_Case_MajorChange
+                                    S: @item.V_H_Case_Solicitor
+                                    @item.V_H_Case_Location
+                                    @item.V_H_Case_Category
+                                    Notes: @item.V_H_Case_Notes
+                                    A: @item.V_H_Case_Accused
+                                    @item.V_H_Case_Number
+                                    I: @item.V_H_Case_Informant
+                                    @item.V_H_Case_NoOfDays
+                                    Joff: @item.V_H_Case_JudicialOfficer
+                                    @item.V_H_Case_StartTime
+                                    Date: @item.V_H_Case_DateFrom
+                                    @item.V_H_Case_DateTo
+                                    @item.V_H_Case_Location
+                                    @foreach (var items in item.V_H_Case_Flag)
+                                    {
+                                        @items.F_Name
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+                <table id="TableDetailsThursday" hidden="hidden" border="0" style="width:100%; float:left; outline: 5px solid white;" data-detailsday4="Thursday">
+                    <tr class="tableDetails" data-detaildayhdr4="Thursday" style="background-color: #46568c; color: white;">
+                        <th align="center"><b>Thursday @Model.V_HomePage_DiaryListDetails.Where(r => r.V_H_DiaryListDetails_DateCreated.DayOfWeek == DayOfWeek.Thursday).Select(r => r.V_H_DiaryListDetails_DateCreated.ToShortDateString()).First().ToString()</b></th>
+                    </tr>
+                    @{
+                        int Thursday4 = 0;
+                        foreach (var item in Model.V_HomePage_NSDays)
+                        {
+                            Thursday4 = Thursday4 + 1;
+                            <tr class="ListDateDetails" style="background-color: @(Thursday4 % 2 == 0 ? "threedlightshadow" : "whitesmoke") ; color:red;">
+                                <td>
+                                    @item.V_H_NSDays_SName
+                                    R: @item.V_H_NSDays_Reason
+                                </td>
+                            </tr>
+                        }
+                        foreach (var item in Model.V_HomePage_DayNotes)
+                        {
+                            Thursday4 = Thursday4 + 1;
+                            <tr class="ListDateDetails" style="background-color: @(Thursday4 % 2 == 0 ? "threedlightshadow" : "whitesmoke") ; color:green;">
+                                <td>
+                                    @item.V_H_DayNotes_SName
+                                    N: @item.V_H_DayNotes_Notes
+                                </td>
+                            </tr>
+                        }
+                        foreach (var item in Model.V_HomePage_Cases)
+                        {
+                            Thursday4 = Thursday4 + 1;
+                            <tr style="background-color: white; color: black;"><th align="center"><b>@item.V_H_Case_SName</b></th></tr>
+                            <tr class="ListDateDetails" style="background-color:   @(Thursday4 % 2 == 0 ? "threedlightshadow" : "whitesmoke") ">
+                                <td>
+
+                                    MC: @item.V_H_Case_MajorChange
+                                    S: @item.V_H_Case_Solicitor
+                                    @item.V_H_Case_Location
+                                    @item.V_H_Case_Category
+                                    Notes: @item.V_H_Case_Notes
+                                    A: @item.V_H_Case_Accused
+                                    @item.V_H_Case_Number
+                                    I: @item.V_H_Case_Informant
+                                    @item.V_H_Case_NoOfDays
+                                    Joff: @item.V_H_Case_JudicialOfficer
+                                    @item.V_H_Case_StartTime
+                                    Date: @item.V_H_Case_DateFrom
+                                    @item.V_H_Case_DateTo
+                                    @item.V_H_Case_Location
+                                    @foreach (var items in item.V_H_Case_Flag)
+                                    {
+                                        @items.F_Name
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+                <table id="TableDetailsFriday" hidden="hidden" border="0" style="width:100%; float:left; outline: 5px solid white;" data-detailsday4="Friday">
+                    <tr class="tableDetails" data-detaildayhdr4="Friday" style="background-color: #46568c; color: white;">
+                        <th align="center"><b>Friday @Model.V_HomePage_DiaryListDetails.Where(r => r.V_H_DiaryListDetails_DateCreated.DayOfWeek == DayOfWeek.Friday).Select(r => r.V_H_DiaryListDetails_DateCreated.ToShortDateString()).First().ToString()</b></th>
+                    </tr>
+                    @{
+                        int Friday4 = 0;
+                        foreach (var item in Model.V_HomePage_NSDays)
+                        {
+                            Friday4 = Friday4 + 1;
+                            <tr class="ListDateDetails" style="background-color: @(Friday4 % 2 == 0 ? "threedlightshadow" : "whitesmoke") ; color:red;">                               
+                                <td>
+                                    @item.V_H_NSDays_SName
+                                    R: @item.V_H_NSDays_Reason
+                                </td>
+                            </tr>
+                        }
+                        foreach (var item in Model.V_HomePage_DayNotes)
+                        {
+                            Friday4 = Friday4 + 1;
+                            <tr class="ListDateDetails" style="background-color: @(Friday4 % 2 == 0 ? "threedlightshadow" : "whitesmoke") ; color:green;">                             
+                                <td>
+                                    @item.V_H_DayNotes_SName
+                                    N: @item.V_H_DayNotes_Notes
+                                </td>
+                            </tr>
+                        }
+                        foreach (var item in Model.V_HomePage_Cases)
+                        {
+                            Friday4 = Friday4 + 1;
+                            <tr style="background-color: white; color: black;"><th align="center"><b>@item.V_H_Case_SName</b></th></tr>
+                            <tr class="ListDateDetails" style="background-color:   @(Friday4 % 2 == 0 ? "threedlightshadow" : "whitesmoke") ">
+                                <td>
+
+                                    MC: @item.V_H_Case_MajorChange
+                                    S: @item.V_H_Case_Solicitor
+                                    @item.V_H_Case_Location
+                                    @item.V_H_Case_Category
+                                    Notes: @item.V_H_Case_Notes
+                                    A: @item.V_H_Case_Accused
+                                    @item.V_H_Case_Number
+                                    I: @item.V_H_Case_Informant
+                                    @item.V_H_Case_NoOfDays
+                                    Joff: @item.V_H_Case_JudicialOfficer
+                                    @item.V_H_Case_StartTime
+                                    Date: @item.V_H_Case_DateFrom
+                                    @item.V_H_Case_DateTo
+                                    @item.V_H_Case_Location
+                                    @foreach (var items in item.V_H_Case_Flag)
+                                    {
+                                        @items.F_Name
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+        </section>
+    </div>
+</div>
+

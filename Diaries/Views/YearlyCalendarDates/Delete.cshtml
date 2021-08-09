@@ -1,0 +1,56 @@
+﻿@model Diaries.Models.YearlyCalendarDates
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>YearlyCalendarDates</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrentStatDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CurrentStatDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrentEndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CurrentEndDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NextStatDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NextStatDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NextEndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NextEndDate)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

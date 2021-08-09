@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" charset="utf-8" />
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @*<title>@ViewBag.Title - Diaries</title>*@
+    <title>Diary Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @*<link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">*@
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:#46568c;">    
+        <div class="body-content">
+            <div class="navbar-header">
+              
+                <div class="navbar-header">
+                    <img src="~/images/diary_logo.jpg" style="padding-top:5px;" />
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav" style="font-weight:bold;">
+                  
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    @if ((ViewData["InSysAdminRole"] == "true") || (ViewData["InOwnerRole"] == "true"))
+                    {
+                        <li>@Html.ActionLink("Diary Management", "Edit", "DiaryManagement")</li>
+                        <li>@*@Html.ActionLink("Edit List Temp button", "Edit", "ListType")*@</li>
+                    }
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Diary Admin<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            @if ((ViewData["InSysAdminRole"] == "true") || (ViewData["InOwnerRole"] == "true"))
+                            { 
+                            <li>@Html.ActionLink("Judicial Officers", "Index", "JudicialOfficer")</li>
+                            <li>@Html.ActionLink("Access Groups", "Index", "Access")</li>
+                            <li>@Html.ActionLink("Day Notes", "Index", "DayNote")</li>
+                            <li>@Html.ActionLink("Non-Sitting Days", "Index", "NonSittingDay")</li>
+                            }
+                            @if ((ViewData["InSysAdminRole"] == "true"))
+                            {
+                            <li>@Html.ActionLink("Yearly Calendar Dates", "Index", "YearlyCalendarDates")</li>
+                            <li>@Html.ActionLink("Vacate Reasons", "Index", "VacateReason")</li>
+                            <li>@Html.ActionLink("Case Outcomes", "Index", "CaseOutcome")</li>
+                            @*<li>@Html.ActionLink("Delete List Types", "Index", "DeleteListType")</li>*@
+                            }
+                        </ul>
+                    </li>
+                    @if ((ViewData["InSysAdminRole"] == "true") || (ViewData["InOwnerRole"] == "true"))
+                    { 
+                        <li>@Html.ActionLink("Reports", "Index;", "Home")</li>
+                    }
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>                 
+                </ul>               
+                <p class="nav navbar-text navbar-right">Welcome, @ViewData["UserName"]</p>
+            </div>
+        </div>
+    </div>
+    <div class="body-content">
+        @RenderBody()
+
+        @RenderSection("DocumentLog", required: false) <br /> <br />
+        <footer>
+            <aside style="width:100%; float:left;">
+                <p>&copy; @DateTime.Now.Year - Diary Application<span style="float:right;"><input type="image" class="HomeFooterlogo" style="height:75px;" /></span> </p>
+            </aside>
+         </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    @*@RenderSection("DocumentLog", required: false)*@
+</body>
+</html>
+
+

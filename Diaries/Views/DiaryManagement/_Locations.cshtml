@@ -1,0 +1,88 @@
+﻿@model  IEnumerable<Diaries.Models.V_Diary_List_Locations>
+
+<head>
+    <title>List Flags Attributes PartialView</title>
+</head>
+
+<table border="0" cellspacing="0" cellpadding="10">
+    <tr>
+        <td>
+
+            <table border="1" style="font-family: Arial; float: right; font-size: 9pt; background-color: whitesmoke; width: auto; height: 100%; ">
+                <tr style="background-color: #46568c; color: white; "><th align="center"><b>Locations</b></th></tr>
+                <tr>
+                    <td class="auto-style12">
+                        @if (Model != null)
+                        {
+                            int i = 0;
+                            foreach (var item in Model)
+                            {
+                                if (i == 0)
+                                {
+                                    <span>
+                                        <input type="text" style="width:626px" id="LText" name=@item.V_L_Text value=@item.V_L_Text />
+                                        <input type="button" style="width:auto" id="AddLocation" value="Add Location" class="btn btn-primary" />
+
+                                    </span>
+                                }
+                                i++;
+                            }
+                        }
+
+                        <p style="font-family: Arial; font-size: 10pt; width: 720px; background-color: #46568c; color:white;">&nbsp;Active</p>
+
+                        <div style="overflow:auto; height:115px; width:720px; font-family: arial; float: left; font-size: 9pt; background-color: whitesmoke;">
+
+                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: white; float: left" cellspacing="0" cellpadding="0">
+                                @foreach (var item in Model)
+                                {
+                                    if (item.V_L_Deleted == false)
+                                    {
+                                        <tr style="background-color: threedlightshadow;">
+                                            <td>
+                                                @item.V_L_Name
+                                                <input type="button" id="@item.V_L_id" class="LUpdate" title="@item.V_L_Name" style="border:none;  float:right;" value="Update" />
+                                                <input type="button" id="@item.V_L_id" class="LMakeInactive" style="border:none;  float:right;" value="Make Inactive" />
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </table>
+
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <table border="1" style="font-family: Arial; float: right; font-size: 9pt; background-color: whitesmoke; width: auto; height: 100%; ">
+                <tr style="background-color: #46568c; color: white; "><th align="center"><b>Inactive</b></th></tr>
+                <tr>
+                    <td class="auto-style12">
+                        <div style="overflow:auto; height:115px; width:720px; font-family: arial; float: left; font-size: 9pt; background-color: whitesmoke;">
+
+                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: white; float: left" cellspacing="0" cellpadding="0">
+                                @foreach (var item in Model)
+                                {
+                                    if (item.V_L_Deleted == true)
+                                    {
+                                        <tr style="background-color: threedlightshadow;">
+                                            <td>
+                                                @item.V_L_Name
+                                                <input type="button" id="@item.V_L_id" class="LMakeActive" style="border:none;  float:right;" value="Make Active" />
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+        </td>
+    </tr>
+</table>
+
+
+
+

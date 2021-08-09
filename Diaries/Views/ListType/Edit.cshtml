@@ -1,0 +1,1130 @@
+﻿@model Diaries.Models.V_ListType_Home
+
+<script>
+    function deleteRow(rowcount) {
+        try {
+            var table = document.getElementById('dataTable');
+            var rowCount = table.rows.length;
+
+            table.deleteRow(rowcount);
+
+            //for (var i = 0; i < rowCount; i++) {
+            //    var row = table.rows[i];
+            //    var chkbox = row.cells[0].childNodes[0];
+            //    if (null != chkbox && true == chkbox.checked) {
+            //        table.deleteRow(i);
+            //        rowCount--;
+            //        i--;
+            //    }
+            //}
+        } catch (e) {
+            alert(e);
+        }
+    }
+
+</script>
+
+<style type="text/css">
+    .box {
+        /*padding: 10px;*/
+        /*display: none;*/
+        /*margin-top: 10px;*/
+        /*border: 1px solid #000;*/
+    }
+
+    .red {
+        background: #ff0000;
+    }
+
+    .green {
+        background: #00ff00;
+    }
+
+</style>
+
+<aside style="width:780px; float:left;">
+    <table border="1" style="font-family: Arial; float: left; font-size: 18pt; background-color: transparent;  width: auto; height: 100%; ">
+        <tr>
+            <td>
+
+                <table border="0" style="font-family: Arial; float: left; font-size: 9pt; background-color: transparent; width: 100%; height: 100%; ">
+                    <tr style="background-color: #46568c; color: white;"><th align="center"><b>List Details</b></tr>
+                    <tr>
+                        <td>
+
+                            <input class="text-box single-line" id="CurrentStartDay" name="CurrentStartDay" type="text" value=@Model.Current_Calendar_Start_Day hidden="hidden" />
+                            <input class="text-box single-line" id="CurrentStartMonth" name="CurrentStartDate" type="text" value=@Model.Current_Calendar_Start_Month hidden="hidden" />
+                            <input class="text-box single-line" id="CurrentStartYear" name="CurrentStartYear" type="text" value=@Model.Current_Calendar_Start_Year hidden="hidden" />
+                            <input class="text-box single-line" id="CurrentEndDay" name="CurrentEndDay" type="text" value=@Model.Current_Calendar_End_Day hidden="hidden" />
+                            <input class="text-box single-line" id="CurrentEndMonth" name="CurrentEndDate" type="text" value=@Model.Current_Calendar_End_Month hidden="hidden" />
+                            <input class="text-box single-line" id="CurrentEndYear" name="CurrentEndYear" type="text" value=@Model.Current_Calendar_End_Year hidden="hidden" />
+                            <input class="text-box single-line" id="NextStartDay" name="NextStartDay" type="text" value=@Model.Next_Calendar_Start_Day hidden="hidden" />
+                            <input class="text-box single-line" id="NextStartMonth" name="NextStartMonth" type="text" value=@Model.Next_Calendar_Start_Month hidden="hidden" />
+                            <input class="text-box single-line" id="NextStartYear" name="NextStartYear" type="text" value=@Model.Next_Calendar_Start_Year hidden="hidden" />
+                            <input class="text-box single-line" id="NextEndDay" name="NextEndDay" type="text" value=@Model.Next_Calendar_End_Day hidden="hidden" />
+                            <input class="text-box single-line" id="NextEndMonth" name="NextEndMonth" type="text" value=@Model.Next_Calendar_End_Month hidden="hidden" />
+                            <input class="text-box single-line" id="NextEndYear" name="NextEndYear" type="text" value=@Model.Next_Calendar_End_Year hidden="hidden" />
+                            <input class="text-box single-line" id="hid_Did" name="hid_Did" type="text" value=@Model.D_id hidden="hidden" />
+                            <input class="text-box single-line" id="hid_DLid" name="hid_DLid" type="text" value=@Model.D_L_id hidden="hidden" />
+
+                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: right" cellspacing="0" cellpadding="0">
+                                <tr style="font-family: Arial; font-size: 9pt; width: 100%;  float: left">
+                                    <td align="left" nowrap class="auto-style5" width="auto">
+                                        &nbsp; &nbsp; &nbsp; &nbsp;Diary:
+                                    </td>
+                                    <td align="right"><span class="ColourDiary" style="background-color: @Model.D_Bckground_Icon_Colour;"><i></i></span></td>
+                                    <td style="padding-left:5px;">
+                                        @Model.D_DiaryName
+                                    </td>
+                                </tr>
+                            </table>
+                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: threedlightshadow; float: right" cellspacing="0" cellpadding="0">
+                                <tr style="font-family: Arial; font-size: 9pt; width: 100%; background-color: threedlightshadow; float: left">
+                                    <td align="left" nowrap class="auto-style5" width="auto">
+                                        &nbsp; &nbsp; &nbsp; &nbsp;List:
+                                    </td>
+                                    <td align="right"><span class="ColourDiary" style="background-color: @Model.D_L_Bckground_Row_Colour; "><i></i></span></td>
+                                    <td style="padding-left:5px;">
+                                        @Model.D_ListName
+                                    </td>
+                                </tr>
+                            </table>
+                            <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke; float: right" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td align="left" nowrap class="auto-style5" width="auto">
+                                        &nbsp; &nbsp; &nbsp; &nbsp;Short Name:
+                                    </td>
+                                    <td align="left">
+                                        @Model.D_ListShortName
+                                    </td>
+                                </tr>
+                            </table>
+
+                            @*<table border="0" style="font-family: Arial; font-size: 9pt; float :right; width:100%; padding-top:20px; height:100%;">
+                                <tr style="background-color: transparent;">
+                                    <td align="left">
+                                        <div style="padding:10px;">
+                                            <input type="radio" id="RadioYearFilter" name="RadioYearFilter" value=@DateTime.Now.Year checked="checked" style="width:20px" />2014
+                                            &nbsp;    &nbsp; &nbsp; &nbsp;
+                                            <input type="radio" id="RadioYearFilter" name="RadioYearFilter" value=@(DateTime.Now.Year + 1) checked="checked" style="width:20px" />2015
+                                            <span class="field-validation-valid" data-valmsg-for="EventName" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>*@
+
+                            @*<table border="0" style="font-family: Arial; font-size: 9pt; float :right; width:100%; padding-top:20px; height:100%;">
+                                <tr style="background-color: transparent;">
+                                    <td align="left">
+                                        <div style="padding:5px;">
+                                            <b>Select Date Range</b>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>*@
+
+                            <div id="loading-image" style="padding:0px;">
+                                <input type="image" class="AjaxGif" style="align-content:center; background-color:transparent; height:50px;" />
+                                <div style="padding:5px;">
+                                </div>
+                            </div>
+
+                            <table border="0" style="font-family: Arial; font-size: 9pt; width:100%;  background-color: threedlightshadow;  padding-top:20px; height:100%;">
+                                <tr style="background-color: transparent;">
+                                    <td align="left">
+                                        <div style="padding:10px;">
+                                            <input type="radio" id="RadioCurrentYearFilter" name="RadioYearFilter" value=@DateTime.Now.Year checked="checked" style="width:20px" />2014
+                                            &nbsp; &nbsp; &nbsp; &nbsp;
+                                            <input type="radio" id="RadioNextYearFilter" name="RadioYearFilter" value=@(DateTime.Now.Year + 1) style="width:20px" />2015
+                                            <span class="field-validation-valid" data-valmsg-for="RadioYearFilter" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </td>
+
+                                    @if (Model.Is_Calendar_Set == false)
+                                    {
+                                        <td align="left" style="color:red">
+                                            <b> @Html.Raw("Yearly calendar dates have not been set. Please contact the system admin")</b>
+                                        </td>
+                                    }
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+
+                <div class="red box" style="font-size:12px; padding-top:10px;">
+                    <table border="0" style="font-family: Arial; font-size: 9pt; width:100%;  background-color: transparent;  padding-top:10px; height:100%;">
+                        <tr style="background-color: transparent;">
+
+                            <td align="left">
+                                <div>
+                                    From:<input type="text" id="CurrentFromDate" name="CurrentFromDate" class="datepickercurrentyear" value=@Model.Current_Calendar_Start_Date.ToString("dd/MM/yyyy") style="font-size:12px; padding-top:0px;" />
+                                </div>
+                            </td>
+                            <td align="left">
+                                To:<input type="text" id="CurrentToDate" name="CurrentToDate" class="datepickercurrentyear" value=@Model.Current_Calendar_End_Date data-val="true" data-val-length="The start end date must be a date." data-val-length-max="10" data-val-required="The start date must be entered." style="font-size:12px; padding-top:0px;" />
+                            </td>
+                            <td>
+                                &nbsp;&nbsp;&nbsp; <input type="button" id="SearchCList" value="Search" style="font-size: 12px; height: 40px; width:75px;" class="btn btn-primary" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="green box">
+
+                    <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: transparent; padding-top: 10px; height: 100%; ">
+                        <tr style="background-color: transparent;">
+                                
+                            <td align="left">
+                                <div>
+                                    From:<input type="text" id="NextFromDate" name="NextFromDate" class="datepickernextyear" value=@Model.Next_Calendar_Start_Date.ToString("dd/MM/yyyy") style ="font-size:12px; padding-top:0px;" />
+                                </div>
+                            </td>
+                            <td align="left">
+                                To:<input type="text" id="NextToDate" name="NextToDate" class="datepickernextyear" value=@Model.Next_Calendar_End_Date style ="font-size:12px; padding-top:0px;" />
+                            </td>
+                            <td>
+                                &nbsp;&nbsp;&nbsp; <input type="button" id="SearchNList" value="Search" style="font-size: 12px; height: 40px; width: 75px; padding-top: 10px; " class=" btn btn-primary" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+
+            <div style="padding-bottom:5px;"></div>
+            <div id="ListingRulesSection">
+                <div id="ListingRuleDetailTable"></div>
+            </div>
+            <div style="padding-bottom:10px;"></div>
+
+            <div id="DisableRulesSection">
+                <div id="DisableRuleDetailTable"></div>
+            </div>
+            <div style="padding-bottom:10px;"></div>
+
+
+            @*<table align="center" border="0" style="font-family: Arial;  font-size: 9pt; background-color: transparent; width: auto; height: 100%; ">
+                <tr style="background-color: #46568c; color: white;"></tr>
+                <tr>
+                    <td class="auto-style12">
+                        <table border="0" style="font-family: Arial; float: left; font-size: 9pt; background-color: transparent; width: auto; height: 100%; ">
+                            <tr style="background-color: #46568c; color: white;"><th align="center"><b>List Rule</b></tr>
+                            <tr>
+                                <td>
+                                    <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: threedlightshadow;" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td style="width:50px;">
+                                                Limit:
+                                            </td>
+                                            <td align="left" style="padding:5px;">
+                                                <input maxlength="2" style="width:20px;" class="text-box single-line" data-val="true" data-val-required="The Event Name field is required." id="DM_Diary" name="DM_Diary" type="text" value="" />
+                                                <span class="field-validation-valid" data-valmsg-for="EventName" data-valmsg-replace="true"></span>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                    <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: threedlightshadow;" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td align="left" style="padding:5px;">
+                                                <input type="checkbox" name="Rules1" value="Rules1" style="width:20px;" />Monday
+                                                &nbsp;    &nbsp; &nbsp; &nbsp;
+                                                <input type="checkbox" name="Rules2" value="Rules2" style="width:20px;" />Tuesday
+                                                &nbsp;    &nbsp; &nbsp; &nbsp;
+                                                <input type="checkbox" name="Rules3" value="Rules3" style="width:20px;">Wednesday
+                                                &nbsp;    &nbsp; &nbsp; &nbsp;
+                                                <input type="checkbox" name="Rules4" value="Rules4" style="width:20px;" />Thursday
+                                                &nbsp;    &nbsp; &nbsp; &nbsp;
+                                                <input type="checkbox" name="Rules4" value="Rules4" style="width:20px;" />Friday
+                                                <span class="field-validation-valid" data-valmsg-for="EventName" data-valmsg-replace="true"></span>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                    <table border="0" align="center" style="font-family: Arial; font-size: 9pt; width:auto; padding-top:20px; height:100%;">
+                                        <tr>
+                                            <td>
+                                                <div>Select Week Day AND/OR Custom dates  </div>
+                                                <div class="datepickerList" style="font-size:16px; padding-top:20px; align-items:center; "></div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: threedlightshadow;" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td style="width:50px;">
+                                                Notes:
+                                            </td>
+                                            <td align="left" style="padding:10px;">
+                                                <input type="text" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: transparent; float: right;">
+                                        <tr>
+                                            <td align="left" style="padding:10px;">
+                                                <input type="submit" value="Save" class="btn btn-success" />
+                                                <input type="submit" value="Cancel" class="btn btn-danger" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <table border="0" style="font-family: Arial; font-size: 9pt; background-color: transparent; width: 250px; height: auto; ">
+                            <tr style="background-color: #46568c; color: white;"><th align="center"><b>Selected Dates</b></th></tr>
+                            <tr style="background-color: #46568c; color: white; "><th align="center"><a style="word-spacing:80px; ">Day Date </a></th></tr>
+                            <tr>
+                                <td>
+                                    <div style="overflow:auto; height:400px; width:100%;  font-family: arial; font-size: 9pt;">
+                                        <table border="0" style="font-family: Arial; font-size: 9pt; width:100%; height:auto;">
+                                            <tr class="ListTypeMng" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: threedlightshadow; ">
+                                                <td align="left" width="50px">
+                                                    Monday
+                                                </td>
+                                                <td align="left" width="50px">
+                                                    13/06/2014
+                                                </td>
+                                                <td style="width:20px;">
+                                                    remove
+                                                </td>
+                                            </tr>
+                                            <tr class="ListTypeMng" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: whitesmoke; ">
+                                                <td align="left" width="50px">
+                                                    Tuesday
+                                                </td>
+                                                <td align="left" width="50px">
+                                                    14/06/2014
+                                                </td>
+                                                <td style="width:20px;">
+                                                    remove
+                                                </td>
+                                            </tr>
+                                            <tr class="ListTypeMng" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: threedlightshadow; ">
+                                                <td align="left" width="50px">
+                                                    Wednesday
+                                                </td>
+                                                <td align="left" width="50px">
+                                                    15/06/2014
+                                                </td>
+                                                <td style="width:20px;">
+                                                    remove
+                                                </td>
+                                            </tr>
+                                            <tr class="ListTypeMng" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: whitesmoke; ">
+                                                <td align="left" width="50px">
+                                                    Thursday
+                                                </td>
+                                                <td align="left" width="50px">
+                                                    16/06/2014
+                                                </td>
+                                                <td style="width:20px;">
+                                                    remove
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <table border="0" style="font-family: Arial; float: left; font-size: 9pt; background-color: transparent; width: auto; height: 100%; ">
+                            <tr style="background-color: #46568c; color: white;"><th align="center"><b>Disable Rule</b></th></tr>
+                            <tr>
+                                <td class="auto-style12">
+                                    <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: whitesmoke;" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td style="background-color:red">
+                                                Do Not Apply this Listing Rule To:
+                                            </td>
+                                        </tr>
+
+                                    </table>
+
+                                    <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: threedlightshadow;" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td align="left" style="padding:10px;">
+                                                <input type="checkbox" name="Rules1" value="Rules1" style="width:20px;" />Monday
+                                                &nbsp;    &nbsp; &nbsp; &nbsp;
+                                                <input type="checkbox" name="Rules2" value="Rules2" style="width:20px;" />Tuesday
+                                                &nbsp;    &nbsp; &nbsp; &nbsp;
+                                                <input type="checkbox" name="Rules3" value="Rules3" style="width:20px;">Wednesday
+                                                &nbsp;    &nbsp; &nbsp; &nbsp;
+                                                <input type="checkbox" name="Rules4" value="Rules4" style="width:20px;" />Thursday
+                                                &nbsp;    &nbsp; &nbsp; &nbsp;
+                                                <input type="checkbox" name="Rules4" value="Rules4" style="width:20px;" />Friday
+                                                <span class="field-validation-valid" data-valmsg-for="EventName" data-valmsg-replace="true"></span>
+                                            </td>
+                                        </tr>
+
+                                    </table>
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                Entire Date Range:
+                                            </td>
+                                            <td align="left" style="padding:10px;">
+                                                <input type="radio" name="Rules" value="Yes" style="width:20px" />Yes
+                                                &nbsp;    &nbsp; &nbsp; &nbsp;
+                                                <input type="radio" name="Rules" value="No" style="width:20px" checked="checked" />No
+                                                <span class="field-validation-valid" data-valmsg-for="EventName" data-valmsg-replace="true"></span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: threedlightshadow;" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td style="width:50px;">
+                                                Notes:
+                                            </td>
+                                            <td align="left" style="padding:10px;">
+                                                <input type="text" />
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                    <table border="0" style="font-family: Arial; font-size: 9pt; width: 100%; background-color: transparent; float: right;">
+                                        <tr>
+                                            <td align="left" style="padding:10px;">
+                                                <input type="submit" value="Save" class="btn btn-success" />
+                                                <input type="submit" value="Cancel" class="btn btn-danger" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>*@
+
+            </td>
+        </tr>
+    </table>
+</aside>
+
+
+<div style="padding-bottom:5px;"></div>
+<div id="ListingInformationSection">
+    <div id="ListingInformationDetailTable"></div>
+</div>
+
+
+@*<article style="width:600px; float:left;">
+    <section style="width:100%; padding-left:50px;">
+
+        <table border="1" style="font-family: Arial; float: right; font-size: 9pt; background-color: transparent; width: 100%; height: auto; ">
+            <tr style="background-color: #46568c; color: white; "><th align="center"><b>Listing Information</b></th></tr>
+            <tr>
+                <td>
+                    <table border="0" style="font-family: Arial; float: right; font-size: 9pt; background-color: transparent; width: 100%; height: auto; ">
+                        <tr style="background-color: #46568c; color: white; "><th align="center"><a style="word-spacing:80px; ">Day Date </a> <a style="word-spacing:50px;">Limit Current Available</a></th></tr>
+                        <tr>
+                            <td>
+                                <div style="overflow:auto; height:900px; width:auto;  font-family: arial; font-size: 9pt;">
+                                    <table border="0" style="font-family: Arial; font-size: 9pt; width:100%; height:900px;">
+
+                                        <tr class="ListTypeMngInfo" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: whitesmoke; float: left">
+                                            <td align="left" width="100px">
+                                                Monday
+                                            </td>
+                                            <td align="left" width="125px">
+                                                13/06/2014
+                                            </td>
+                                            <td style="width:90px;">
+                                                10
+                                            </td>
+                                            <td style="width:100px;">
+                                                8
+                                            </td>
+                                            <td style="width:30px;">
+                                                2
+                                            </td>
+                                        </tr>
+                                        <tr class="ListTypeMngInfo" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: threedlightshadow; float: left">
+                                            <td align="left" width="100px">
+                                                Tuesday
+                                            </td>
+                                            <td align="left" width="125px">
+                                                14/06/2014
+                                            </td>
+                                            <td style="width:90px;">
+                                                10
+                                            </td>
+                                            <td style="width:100px;">
+                                                7
+                                            </td>
+                                            <td style="width:30px;">
+                                                3
+                                            </td>
+                                        </tr>
+
+                                        <tr class="ListTypeMngInfo" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: whitesmoke; float: left">
+                                            <td align="left" width="100px">
+                                                Monday
+                                            </td>
+                                            <td align="left" width="125px">
+                                                18/06/2014
+                                            </td>
+                                            <td style="width:90px;">
+                                                10
+                                            </td>
+                                            <td style="width:100px;">
+                                                2
+                                            </td>
+                                            <td style="width:30px;">
+                                                8
+                                            </td>
+                                        </tr>
+                                        <tr class="ListTypeMngInfo" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: threedlightshadow; float: left">
+                                            <td align="left" width="100px">
+                                                Tuesday
+                                            </td>
+                                            <td align="left" width="125px">
+                                                19/06/2014
+                                            </td>
+                                            <td style="width:90px;">
+                                                10
+                                            </td>
+                                            <td style="width:100px;">
+                                                9
+                                            </td>
+                                            <td style="width:30px;">
+                                                1
+                                            </td>
+                                        </tr>
+                                        <tr class="ListTypeMngInfo" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: whitesmoke; float: left">
+                                            <td align="left" width="100px">
+                                                Wednesday
+                                            </td>
+                                            <td align="left" width="125px">
+                                                20/06/2014
+                                            </td>
+                                            <td style="width:90px;">
+                                                10
+                                            </td>
+                                            <td style="width:100px;">
+                                                8
+                                            </td>
+                                            <td style="width:30px;">
+                                                2
+                                            </td>
+                                        </tr>
+                                        <tr class="ListTypeMngInfo" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: threedlightshadow; float: left">
+                                            <td align="left" width="100px">
+                                                Monday
+                                            </td>
+                                            <td align="left" width="125px">
+                                                13/06/2014
+                                            </td>
+                                            <td style="width:90px;">
+                                                10
+                                            </td>
+                                            <td style="width:100px;">
+                                                8
+                                            </td>
+                                            <td style="width:30px;">
+                                                2
+                                            </td>
+                                        </tr>
+                                        <tr class="ListTypeMngInfo" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: whitesmoke; float: left">
+                                            <td align="left" width="100px">
+                                                Tuesday
+                                            </td>
+                                            <td align="left" width="125px">
+                                                14/06/2014
+                                            </td>
+                                            <td style="width:90px;">
+                                                10
+                                            </td>
+                                            <td style="width:100px;">
+                                                7
+                                            </td>
+                                            <td style="width:30px;">
+                                                3
+                                            </td>
+                                        </tr>
+                                        <tr class="ListTypeMngInfo" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: threedlightshadow; float: left">
+                                            <td align="left" width="100px">
+                                                Wednesday
+                                            </td>
+                                            <td align="left" width="125px">
+                                                15/06/2014
+                                            </td>
+                                            <td style="width:90px;">
+                                                10
+                                            </td>
+                                            <td style="width:100px;">
+                                                5
+                                            </td>
+                                            <td style="width:30px;">
+                                                5
+                                            </td>
+
+                                        </tr>
+
+                                        <tr class="ListTypeMngInfo" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: whitesmoke; float: left">
+                                            <td align="left" width="100px">
+                                                Monday
+                                            </td>
+                                            <td align="left" width="125px">
+                                                18/06/2014
+                                            </td>
+                                            <td style="width:90px;">
+                                                10
+                                            </td>
+                                            <td style="width:100px;">
+                                                2
+                                            </td>
+                                            <td style="width:30px;">
+                                                8
+                                            </td>
+                                        </tr>
+                                        <tr class="ListTypeMngInfo" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: threedlightshadow; float: left">
+                                            <td align="left" width="100px">
+                                                Tuesday
+                                            </td>
+                                            <td align="left" width="125px">
+                                                19/06/2014
+                                            </td>
+                                            <td style="width:90px;">
+                                                10
+                                            </td>
+                                            <td style="width:100px;">
+                                                9
+                                            </td>
+                                            <td style="width:30px;">
+                                                1
+                                            </td>
+                                        </tr>
+                                        <tr class="ListTypeMngInfo" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: whitesmoke; float: left">
+                                            <td align="left" width="100px">
+                                                Wednesday
+                                            </td>
+                                            <td align="left" width="125px">
+                                                20/06/2014
+                                            </td>
+                                            <td style="width:90px;">
+                                                10
+                                            </td>
+                                            <td style="width:100px;">
+                                                8
+                                            </td>
+                                            <td style="width:30px;">
+                                                2
+                                            </td>
+                                        </tr>
+                                        <tr class="ListTypeMngInfo" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: threedlightshadow; float: left">
+                                            <td align="left" width="100px">
+                                                Monday
+                                            </td>
+                                            <td align="left" width="125px">
+                                                13/06/2014
+                                            </td>
+                                            <td style="width:90px;">
+                                                10
+                                            </td>
+                                            <td style="width:100px;">
+                                                8
+                                            </td>
+                                            <td style="width:30px;">
+                                                2
+                                            </td>
+                                        </tr>
+
+                                        <tr class="ListTypeMngInfo" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: whitesmoke; float: left">
+                                            <td align="left" width="100px">
+                                                Wednesday
+                                            </td>
+                                            <td align="left" width="125px">
+                                                15/06/2014
+                                            </td>
+                                            <td style="width:90px;">
+                                                10
+                                            </td>
+                                            <td style="width:100px;">
+                                                5
+                                            </td>
+                                            <td style="width:30px;">
+                                                5
+                                            </td>
+
+                                        </tr>
+                                        <tr class="ListTypeMngInfo" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: threedlightshadow; float: left">
+                                            <td align="left" width="100px">
+                                                Tuesday
+                                            </td>
+                                            <td align="left" width="125px">
+                                                14/06/2014
+                                            </td>
+                                            <td style="width:90px;">
+                                                10
+                                            </td>
+                                            <td style="width:100px;">
+                                                7
+                                            </td>
+                                            <td style="width:30px;">
+                                                3
+                                            </td>
+                                        </tr>
+                                        <tr class="ListTypeMngInfo" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: whitesmoke; float: left">
+                                            <td align="left" width="100px">
+                                                Monday
+                                            </td>
+                                            <td align="left" width="125px">
+                                                18/06/2014
+                                            </td>
+                                            <td style="width:90px;">
+                                                10
+                                            </td>
+                                            <td style="width:100px;">
+                                                2
+                                            </td>
+                                            <td style="width:30px;">
+                                                8
+                                            </td>
+                                        </tr>
+                                        <tr class="ListTypeMngInfo" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: threedlightshadow; float: left">
+                                            <td align="left" width="100px">
+                                                Tuesday
+                                            </td>
+                                            <td align="left" width="125px">
+                                                19/06/2014
+                                            </td>
+                                            <td style="width:90px;">
+                                                10
+                                            </td>
+                                            <td style="width:100px;">
+                                                9
+                                            </td>
+                                            <td style="width:30px;">
+                                                1
+                                            </td>
+                                        </tr>
+                                        <tr class="ListTypeMngInfo" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: whitesmoke; float: left">
+                                            <td align="left" width="100px">
+                                                Wednesday
+                                            </td>
+                                            <td align="left" width="125px">
+                                                20/06/2014
+                                            </td>
+                                            <td style="width:90px;">
+                                                10
+                                            </td>
+                                            <td style="width:100px;">
+                                                8
+                                            </td>
+                                            <td style="width:30px;">
+                                                2
+                                            </td>
+                                        </tr>
+                                        <tr class="ListTypeMngInfo" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: threedlightshadow; float: left">
+                                            <td align="left" width="100px">
+                                                Monday
+                                            </td>
+                                            <td align="left" width="125px">
+                                                13/06/2014
+                                            </td>
+                                            <td style="width:90px;">
+                                                10
+                                            </td>
+                                            <td style="width:100px;">
+                                                8
+                                            </td>
+                                            <td style="width:30px;">
+                                                2
+                                            </td>
+                                        </tr>
+                                        <tr class="ListTypeMngInfo" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: whitesmoke; float: left">
+                                            <td align="left" width="100px">
+                                                Tuesday
+                                            </td>
+                                            <td align="left" width="125px">
+                                                14/06/2014
+                                            </td>
+                                            <td style="width:90px;">
+                                                10
+                                            </td>
+                                            <td style="width:100px;">
+                                                7
+                                            </td>
+                                            <td style="width:30px;">
+                                                3
+                                            </td>
+                                        </tr>
+                                        <tr class="ListTypeMngInfo" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: threedlightshadow; float: left">
+                                            <td align="left" width="100px">
+                                                Wednesday
+                                            </td>
+                                            <td align="left" width="125px">
+                                                15/06/2014
+                                            </td>
+                                            <td style="width:90px;">
+                                                10
+                                            </td>
+                                            <td style="width:100px;">
+                                                5
+                                            </td>
+                                            <td style="width:30px;">
+                                                5
+                                            </td>
+
+                                        </tr>
+
+                                        <tr class="ListTypeMngInfo" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: whitesmoke; float: left">
+                                            <td align="left" width="100px">
+                                                Monday
+                                            </td>
+                                            <td align="left" width="125px">
+                                                18/06/2014
+                                            </td>
+                                            <td style="width:90px;">
+                                                10
+                                            </td>
+                                            <td style="width:100px;">
+                                                2
+                                            </td>
+                                            <td style="width:30px;">
+                                                8
+                                            </td>
+                                        </tr>
+                                        <tr class="ListTypeMngInfo" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: threedlightshadow; float: left">
+                                            <td align="left" width="100px">
+                                                Tuesday
+                                            </td>
+                                            <td align="left" width="125px">
+                                                19/06/2014
+                                            </td>
+                                            <td style="width:90px;">
+                                                10
+                                            </td>
+                                            <td style="width:100px;">
+                                                9
+                                            </td>
+                                            <td style="width:30px;">
+                                                1
+                                            </td>
+                                        </tr>
+                                        <tr class="ListTypeMngInfo" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: whitesmoke; float: left">
+                                            <td align="left" width="100px">
+                                                Wednesday
+                                            </td>
+                                            <td align="left" width="125px">
+                                                20/06/2014
+                                            </td>
+                                            <td style="width:90px;">
+                                                10
+                                            </td>
+                                            <td style="width:100px;">
+                                                8
+                                            </td>
+                                            <td style="width:30px;">
+                                                2
+                                            </td>
+                                        </tr>
+                                        <tr class="ListTypeMngInfo" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: threedlightshadow; float: left">
+                                            <td align="left" width="100px">
+                                                Monday
+                                            </td>
+                                            <td align="left" width="125px">
+                                                13/06/2014
+                                            </td>
+                                            <td style="width:90px;">
+                                                10
+                                            </td>
+                                            <td style="width:100px;">
+                                                8
+                                            </td>
+                                            <td style="width:30px;">
+                                                2
+                                            </td>
+                                        </tr>
+
+                                        <tr class="ListTypeMngInfo" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: whitesmoke; float: left">
+                                            <td align="left" width="100px">
+                                                Wednesday
+                                            </td>
+                                            <td align="left" width="125px">
+                                                15/06/2014
+                                            </td>
+                                            <td style="width:90px;">
+                                                10
+                                            </td>
+                                            <td style="width:100px;">
+                                                5
+                                            </td>
+                                            <td style="width:30px;">
+                                                5
+                                            </td>
+
+                                        </tr>
+                                        <tr class="ListTypeMngInfo" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: threedlightshadow; float: left">
+                                            <td align="left" width="100px">
+                                                Tuesday
+                                            </td>
+                                            <td align="left" width="125px">
+                                                14/06/2014
+                                            </td>
+                                            <td style="width:90px;">
+                                                10
+                                            </td>
+                                            <td style="width:100px;">
+                                                7
+                                            </td>
+                                            <td style="width:30px;">
+                                                3
+                                            </td>
+                                        </tr>
+                                        <tr class="ListTypeMngInfo" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: whitesmoke; float: left">
+                                            <td align="left" width="100px">
+                                                Monday
+                                            </td>
+                                            <td align="left" width="125px">
+                                                18/06/2014
+                                            </td>
+                                            <td style="width:90px;">
+                                                10
+                                            </td>
+                                            <td style="width:100px;">
+                                                2
+                                            </td>
+                                            <td style="width:30px;">
+                                                8
+                                            </td>
+                                        </tr>
+                                        <tr class="ListTypeMngInfo" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: threedlightshadow; float: left">
+                                            <td align="left" width="100px">
+                                                Tuesday
+                                            </td>
+                                            <td align="left" width="125px">
+                                                19/06/2014
+                                            </td>
+                                            <td style="width:90px;">
+                                                10
+                                            </td>
+                                            <td style="width:100px;">
+                                                9
+                                            </td>
+                                            <td style="width:30px;">
+                                                1
+                                            </td>
+                                        </tr>
+                                        <tr class="ListTypeMngInfo" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: whitesmoke; float: left">
+                                            <td align="left" width="100px">
+                                                Wednesday
+                                            </td>
+                                            <td align="left" width="125px">
+                                                20/06/2014
+                                            </td>
+                                            <td style="width:90px;">
+                                                10
+                                            </td>
+                                            <td style="width:100px;">
+                                                8
+                                            </td>
+                                            <td style="width:30px;">
+                                                2
+                                            </td>
+                                        </tr>
+                                        <tr class="ListTypeMngInfo" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: threedlightshadow; float: left">
+                                            <td align="left" width="100px">
+                                                Monday
+                                            </td>
+                                            <td align="left" width="125px">
+                                                13/06/2014
+                                            </td>
+                                            <td style="width:90px;">
+                                                10
+                                            </td>
+                                            <td style="width:100px;">
+                                                8
+                                            </td>
+                                            <td style="width:30px;">
+                                                2
+                                            </td>
+                                        </tr>
+                                        <tr class="ListTypeMngInfo" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: whitesmoke; float: left">
+                                            <td align="left" width="100px">
+                                                Tuesday
+                                            </td>
+                                            <td align="left" width="125px">
+                                                14/06/2014
+                                            </td>
+                                            <td style="width:90px;">
+                                                10
+                                            </td>
+                                            <td style="width:100px;">
+                                                7
+                                            </td>
+                                            <td style="width:30px;">
+                                                3
+                                            </td>
+                                        </tr>
+                                        <tr class="ListTypeMngInfo" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: threedlightshadow; float: left">
+                                            <td align="left" width="100px">
+                                                Wednesday
+                                            </td>
+                                            <td align="left" width="125px">
+                                                15/06/2014
+                                            </td>
+                                            <td style="width:90px;">
+                                                10
+                                            </td>
+                                            <td style="width:100px;">
+                                                5
+                                            </td>
+                                            <td style="width:30px;">
+                                                5
+                                            </td>
+
+                                        </tr>
+                                        <tr class="ListTypeMngInfo" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: whitesmoke; float: left">
+                                            <td align="left" width="100px">
+                                                Wednesday
+                                            </td>
+                                            <td align="left" width="125px">
+                                                15/06/2014
+                                            </td>
+                                            <td style="width:90px;">
+                                                10
+                                            </td>
+                                            <td style="width:100px;">
+                                                5
+                                            </td>
+                                            <td style="width:30px;">
+                                                5
+                                            </td>
+
+                                        </tr>
+                                        <tr class="ListTypeMngInfo" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: threedlightshadow; float: left">
+                                            <td align="left" width="100px">
+                                                Tuesday
+                                            </td>
+                                            <td align="left" width="125px">
+                                                14/06/2014
+                                            </td>
+                                            <td style="width:90px;">
+                                                10
+                                            </td>
+                                            <td style="width:100px;">
+                                                7
+                                            </td>
+                                            <td style="width:30px;">
+                                                3
+                                            </td>
+                                        </tr>
+                                        <tr class="ListTypeMngInfo" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: whitesmoke; float: left">
+                                            <td align="left" width="100px">
+                                                Monday
+                                            </td>
+                                            <td align="left" width="125px">
+                                                18/06/2014
+                                            </td>
+                                            <td style="width:90px;">
+                                                10
+                                            </td>
+                                            <td style="width:100px;">
+                                                2
+                                            </td>
+                                            <td style="width:30px;">
+                                                8
+                                            </td>
+                                        </tr>
+                                        <tr class="ListTypeMngInfo" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: threedlightshadow; float: left">
+                                            <td align="left" width="100px">
+                                                Tuesday
+                                            </td>
+                                            <td align="left" width="125px">
+                                                19/06/2014
+                                            </td>
+                                            <td style="width:90px;">
+                                                10
+                                            </td>
+                                            <td style="width:100px;">
+                                                9
+                                            </td>
+                                            <td style="width:30px;">
+                                                1
+                                            </td>
+                                        </tr>
+                                        <tr class="ListTypeMngInfo" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: whitesmoke; float: left">
+                                            <td align="left" width="100px">
+                                                Wednesday
+                                            </td>
+                                            <td align="left" width="125px">
+                                                20/06/2014
+                                            </td>
+                                            <td style="width:90px;">
+                                                10
+                                            </td>
+                                            <td style="width:100px;">
+                                                8
+                                            </td>
+                                            <td style="width:30px;">
+                                                2
+                                            </td>
+                                        </tr>
+                                        <tr class="ListTypeMngInfo" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: threedlightshadow; float: left">
+                                            <td align="left" width="100px">
+                                                Monday
+                                            </td>
+                                            <td align="left" width="125px">
+                                                13/06/2014
+                                            </td>
+                                            <td style="width:90px;">
+                                                10
+                                            </td>
+                                            <td style="width:100px;">
+                                                8
+                                            </td>
+                                            <td style="width:30px;">
+                                                2
+                                            </td>
+                                        </tr>
+                                        <tr class="ListTypeMngInfo" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: whitesmoke; float: left">
+                                            <td align="left" width="100px">
+                                                Tuesday
+                                            </td>
+                                            <td align="left" width="125px">
+                                                14/06/2014
+                                            </td>
+                                            <td style="width:90px;">
+                                                10
+                                            </td>
+                                            <td style="width:100px;">
+                                                7
+                                            </td>
+                                            <td style="width:30px;">
+                                                3
+                                            </td>
+                                        </tr>
+                                        <tr class="ListTypeMngInfo" style="font-family: Arial; font-size: 9pt; width: 100%;  background-color: threedlightshadow; float: left">
+                                            <td align="left" width="100px">
+                                                Wednesday
+                                            </td>
+                                            <td align="left" width="125px">
+                                                15/06/2014
+                                            </td>
+                                            <td style="width:90px;">
+                                                10
+                                            </td>
+                                            <td style="width:100px;">
+                                                5
+                                            </td>
+                                            <td style="width:30px;">
+                                                5
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </section>
+</article>*@
+
+
+
